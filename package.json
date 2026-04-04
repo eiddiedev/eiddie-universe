@@ -1,0 +1,19 @@
+{
+  "name": "eiddie-portfolio",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "playwright": "^1.59.1",
+    "vite": "^7.0.0"
+  },
+  "dependencies": {
+    "pngjs": "^7.0.0",
+    "simple-icons": "^16.14.0"
+  }
+}
