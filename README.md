@@ -1,7 +1,7 @@
 # EIDDIE Portfolio
 
-个人作品集网站，线上地址：[eiddie.me](https://eiddie.me)  
-Personal portfolio site, live at [eiddie.me](https://eiddie.me)
+个人作品集网站，线上地址：[eiddie.me](https://www.eiddie.me)  
+Personal portfolio site, live at [eiddie.me](https://www.eiddie.me)
 
 这个项目不是一个通用模板，而是围绕我自己的表达方式、项目气质和页面节奏做出来的个人网站。  
 This is not a generic template. It is a portfolio site shaped around my own visual taste, project language, and interaction rhythm.
@@ -105,4 +105,4 @@ For presentation and privacy reasons, some deployment details, environment confi
 
 ## Live Site｜线上预览
 
-[https://eiddie.me](https://eiddie.me)
+[https://eiddie.me](https://www.eiddie.me)
