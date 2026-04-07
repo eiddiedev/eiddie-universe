@@ -46,6 +46,17 @@ const copyContactButtons = [...document.querySelectorAll(".contact-link--copy[da
 const languageToggle = document.getElementById("language-toggle");
 const heroScrollLabel = document.querySelector(".hero-scroll__label");
 const nameTranslationNodes = [...document.querySelectorAll(".name-translation")];
+const nameLetterOverlayNodes = nameRows.map((row, index) => {
+  const shell = row.querySelector(".name-letter-shell");
+  if (!(shell instanceof HTMLElement)) return null;
+
+  const overlay = document.createElement("span");
+  overlay.className = "name-letter-overlay";
+  overlay.setAttribute("aria-hidden", "true");
+  overlay.textContent = nameTranslationNodes[index]?.textContent?.trim() ?? "";
+  shell.append(overlay);
+  return overlay;
+});
 const aboutFactBodies = [...document.querySelectorAll(".about-facts article p:not(.fact-label)")];
 const contactCopy = document.querySelector(".contact-copy");
 const modalProofHeading = document.querySelector(".project-modal__proof-heading");
@@ -73,7 +84,7 @@ const CLOSE_RETURN_DELAY_MS = 520;
 const CLOSE_COLLAPSE_MS = 760;
 const FLIP_DELAY_MS = 120;
 const MODAL_EXIT_BUFFER_MS = 90;
-const SKILL_BADGE_SEQUENCE = [7, 2, 10, 4, 1, 13, 9, 6, 15, 5, 11, 12, 3, 14, 8, 16];
+const SKILL_BADGE_SEQUENCE = [7, 2, 10, 4, 1, 13, 8, 14, 9, 16, 6, 15, 5, 11, 3, 12];
 const LANGUAGE_STORAGE_KEY = "site-language";
 const defaultAssistantAnswer = answerBox?.textContent?.trim() ?? "";
 const defaultAssistantStatus = askStatus?.textContent?.trim() ?? "";
@@ -532,6 +543,9 @@ const applyStaticLanguage = () => {
   nameTranslationNodes.forEach((node, index) => {
     const nextText = copy.nameTranslations[index];
     if (nextText) node.textContent = nextText;
+    if (nameLetterOverlayNodes[index]) {
+      nameLetterOverlayNodes[index].textContent = nextText ?? "";
+    }
   });
 
   if (contactCopy) {
@@ -1147,15 +1161,20 @@ const updateSkillsTransition = () => {
   if (!skillsSection) return;
 
   const rect = skillsSection.getBoundingClientRect();
+  const isPhoneViewport = window.innerWidth <= 560;
   const start = window.innerHeight * 0.99;
   const end = window.innerHeight * -0.12;
   const distance = start - end;
   const progress = distance > 0 ? clamp((start - rect.top) / distance, 0, 1) : 0;
 
   const titleRaw = clamp((progress - 0.14) / 0.22, 0, 1);
-  const webRaw = clamp((progress - 0.64) / 0.2, 0, 1);
-  const webDensityRaw = clamp((progress - 0.74) / 0.14, 0, 1);
-  const iconsRaw = clamp((progress - 0.9) / 0.16, 0, 1);
+  const webRaw = clamp((progress - (isPhoneViewport ? 0.54 : 0.64)) / (isPhoneViewport ? 0.24 : 0.2), 0, 1);
+  const webDensityRaw = clamp(
+    (progress - (isPhoneViewport ? 0.62 : 0.74)) / (isPhoneViewport ? 0.18 : 0.14),
+    0,
+    1,
+  );
+  const iconsRaw = clamp((progress - (isPhoneViewport ? 0.7 : 0.9)) / (isPhoneViewport ? 0.22 : 0.16), 0, 1);
   const aboutExitRaw = clamp((progress - 0.28) / 0.46, 0, 1);
 
   const titleProgress = easeInOutQuad(titleRaw);
@@ -1177,14 +1196,16 @@ const updateSkillsTransition = () => {
   skillBadges.forEach((badge) => {
     const order = Number.parseFloat(badge.style.getPropertyValue("--badge-order")) || 0;
     const normalizedOrder = skillBadges.length > 1 ? order / (skillBadges.length - 1) : 0;
-    const badgeStart = normalizedOrder * 0.68;
-    const badgeEnd = Math.min(badgeStart + 0.32, 1);
+    const badgeSpread = isPhoneViewport ? 0.46 : 0.68;
+    const badgeWindow = isPhoneViewport ? 0.42 : 0.32;
+    const badgeStart = normalizedOrder * badgeSpread;
+    const badgeEnd = Math.min(badgeStart + badgeWindow, 1);
     const badgeRaw = clamp((iconsProgress - badgeStart) / (badgeEnd - badgeStart), 0, 1);
     const badgePop = easeOutCubic(clamp((badgeRaw - 0.06) / 0.84, 0, 1));
     const badgeFloat = easeInOutQuad(clamp((badgeRaw - 0.82) / 0.18, 0, 1));
     const burstEnvelope = Math.sin(badgeRaw * Math.PI);
-    const burstLift = burstEnvelope * (1 - badgeRaw * 0.22) * 18;
-    const burstScale = burstEnvelope * 0.07;
+    const burstLift = burstEnvelope * (1 - badgeRaw * 0.22) * (isPhoneViewport ? 10 : 18);
+    const burstScale = burstEnvelope * (isPhoneViewport ? 0.04 : 0.07);
     const burstRotate = burstEnvelope * (order % 2 === 0 ? -1 : 1) * 1.35;
 
     badge.style.setProperty("--badge-pop", badgePop.toFixed(3));
@@ -1981,16 +2002,38 @@ const openModal = (button) => {
   projectModal.classList.remove("is-collapsing");
   projectModal.classList.remove("is-open");
   applyPanelRect(centeredRect);
-  applyPanelTransform(getTransformFromRect(startRect, centeredRect));
+  applyPanelTransform({});
   projectModal.classList.add("is-visible");
   lockBodyScroll();
-
-  requestAnimationFrame(() => {
-    applyPanelTransform({});
-    flipTimer = window.setTimeout(() => {
-      projectModal.classList.add("is-open");
-    }, FLIP_DELAY_MS);
-  });
+  cancelCollapseAnimation();
+  const isPhoneViewport = window.innerWidth <= 560;
+  const mobileOpenDelay = isPhoneViewport ? 520 : FLIP_DELAY_MS;
+  collapseAnimation = modalPanel.animate(
+    [
+      {
+        transform: getTransformString(getTransformFromRect(startRect, centeredRect)),
+        opacity: 1,
+      },
+      {
+        transform: getTransformString({}),
+        opacity: 1,
+      },
+    ],
+    {
+      duration: PANEL_TRANSITION_MS,
+      easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      fill: "both",
+    },
+  );
+  collapseAnimation.onfinish = () => {
+    collapseAnimation = null;
+  };
+  collapseAnimation.oncancel = () => {
+    collapseAnimation = null;
+  };
+  flipTimer = window.setTimeout(() => {
+    projectModal.classList.add("is-open");
+  }, mobileOpenDelay);
 };
 
 const closeModal = () => {
