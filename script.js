@@ -433,6 +433,155 @@ const PROJECT_DETAILS = {
     },
     proofs: [],
   },
+  scriptmind: {
+    title: "ScriptMind",
+    type: {
+      zh: "字幕解析 / AI 学习 / 口语训练",
+      en: "Subtitle Parsing / AI Learning / Speaking Practice",
+    },
+    link: "https://sm.eiddie.top",
+    linkLabel: "sm.eiddie.top",
+    frontIntro: {
+      zh: "把美剧字幕做成交互式英语学习，兼顾口语、剧情和跟读。",
+      en: "Turns TV subtitles into interactive English study with speaking, story, and shadowing.",
+    },
+    description: {
+      zh: "ScriptMind 是一个基于美剧字幕的英语学习 Web 应用，支持按季导入、按集学习和场景化练习。产品前端基于 Next.js 与 TypeScript 构建，后端采用 Postgres、pgvector 和 AI 解析流程，把原始字幕整理成可用于口语训练、剧情理解和表达学习的结构化内容。",
+      en: "ScriptMind is a subtitle-based English learning web app built around season imports, episode study, and scene-based practice. The frontend uses Next.js and TypeScript, while the backend combines Postgres, pgvector, and an AI parsing pipeline to turn raw subtitles into structured material for speaking drills, story comprehension, and expression learning.",
+    },
+    meta: {
+      zh: "Next.js / TypeScript / Postgres / pgvector / AI 字幕解析 / 场景化学习",
+      en: "Next.js / TypeScript / Postgres / pgvector / AI Subtitle Parsing / Scene-Based Learning",
+    },
+    signals: {
+      zh: ["按季导入", "按集学习", "场景化练习"],
+      en: ["Season imports", "Episode study", "Scene-based practice"],
+    },
+    cover: {
+      profile: "scriptmind-wave",
+      art: {
+        asset: "/projects/scriptmind/scriptmind-cover.jpeg",
+      },
+      logo: {
+        asset: "/projects/scriptmind/scriptmind-logo.png",
+      },
+      theme: {
+        originX: "32%",
+        originY: "46%",
+        logoMuted: "rgba(244, 245, 247, 0.94)",
+        logoActive: "#ff8a3d",
+        logoGlow: "rgba(114, 228, 255, 0.3)",
+        burstAccent: "#ff8a3d",
+        burstSoft: "rgba(214, 247, 255, 0.98)",
+        dotMuted: "rgba(201, 229, 255, 0.12)",
+        dotActive: "rgba(239, 248, 255, 0.34)",
+        lineMuted: "rgba(173, 214, 255, 0.16)",
+        rayLight: "rgba(231, 248, 255, 0.96)",
+        rayInk: "rgba(10, 25, 74, 0.94)",
+        panelTint: "rgba(112, 201, 255, 0.16)",
+        borderActive: "rgba(255, 154, 90, 0.4)",
+        shadowActive: "rgba(25, 91, 214, 0.34)",
+      },
+      impact: {
+        text: "SPEAK!",
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/scriptmind/scriptmind-cover.jpeg",
+      label: {
+        zh: "ScriptMind 项目预览待补充",
+        en: "ScriptMind preview pending",
+      },
+      title: {
+        zh: "演示视频待补充",
+        en: "Demo video coming soon",
+      },
+      note: {
+        zh: "当前先展示项目视觉与信息，演示视频后续补上。",
+        en: "The card and project details are live first. A demo video will be added later.",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
+  bugpet: {
+    title: "BugPet",
+    type: {
+      zh: "AI开发 / 桌面陪伴 / 宠物养成",
+      en: "AI Coding / Desktop Companion / Pet Growth",
+    },
+    link: "",
+    linkLabel: "",
+    frontIntro: {
+      zh: "一个会感知专注状态、陪你把 vibe coding 持续推进下去的桌面宠物应用。",
+      en: "A desktop pet that senses your focus rhythm and keeps you company through vibe coding sessions.",
+    },
+    description: {
+      zh: "BugPet 是一款基于 Tauri、React 和 TypeScript 开发的轻量级桌面宠物应用，但它不是传统意义上的挂机摆件，而是面向 AI coding workflow 设计的陪伴型工具。它会结合开发状态变化与角色化反馈，在 Codex、Claude Code 等场景里提供更自然的专注提醒、陪伴感和沉浸节奏，并把你的效率成长与长期使用过程转化成一只会一起进化的桌面宠物。",
+      en: "BugPet is a lightweight desktop pet built with Tauri, React, and TypeScript, but it is designed as a companion for AI coding workflows rather than a passive novelty app. It responds to shifts in your working state with character-driven feedback, adding focus cues, companionship, and a steadier sense of rhythm in Codex, Claude Code, and similar environments while turning your long-term progress into a pet that grows with you.",
+    },
+    meta: {
+      zh: "Tauri / React / TypeScript / 桌面宠物 / AI Coding Workflow / 状态反馈",
+      en: "Tauri / React / TypeScript / Desktop Pet / AI Coding Workflow / State Feedback",
+    },
+    signals: {
+      zh: ["专注感知", "桌面陪伴", "成长反馈"],
+      en: ["Focus sensing", "Desktop companion", "Growth feedback"],
+    },
+    cover: {
+      profile: "bugpet-pixel",
+      art: {
+        asset: "/projects/bugpet/bugpet-cover.jpg",
+      },
+      logo: {
+        asset: "/projects/bugpet/bugpet-logo.png",
+      },
+      theme: {
+        originX: "50%",
+        originY: "34%",
+        logoMuted: "rgba(228, 225, 221, 0.9)",
+        logoActive: "rgba(255, 202, 129, 0.98)",
+        logoGlow: "rgba(255, 185, 107, 0.28)",
+        burstAccent: "rgba(124, 110, 255, 0.9)",
+        burstSoft: "rgba(238, 225, 255, 0.92)",
+        dotMuted: "rgba(232, 231, 250, 0.14)",
+        dotActive: "rgba(244, 241, 255, 0.32)",
+        lineMuted: "rgba(149, 161, 255, 0.14)",
+        rayLight: "rgba(243, 238, 255, 0.88)",
+        rayInk: "rgba(18, 20, 34, 0.94)",
+        panelTint: "rgba(123, 113, 204, 0.18)",
+        borderActive: "rgba(255, 205, 145, 0.24)",
+        shadowActive: "rgba(71, 59, 138, 0.36)",
+        accent: "rgba(255, 188, 112, 0.88)",
+        accentSoft: "rgba(255, 188, 112, 0.12)",
+      },
+      impact: {
+        text: {
+          zh: "PAWS!",
+          en: "PAWS!",
+        },
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/bugpet/bugpet-cover.jpg",
+      label: {
+        zh: "BugPet 项目预览待补充",
+        en: "BugPet preview pending",
+      },
+      title: {
+        zh: "演示视频待补充",
+        en: "Demo video coming soon",
+      },
+      note: {
+        zh: "当前先展示项目视觉和产品定位，演示视频后续补上。",
+        en: "The project visual and product framing are live first. A demo video will be added later.",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
 };
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -838,7 +987,9 @@ const resetProjectCardVariants = (button) => {
     "project-card__button--crash",
     "project-card__button--wham",
     "project-card__button--logo-burst",
+    "project-card__button--bugpet-pixel",
     "project-card__button--football-ink",
+    "project-card__button--scriptmind-wave",
   );
 };
 
@@ -863,6 +1014,26 @@ const renderProjectCardCover = (button, localizedDetail) => {
     button.dataset.coverProfile = cover.profile;
     applyProjectCoverTheme(button, cover);
     button.innerHTML = buildFootballInkCardMarkup({ indexLabel, detail: localizedDetail, cover });
+    return true;
+  }
+
+  if (cover.profile === "scriptmind-wave") {
+    const indexLabel = getProjectCardIndexLabel(button);
+    resetProjectCardVariants(button);
+    button.classList.add("project-card__button--logo-burst", "project-card__button--scriptmind-wave");
+    button.dataset.coverProfile = cover.profile;
+    applyProjectCoverTheme(button, cover);
+    button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
+    return true;
+  }
+
+  if (cover.profile === "bugpet-pixel") {
+    const indexLabel = getProjectCardIndexLabel(button);
+    resetProjectCardVariants(button);
+    button.classList.add("project-card__button--logo-burst", "project-card__button--bugpet-pixel");
+    button.dataset.coverProfile = cover.profile;
+    applyProjectCoverTheme(button, cover);
+    button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
     return true;
   }
 

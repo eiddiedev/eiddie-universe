@@ -2193,8 +2193,7 @@ body[data-issue="06"] {
   --hover-shadow: rgba(0, 0, 0, 0.42);
   --panel-hover-rotate: 0deg;
   --card-panel-neutral:
-    radial-gradient(circle, rgba(247, 238, 215, 0.08) 0 1.15px, transparent 1.55px),
-    repeating-linear-gradient(128deg, rgba(247, 238, 215, 0.04) 0 4px, transparent 4px 16px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 42%),
     linear-gradient(180deg, rgba(24, 23, 36, 0.98) 0%, rgba(15, 15, 24, 0.98) 34%, rgba(9, 9, 16, 0.99) 72%, rgba(4, 4, 10, 1) 100%);
   --card-dots: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0 1.1px, transparent 1.5px);
   --card-dots-size: 12px 12px;
@@ -2265,9 +2264,9 @@ body[data-issue="06"] {
   backdrop-filter: none;
   will-change: transform, box-shadow;
   background-image: var(--card-panel-neutral);
-  background-size: 12px 12px, auto, cover;
-  background-position: 0 0, center, center;
-  background-repeat: repeat, no-repeat, no-repeat;
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.025) inset,
     0 0 0 5px rgba(5, 5, 5, 0.9) inset,
@@ -2539,7 +2538,7 @@ body[data-issue="06"] {
   --impact-right: auto;
   --impact-bottom: 6.3rem;
   --impact-left: 0.82rem;
-  --impact-size: clamp(2.2rem, 2.8vw, 3rem);
+  --impact-size: clamp(2.5rem, 3.05vw, 3.32rem);
   --impact-backdrop:
     repeating-linear-gradient(160deg, #fff1a1 0 10px, #ffd74b 10px 20px),
     linear-gradient(135deg, #fff1a1 0%, #ffcf46 100%);
@@ -2622,6 +2621,11 @@ body[data-issue="06"] {
   z-index: 2;
 }
 
+.project-card__button > .project-card__impact {
+  position: absolute;
+  z-index: 3;
+}
+
 .project-card__button .project-card__index,
 .project-card__button .project-card__type,
 .project-card__button p,
@@ -2702,14 +2706,16 @@ body[data-issue="06"] {
   --hover-border: var(--cover-border-active, rgba(121, 247, 217, 0.44));
   --hover-shadow: var(--cover-shadow-active, rgba(22, 118, 98, 0.42));
   --panel-hover-rotate: -0.8deg;
-  --card-panel-neutral: linear-gradient(180deg, rgba(16, 18, 24, 0.98) 0%, rgba(9, 11, 16, 1) 72%, rgba(5, 6, 10, 1) 100%);
+  --card-panel-neutral:
+    linear-gradient(180deg, rgba(214, 255, 232, 0.035), transparent 42%),
+    linear-gradient(180deg, rgba(16, 23, 20, 0.98) 0%, rgba(10, 15, 13, 0.99) 68%, rgba(5, 8, 7, 1) 100%);
   --impact-top: 1rem;
   --impact-right: 0.95rem;
-  --impact-padding: 0.38rem 0.76rem 0.3rem;
-  --impact-scale: 0.72;
+  --impact-padding: 0.46rem 0.9rem 0.36rem;
+  --impact-scale: 0.82;
   --impact-hover-scale: 1.02;
   --impact-rotate: -6deg;
-  --impact-size: clamp(1.04rem, 1.4vw, 1.3rem);
+  --impact-size: clamp(1.2rem, 1.58vw, 1.48rem);
   --impact-text: #07110d;
   --impact-backdrop: linear-gradient(
     135deg,
@@ -3159,6 +3165,585 @@ body[data-issue="06"] {
   transform: translate3d(0.1rem, -0.06rem, 0);
 }
 
+.project-card__button--scriptmind-wave {
+  --hover-shift-x: -0.04rem;
+  --hover-lift: -1.12rem;
+  --hover-rotate: 1.2deg;
+  --hover-scale: 1.034;
+  --hover-border: var(--cover-border-active, rgba(255, 154, 90, 0.4));
+  --hover-shadow: var(--cover-shadow-active, rgba(25, 91, 214, 0.34));
+  --panel-hover-rotate: 0.35deg;
+  --card-panel-neutral:
+    linear-gradient(180deg, rgba(203, 221, 255, 0.03), transparent 42%),
+    linear-gradient(180deg, rgba(17, 21, 31, 0.98) 0%, rgba(11, 13, 20, 0.99) 68%, rgba(7, 9, 14, 1) 100%);
+  --title-shadow:
+    0.08em 0.08em 0 rgba(5, 7, 10, 0.82),
+    0 0 10px rgba(255, 255, 255, 0.03);
+  --meta-accent: rgba(238, 240, 243, 0.82);
+  --meta-shadow:
+    0.06em 0.06em 0 rgba(5, 7, 10, 0.72),
+    0 0 8px rgba(255, 255, 255, 0.03);
+  --impact-top: auto;
+  --impact-right: auto;
+  --impact-bottom: auto;
+  --impact-left: 0.88rem;
+  --impact-top: 0.72rem;
+  --impact-padding: 0.48rem 1rem 0.42rem;
+  --impact-shift-x: 0;
+  --impact-shift-y: 0;
+  --impact-scale: 0.82;
+  --impact-hover-scale: 1;
+  --impact-rotate: -4deg;
+  --impact-size: clamp(1.22rem, 1.5vw, 1.42rem);
+  --impact-text: #08111f;
+  --impact-backdrop: linear-gradient(
+    135deg,
+    rgba(236, 248, 255, 0.96) 0%,
+    rgba(130, 230, 255, 0.96) 48%,
+    rgba(255, 167, 94, 0.94) 100%
+  );
+  --impact-clip: polygon(6% 18%, 90% 12%, 98% 42%, 90% 74%, 52% 78%, 40% 92%, 34% 78%, 8% 74%, 2% 42%);
+}
+
+.project-card__button--scriptmind-wave::before {
+  background-image:
+    linear-gradient(180deg, rgba(7, 12, 34, 0.08) 0%, rgba(7, 12, 34, 0.3) 100%),
+    var(--cover-art-asset, none);
+  background-size:
+    cover,
+    cover;
+  background-position:
+    center,
+    center 28%;
+  opacity: 0;
+  filter: grayscale(1) saturate(0) contrast(1.04) brightness(0.78);
+  transform: scale(1.02);
+}
+
+.project-card__button--scriptmind-wave::after {
+  inset: 1% 0 10% 0;
+  opacity: 0;
+  transform: translate3d(0, -0.08rem, 0) scale(0.94);
+  filter: grayscale(1) saturate(0) blur(1px);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-panel {
+  inset: 0;
+  border: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(4, 7, 18, 0.02) 0%, rgba(4, 7, 18, 0.18) 44%, rgba(5, 7, 16, 0.84) 100%),
+    var(--cover-art-asset, none);
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  transform: translate3d(0, 0.28rem, 0) scale(1.04);
+  filter: grayscale(1) saturate(0) contrast(1.06) brightness(0.8);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 36px rgba(0, 0, 0, 0.24);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 74%, rgba(0, 0, 0, 0.96) 82%, rgba(0, 0, 0, 0.58) 92%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0 74%, rgba(0, 0, 0, 0.96) 82%, rgba(0, 0, 0, 0.58) 92%, transparent 100%);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-burst {
+  opacity: 0;
+  transform: scale(0.92);
+  filter: grayscale(1) saturate(0);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-dots {
+  inset: 0;
+  clip-path: none;
+  opacity: 0;
+  transform: none;
+  mix-blend-mode: normal;
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-rays {
+  inset: -20% -14% 2% -14%;
+  opacity: 0;
+  transform: scale(0.98) rotate(-3deg);
+  filter: grayscale(1) saturate(0);
+  mix-blend-mode: normal;
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-bubble {
+  display: none;
+  inset: -36% 8% 66% 48%;
+  opacity: 0;
+  transform: translate3d(0.16rem, -0.36rem, 0) rotate(7deg) scale(0.72);
+  filter: grayscale(1) saturate(0);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-fragments {
+  opacity: 0;
+  transform: scale(0.92) rotate(-3deg);
+  filter: grayscale(1) saturate(0);
+}
+
+.project-card__button--scriptmind-wave .project-card__logo::before {
+  inset: 14% 12% 8%;
+  opacity: 0.12;
+  transform: rotate(-6deg) scale(0.92);
+}
+
+.project-card__button--scriptmind-wave .project-card__logo-mark {
+  transform: translateY(0.72rem);
+}
+
+.project-card__button--scriptmind-wave .project-card__logo-mark::before {
+  filter:
+    grayscale(1)
+    saturate(0)
+    brightness(1.04)
+    contrast(1.12)
+    drop-shadow(0 8px 14px rgba(0, 0, 0, 0.18));
+  opacity: 1;
+  z-index: 2;
+}
+
+.project-card__button--scriptmind-wave .project-card__logo-mark::after {
+  inset: 0;
+  background: linear-gradient(135deg, #79eaff 0%, #ffffff 42%, #ffb164 68%, #ff7d2f 100%);
+  -webkit-mask-image: var(--cover-logo-asset, url("/projects/scriptmind/scriptmind-logo.png"));
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  -webkit-mask-size: contain;
+  mask-image: var(--cover-logo-asset, url("/projects/scriptmind/scriptmind-logo.png"));
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  opacity: 0;
+  transform: scale(0.96);
+  filter:
+    drop-shadow(0 0 16px rgba(114, 228, 255, 0.24))
+    drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28));
+  z-index: 1;
+}
+
+.project-card__button--scriptmind-wave .project-card__impact::before {
+  inset: -0.3rem -0.52rem -0.54rem -0.46rem;
+}
+
+.project-card__button--scriptmind-wave .project-card__impact::after {
+  inset: -0.14rem -0.24rem -0.26rem -0.18rem;
+}
+
+.project-card__button--scriptmind-wave .project-card__impact {
+  top: 0.72rem;
+  left: 0.88rem;
+  right: auto;
+  bottom: auto;
+  transform: translate3d(0, 0, 0) scale(0.68) rotate(-4deg);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-bubble::before {
+  background: #050505;
+  clip-path: polygon(8% 18%, 90% 14%, 98% 42%, 90% 74%, 52% 78%, 40% 94%, 34% 78%, 10% 74%, 2% 42%);
+}
+
+.project-card__button--scriptmind-wave .project-card__cover-bubble::after {
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.22) 0 1.6px, transparent 2px),
+    linear-gradient(135deg, rgba(228, 247, 255, 0.98) 0%, rgba(120, 229, 255, 0.98) 48%, rgba(255, 158, 86, 0.96) 100%);
+  background-size: 10px 10px, cover;
+  clip-path: polygon(8% 18%, 90% 14%, 98% 42%, 90% 74%, 52% 78%, 40% 94%, 34% 78%, 10% 74%, 2% 42%);
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.94) inset,
+    0 0 18px rgba(114, 228, 255, 0.14);
+}
+
+.project-card__button--scriptmind-wave.is-hovered::before,
+.project-card__button--scriptmind-wave:focus-visible::before,
+.project-card__button--scriptmind-wave.is-returning::before,
+.project-card__button--scriptmind-wave.is-active-scene::before {
+  opacity: 0.92;
+  filter: grayscale(0) saturate(1.02) contrast(1.08) brightness(0.94);
+  transform: scale(1.04);
+}
+
+.project-card__button--scriptmind-wave.is-hovered::after,
+.project-card__button--scriptmind-wave:focus-visible::after,
+.project-card__button--scriptmind-wave.is-returning::after,
+.project-card__button--scriptmind-wave.is-active-scene::after {
+  opacity: 0.34;
+  transform: translate3d(0, 0, 0) scale(1.04);
+  filter: grayscale(0) saturate(0.92) blur(1px);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-panel,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-panel,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-panel,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.05);
+  filter: grayscale(0) saturate(1.06) contrast(1.04);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-burst,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-burst,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-burst,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-burst {
+  opacity: 0.54;
+  transform: scale(1.08);
+  filter: grayscale(0) saturate(1);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-dots,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-dots,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-dots,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-dots {
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-rays,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-rays,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-rays,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-rays {
+  opacity: 0.42;
+  transform: scale(1.08) rotate(-1deg);
+  filter: grayscale(0) saturate(1);
+  mix-blend-mode: screen;
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-bubble,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-bubble,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-bubble,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-bubble {
+  opacity: 0.86;
+  transform: translate3d(0, 0, 0) rotate(8deg) scale(0.92);
+  filter: grayscale(0) saturate(1);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__cover-fragments,
+.project-card__button--scriptmind-wave:focus-visible .project-card__cover-fragments,
+.project-card__button--scriptmind-wave.is-returning .project-card__cover-fragments,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__cover-fragments {
+  opacity: 0.62;
+  transform: scale(1) rotate(-2deg);
+  filter: grayscale(0) saturate(1);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__logo-mark::before,
+.project-card__button--scriptmind-wave:focus-visible .project-card__logo-mark::before,
+.project-card__button--scriptmind-wave.is-returning .project-card__logo-mark::before,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__logo-mark::before {
+  opacity: 1;
+  filter:
+    grayscale(1)
+    saturate(0)
+    brightness(1.04)
+    contrast(1.14);
+  mix-blend-mode: multiply;
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__logo-mark::after,
+.project-card__button--scriptmind-wave:focus-visible .project-card__logo-mark::after,
+.project-card__button--scriptmind-wave.is-returning .project-card__logo-mark::after,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__logo-mark::after {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__impact,
+.project-card__button--scriptmind-wave:focus-visible .project-card__impact,
+.project-card__button--scriptmind-wave.is-returning .project-card__impact,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__impact {
+  transform: translate3d(0, 0, 0) scale(1) rotate(-4deg);
+}
+
+.project-card__button--scriptmind-wave.is-hovered .project-card__logo-mark,
+.project-card__button--scriptmind-wave:focus-visible .project-card__logo-mark,
+.project-card__button--scriptmind-wave.is-returning .project-card__logo-mark,
+.project-card__button--scriptmind-wave.is-active-scene .project-card__logo-mark {
+  transform: translateY(0.52rem) scale(1.06);
+}
+
+.project-card__button--bugpet-pixel {
+  --hover-shift-x: -0.02rem;
+  --hover-lift: -1.02rem;
+  --hover-rotate: -0.85deg;
+  --hover-scale: 1.03;
+  --hover-border: var(--cover-border-active, rgba(255, 209, 145, 0.24));
+  --hover-shadow: var(--cover-shadow-active, rgba(71, 59, 138, 0.36));
+  --panel-hover-rotate: -0.2deg;
+  --card-panel-neutral:
+    linear-gradient(180deg, rgba(220, 205, 255, 0.03), transparent 42%),
+    linear-gradient(180deg, rgba(24, 23, 48, 0.98) 0%, rgba(15, 15, 32, 0.99) 64%, rgba(8, 9, 19, 1) 100%);
+  --impact-top: 1.04rem;
+  --impact-right: 0.92rem;
+  --impact-padding: 0.34rem 0.8rem 0.3rem;
+  --impact-scale: 0.64;
+  --impact-hover-scale: 1;
+  --impact-rotate: -5deg;
+  --impact-size: clamp(0.94rem, 1.1vw, 1.1rem);
+  --impact-text: #12131f;
+  --impact-backdrop: linear-gradient(
+    135deg,
+    rgba(247, 238, 226, 0.96) 0%,
+    rgba(255, 199, 137, 0.96) 56%,
+    rgba(181, 153, 255, 0.94) 100%
+  );
+  --impact-clip: polygon(8% 18%, 90% 14%, 98% 42%, 90% 74%, 52% 78%, 40% 94%, 34% 78%, 10% 74%, 2% 42%);
+  --title-shadow:
+    0.08em 0.08em 0 rgba(7, 9, 16, 0.8),
+    0 0 10px rgba(255, 190, 109, 0.06);
+  --meta-accent: rgba(227, 226, 243, 0.84);
+  --meta-shadow:
+    0.06em 0.06em 0 rgba(7, 9, 16, 0.72),
+    0 0 10px rgba(255, 255, 255, 0.03);
+}
+
+.project-card__button--bugpet-pixel::before {
+  background-image:
+    radial-gradient(circle, rgba(238, 236, 255, 0.22) 0 1.2px, transparent 1.65px),
+    linear-gradient(180deg, rgba(48, 42, 112, 0.24), rgba(8, 10, 21, 0.16)),
+    linear-gradient(180deg, rgba(8, 10, 21, 0.22), rgba(8, 10, 21, 0.02));
+  background-size:
+    14px 14px,
+    cover,
+    cover;
+  background-position:
+    0 0,
+    center,
+    center;
+  opacity: 0;
+  filter: saturate(0.7) contrast(1.06) brightness(0.92);
+  transform: scale(0.98);
+}
+
+.project-card__button--bugpet-pixel::after {
+  inset: 4% 0 18% 0;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 207, 148, 0.18) 0 8%, transparent 22%),
+    radial-gradient(circle at 50% 36%, rgba(158, 145, 255, 0.24) 0 16%, transparent 34%);
+  clip-path: ellipse(58% 44% at 50% 36%);
+  opacity: 0;
+  transform: translate3d(0, -0.06rem, 0) scale(0.9);
+  filter: blur(2px);
+}
+
+.project-card__button--bugpet-pixel .project-card__copy {
+  max-width: 18.5ch;
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-panel {
+  inset: 0;
+  border: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(12, 16, 36, 0.04) 0%, rgba(10, 14, 31, 0.28) 44%, rgba(8, 10, 21, 0.92) 100%),
+    var(--cover-art-asset, none);
+  background-size: cover;
+  background-position: center 58%;
+  opacity: 0;
+  transform: translate3d(0, 0.34rem, 0) scale(1.05);
+  filter: grayscale(0.12) saturate(0.68) brightness(0.7);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 36px rgba(0, 0, 0, 0.24);
+  -webkit-mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, 0.96) 82%, rgba(0, 0, 0, 0.56) 92%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0 72%, rgba(0, 0, 0, 0.96) 82%, rgba(0, 0, 0, 0.56) 92%, transparent 100%);
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-burst {
+  inset: 2% 0 16% 0;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 214, 164, 0.18) 0 5%, transparent 13%),
+    radial-gradient(circle at 50% 32%, rgba(181, 153, 255, 0.18) 0 16%, transparent 30%);
+  clip-path: ellipse(58% 44% at 50% 34%);
+  opacity: 0;
+  transform: scale(0.82);
+  filter: saturate(0.8);
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-dots {
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(241, 239, 255, 0.38) 0 1.1px, transparent 1.5px) 0 0 / 14px 14px,
+    linear-gradient(180deg, rgba(118, 104, 219, 0.22), transparent 58%) 0 0 / 100% 38% no-repeat;
+  clip-path: none;
+  opacity: 0;
+  transform: none;
+  mix-blend-mode: screen;
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-rays {
+  inset: -8% -6% 34% -6%;
+  background:
+    linear-gradient(138deg, transparent 0 47%, rgba(244, 241, 255, 0.76) 47% 49%, transparent 49%) 16% 26% / 18% 16% no-repeat,
+    linear-gradient(136deg, transparent 0 46%, rgba(244, 241, 255, 0.58) 46% 48%, transparent 48%) 74% 20% / 22% 18% no-repeat,
+    linear-gradient(142deg, transparent 0 47%, rgba(255, 201, 140, 0.58) 47% 49%, transparent 49%) 58% 36% / 14% 12% no-repeat;
+  opacity: 0;
+  transform: scale(0.94);
+  filter: blur(0.2px);
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-bubble {
+  display: none;
+}
+
+.project-card__button--bugpet-pixel .project-card__cover-fragments {
+  inset: 0;
+  opacity: 0;
+  transform: scale(0.92);
+  background:
+    radial-gradient(circle, rgba(255, 206, 142, 0.82) 0 1.4px, transparent 1.9px) 82% 16% / 16px 16px no-repeat,
+    radial-gradient(circle, rgba(244, 241, 255, 0.88) 0 1.2px, transparent 1.8px) 18% 20% / 14px 14px no-repeat,
+    radial-gradient(circle, rgba(202, 191, 255, 0.72) 0 1.4px, transparent 1.9px) 68% 10% / 18px 18px no-repeat,
+    linear-gradient(0deg, transparent 0 92%, rgba(255, 255, 255, 0.08) 92% 94%, transparent 94%) 0 100% / 100% 36% no-repeat;
+}
+
+.project-card__button--bugpet-pixel .project-card__logo {
+  inset: 12% 16% 40% 16%;
+}
+
+.project-card__button--bugpet-pixel .project-card__logo::before {
+  inset: 16% 12% 10%;
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at center, rgba(244, 229, 199, 0.12), transparent 68%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent 66%);
+  opacity: 0.08;
+}
+
+.project-card__button--bugpet-pixel .project-card__logo-mark {
+  width: min(56%, 9.4rem);
+  aspect-ratio: 1 / 1;
+  transform: translateY(0.46rem);
+}
+
+.project-card__button--bugpet-pixel .project-card__logo-mark::before {
+  background: center / contain no-repeat var(--cover-logo-asset, url("/projects/bugpet/bugpet-logo.png"));
+  filter:
+    grayscale(1)
+    saturate(0.08)
+    brightness(1.02)
+    contrast(1.04)
+    drop-shadow(0 12px 18px rgba(0, 0, 0, 0.26));
+  opacity: 0.94;
+}
+
+.project-card__button--bugpet-pixel .project-card__logo-mark::after {
+  inset: -14%;
+  background:
+    radial-gradient(circle, rgba(255, 187, 108, 0.22) 0%, transparent 64%);
+  opacity: 0.08;
+  filter: blur(12px);
+}
+
+.project-card__button--bugpet-pixel .project-card__impact--subtle::before {
+  inset: -0.28rem -0.48rem -0.3rem;
+}
+
+.project-card__button--bugpet-pixel .project-card__impact--subtle::after {
+  inset: -0.12rem -0.2rem -0.16rem;
+}
+
+.project-card__button--bugpet-pixel .project-card__type {
+  max-width: 17ch;
+}
+
+.project-card__button--bugpet-pixel p {
+  max-width: 18.5ch;
+}
+
+.project-card__button--bugpet-pixel.is-hovered::before,
+.project-card__button--bugpet-pixel:focus-visible::before,
+.project-card__button--bugpet-pixel.is-returning::before,
+.project-card__button--bugpet-pixel.is-active-scene::before {
+  opacity: 0.78;
+  filter: saturate(0.92) contrast(1.08) brightness(1);
+  transform: scale(1.02);
+}
+
+.project-card__button--bugpet-pixel.is-hovered::after,
+.project-card__button--bugpet-pixel:focus-visible::after,
+.project-card__button--bugpet-pixel.is-returning::after,
+.project-card__button--bugpet-pixel.is-active-scene::after {
+  opacity: 0.42;
+  transform: translate3d(0, 0, 0) scale(1.04);
+  filter: blur(2px);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__cover-panel,
+.project-card__button--bugpet-pixel:focus-visible .project-card__cover-panel,
+.project-card__button--bugpet-pixel.is-returning .project-card__cover-panel,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__cover-panel {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.06);
+  filter: grayscale(0) saturate(0.92) brightness(0.92);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__cover-burst,
+.project-card__button--bugpet-pixel:focus-visible .project-card__cover-burst,
+.project-card__button--bugpet-pixel.is-returning .project-card__cover-burst,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__cover-burst {
+  opacity: 0.58;
+  transform: scale(1.06);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__cover-dots,
+.project-card__button--bugpet-pixel:focus-visible .project-card__cover-dots,
+.project-card__button--bugpet-pixel.is-returning .project-card__cover-dots,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__cover-dots {
+  opacity: 0.38;
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__cover-rays,
+.project-card__button--bugpet-pixel:focus-visible .project-card__cover-rays,
+.project-card__button--bugpet-pixel.is-returning .project-card__cover-rays,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__cover-rays {
+  opacity: 0.56;
+  transform: scale(1.02);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__cover-fragments,
+.project-card__button--bugpet-pixel:focus-visible .project-card__cover-fragments,
+.project-card__button--bugpet-pixel.is-returning .project-card__cover-fragments,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__cover-fragments {
+  opacity: 0.88;
+  transform: scale(1);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__logo::before,
+.project-card__button--bugpet-pixel:focus-visible .project-card__logo::before,
+.project-card__button--bugpet-pixel.is-returning .project-card__logo::before,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__logo::before {
+  opacity: 0.42;
+  transform: scale(1.04);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__logo-mark,
+.project-card__button--bugpet-pixel:focus-visible .project-card__logo-mark,
+.project-card__button--bugpet-pixel.is-returning .project-card__logo-mark,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__logo-mark {
+  transform: translateY(0.2rem) scale(1.04);
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__logo-mark::before,
+.project-card__button--bugpet-pixel:focus-visible .project-card__logo-mark::before,
+.project-card__button--bugpet-pixel.is-returning .project-card__logo-mark::before,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__logo-mark::before {
+  filter:
+    grayscale(0)
+    saturate(1.02)
+    brightness(1.02)
+    contrast(1.02)
+    drop-shadow(0 0 18px rgba(255, 185, 107, 0.18))
+    drop-shadow(0 14px 22px rgba(0, 0, 0, 0.28));
+}
+
+.project-card__button--bugpet-pixel.is-hovered .project-card__logo-mark::after,
+.project-card__button--bugpet-pixel:focus-visible .project-card__logo-mark::after,
+.project-card__button--bugpet-pixel.is-returning .project-card__logo-mark::after,
+.project-card__button--bugpet-pixel.is-active-scene .project-card__logo-mark::after {
+  opacity: 0.38;
+  transform: scale(1.12);
+}
+
 .project-card__button--football-ink {
   --hover-shift-x: -0.06rem;
   --hover-lift: -1.16rem;
@@ -3168,7 +3753,8 @@ body[data-issue="06"] {
   --hover-shadow: var(--cover-shadow-active, rgba(0, 0, 0, 0.46));
   --panel-hover-rotate: 0.65deg;
   --card-panel-neutral:
-    linear-gradient(180deg, rgba(17, 19, 24, 0.98) 0%, rgba(8, 10, 13, 1) 76%, rgba(4, 6, 9, 1) 100%);
+    linear-gradient(180deg, rgba(246, 246, 242, 0.03), transparent 42%),
+    linear-gradient(180deg, rgba(22, 22, 23, 0.98) 0%, rgba(11, 12, 13, 1) 76%, rgba(6, 7, 8, 1) 100%);
   --impact-top: 1.02rem;
   --impact-right: -0.16rem;
   --impact-bottom: auto;
@@ -4009,6 +4595,103 @@ body[data-issue="06"] {
 .project-card__button--football-ink.is-returning p,
 .project-card__button--football-ink.is-active-scene p {
   transform: translate3d(0.06rem, -0.02rem, 0);
+}
+
+/* Unified monochrome card cover override */
+.project-card__button--logo-burst,
+.project-card__button--scriptmind-wave,
+.project-card__button--football-ink,
+.project-card__button--bugpet-pixel {
+  --card-panel-neutral:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), transparent 40%),
+    linear-gradient(180deg, rgba(19, 19, 22, 0.985) 0%, rgba(11, 12, 15, 0.995) 72%, rgba(4, 5, 8, 1) 100%);
+  --hover-border: rgba(245, 246, 242, 0.22);
+  --hover-shadow: rgba(0, 0, 0, 0.34);
+}
+
+.project-card__button--logo-burst::before,
+.project-card__button--scriptmind-wave::before,
+.project-card__button--football-ink::before,
+.project-card__button--bugpet-pixel::before {
+  background-image:
+    radial-gradient(circle, rgba(244, 245, 240, 0.16) 0 1.25px, transparent 1.7px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(6, 8, 12, 0.04) 44%, rgba(6, 8, 12, 0.12) 100%);
+  background-size:
+    12px 12px,
+    cover;
+  background-position:
+    0 0,
+    center;
+  filter: grayscale(1) saturate(0) contrast(1.04) brightness(0.96);
+}
+
+.project-card__button--logo-burst::after,
+.project-card__button--scriptmind-wave::after,
+.project-card__button--football-ink::after,
+.project-card__button--bugpet-pixel::after {
+  background: radial-gradient(circle at 50% 34%, rgba(255, 255, 255, 0.12) 0 12%, transparent 34%);
+  filter: blur(16px);
+}
+
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-panel,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-panel,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-panel,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-panel,
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-burst,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-burst,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-burst,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-burst,
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-rays,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-rays,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-rays,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-rays,
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-bubble,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-bubble,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-bubble,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-bubble,
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-fragments,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-fragments,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-fragments,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-fragments,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-goal,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-net,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-ball,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-shot {
+  opacity: 0 !important;
+  filter: grayscale(1) saturate(0) !important;
+}
+
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-dots,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-dots,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-dots,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__cover-dots {
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(246, 247, 242, 0.18) 0 1.2px, transparent 1.65px) 0 0 / 12px 12px,
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(9, 11, 15, 0.18)) 0 0 / 100% 100% no-repeat;
+  clip-path: none;
+  mix-blend-mode: normal;
+  opacity: 0.28;
+  transform: none;
+}
+
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::before,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::before,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::before,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::before {
+  filter:
+    grayscale(1)
+    saturate(0)
+    brightness(0.98)
+    contrast(1.08)
+    drop-shadow(0 12px 18px rgba(0, 0, 0, 0.28));
+}
+
+.project-card__button--logo-burst:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::after,
+.project-card__button--scriptmind-wave:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::after,
+.project-card__button--football-ink:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::after,
+.project-card__button--bugpet-pixel:not(.is-hovered):not(:focus-visible):not(.is-returning):not(.is-active-scene) .project-card__logo-mark::after {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 68%);
 }
 
 .project-modal[hidden] {
