@@ -1,4 +1,5 @@
 const root = document.documentElement;
+const siteLoader = document.getElementById("site-loader");
 const heroSection = document.querySelector(".hero-section");
 const heroPeelElement = document.getElementById("hero-peel");
 const nameSection = document.querySelector(".name-section");
@@ -90,6 +91,10 @@ const SKILL_BADGE_SEQUENCE = [7, 2, 10, 4, 1, 13, 8, 14, 9, 16, 6, 15, 5, 11, 3,
 const LANGUAGE_STORAGE_KEY = "site-language";
 const defaultAssistantAnswer = answerBox?.textContent?.trim() ?? "";
 const defaultAssistantStatus = askStatus?.textContent?.trim() ?? "";
+const lowMemoryDevice =
+  Boolean(navigator.connection?.saveData) ||
+  (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 8);
+const LOADER_MIN_VISIBLE_MS = 520;
 const LANGUAGE_COPY = {
   zh: {
     buttonLabel: "CH",
@@ -724,6 +729,18 @@ const applyStaticLanguage = () => {
   if (modalProofNote) {
     modalProofNote.textContent = copy.modal.proofNote;
   }
+};
+
+const dismissSiteLoader = () => {
+  if (!(siteLoader instanceof HTMLElement) || siteLoader.dataset.dismissed === "true") return;
+
+  siteLoader.dataset.dismissed = "true";
+  document.body.classList.remove("is-site-loading");
+  siteLoader.classList.add("is-loaded");
+
+  window.setTimeout(() => {
+    siteLoader.hidden = true;
+  }, 620);
 };
 
 const applyAssistantLanguage = () => {
@@ -1567,6 +1584,7 @@ const issueObserver = new IntersectionObserver(
 );
 
 currentLanguage = getStoredLanguage() ?? "zh";
+document.body.classList.toggle("is-low-memory-device", lowMemoryDevice);
 initializeSkillBadges();
 issueSections.forEach((section) => issueObserver.observe(section));
 setupHeroPeel();
@@ -2431,3 +2449,16 @@ window.addEventListener("resize", () => {
 
   applyPanelTransform({});
 });
+
+const loaderStartTime = performance.now();
+const completeInitialLoad = () => {
+  const elapsed = performance.now() - loaderStartTime;
+  const remaining = Math.max(0, LOADER_MIN_VISIBLE_MS - elapsed);
+  window.setTimeout(dismissSiteLoader, remaining);
+};
+
+if (document.readyState === "complete") {
+  completeInitialLoad();
+} else {
+  window.addEventListener("load", completeInitialLoad, { once: true });
+}

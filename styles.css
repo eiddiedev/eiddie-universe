@@ -60,6 +60,47 @@ body {
   background: #020202;
 }
 
+body.is-site-loading {
+  overflow: hidden;
+}
+
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  background: #020202;
+  opacity: 1;
+  transition: opacity 520ms ease, visibility 520ms ease;
+}
+
+.site-loader.is-loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.site-loader__label {
+  margin: 0;
+  color: rgba(184, 89, 94, 0.82);
+  font-size: 0.78rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  text-indent: 0.42em;
+  animation: loader-label-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes loader-label-pulse {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+
+  50% {
+    opacity: 0.88;
+  }
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -246,6 +287,8 @@ main {
   width: min(var(--max-width), calc(100% - 2rem));
   margin: 0 auto;
   padding: 7rem 0 6rem;
+  content-visibility: auto;
+  contain-intrinsic-size: 960px;
 }
 
 .issue-section {
@@ -253,6 +296,7 @@ main {
   --bridge-x: 50%;
   --bridge-top: 6.5rem;
   --bridge-length: 9.5rem;
+  contain-intrinsic-size: 1100px;
 }
 
 .issue-section > :not(.section-bridge) {
@@ -1798,7 +1842,13 @@ body[data-issue="06"] {
   background: transparent url("/skill-icons/pwa-icon.webp") center/contain no-repeat;
   -webkit-mask-image: none;
   mask-image: none;
-  filter: grayscale(1) invert(1) brightness(1.12) contrast(1.08);
+  filter:
+    grayscale(1)
+    invert(1)
+    brightness(1.34)
+    contrast(1.16)
+    drop-shadow(0 0 10px rgba(255, 247, 238, 0.16));
+  opacity: 0.92;
 }
 
 .tool-badge::after {
@@ -1852,6 +1902,20 @@ body[data-issue="06"] {
 .tool-badge--pwa-image:is(:hover, :focus-visible) .tool-badge__icon {
   background: transparent url("/skill-icons/pwa-icon.webp") center/contain no-repeat;
   filter: none;
+}
+
+.tool-badge--12 {
+  z-index: 3;
+}
+
+.tool-badge--12 .tool-badge__icon {
+  transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader__label {
+    animation: none;
+  }
 }
 
 .tool-badge:is(:hover, :focus-visible)::after {
@@ -1947,9 +2011,27 @@ body[data-issue="06"] {
 }
 
 .tool-badge--12 {
+  z-index: 3;
   --badge-order: 11;
   top: 57%;
   left: 34%;
+  color: rgba(245, 241, 232, 1);
+  background: rgba(18, 18, 18, calc(0.56 + var(--badge-pop) * 0.16));
+  border-color: rgba(255, 255, 255, calc(0.16 + var(--badge-pop) * 0.12));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 16px rgba(255, 255, 255, 0.06);
+  opacity: calc(var(--badge-pop) * 1);
+}
+
+.tool-badge--12 .tool-badge__icon {
+  opacity: 1;
+  transform: scale(1.04);
+  filter:
+    grayscale(1)
+    invert(1)
+    brightness(1.72)
+    contrast(1.2);
 }
 
 .tool-badge--13 {
@@ -5383,6 +5465,29 @@ body[data-issue="06"] {
   color: rgba(245, 241, 230, 0.56);
   font-size: 0.8rem;
   line-height: 1.45;
+}
+
+body.is-low-memory-device .page-noise {
+  display: none;
+}
+
+body.is-low-memory-device .brand,
+body.is-low-memory-device .topbar-language,
+body.is-low-memory-device .topbar-toggle,
+body.is-low-memory-device .topbar-nav,
+body.is-low-memory-device .topbar-nav a,
+body.is-low-memory-device .assistant-console,
+body.is-low-memory-device .question-chip,
+body.is-low-memory-device .tool-badge,
+body.is-low-memory-device .project-modal__panel,
+body.is-low-memory-device .project-modal__proof-sheet-backdrop,
+body.is-low-memory-device .project-modal__preview-play,
+body.is-low-memory-device .contact-link {
+  backdrop-filter: none !important;
+}
+
+body.is-low-memory-device .project-modal__proof-sheet-backdrop {
+  background: rgba(3, 4, 10, 0.62);
 }
 
 .contact-section {

@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="/vendor/peel.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="is-site-loading">
+    <div class="site-loader" id="site-loader" aria-hidden="true">
+      <p class="site-loader__label">LOADING</p>
+    </div>
     <div class="page-noise" aria-hidden="true"></div>
 
     <header class="topbar">
@@ -53,7 +56,7 @@
       <section class="hero-section" id="hero">
         <div class="hero-stage">
           <div class="hero-spider" aria-hidden="true">
-            <img class="hero-spider__full" src="/spider-vector.svg" alt="" />
+            <img class="hero-spider__full" src="/spider-vector.svg" alt="" decoding="async" />
           </div>
 
           <div class="hero-poster-shell">
@@ -169,11 +172,17 @@
           <div class="about-visual">
             <div class="about-spider-scene" aria-hidden="true">
               <div class="about-burst">
-                <img class="about-burst__art" src="/about-scene-bg.svg" alt="" />
+                <img class="about-burst__art" src="/about-scene-bg.svg" alt="" loading="lazy" decoding="async" />
               </div>
 
               <div class="about-spider-prompt">
-                <img class="about-spider-prompt__art" src="/about-spider-prompt.png" alt="" />
+                <img
+                  class="about-spider-prompt__art"
+                  src="/about-spider-prompt.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span class="about-spider-prompt__text">
                   <span class="about-spider-prompt__line">ASK ME</span>
                   <span class="about-spider-prompt__line">SOMETHING</span>
@@ -181,7 +190,7 @@
               </div>
 
               <div class="about-spider-shell">
-                <img class="about-spider" src="/about-spider.svg" alt="" />
+                <img class="about-spider" src="/about-spider.svg" alt="" loading="lazy" decoding="async" />
               </div>
             </div>
             <p class="about-ghost" aria-hidden="true">
@@ -288,7 +297,7 @@
           </div>
 
           <div class="universe-web" aria-hidden="true">
-            <img class="universe-web__image" src="/issue4-user-vector.svg" alt="" />
+            <img class="universe-web__image" src="/issue4-user-vector.svg" alt="" loading="lazy" decoding="async" />
           </div>
 
           <div
@@ -634,7 +643,7 @@
                   </span>
                 </span>
               </a>
-              <img class="contact-callout__icon" src="/contact-megaphone.jpg" alt="" />
+              <img class="contact-callout__icon" src="/contact-megaphone.jpg" alt="" loading="lazy" decoding="async" />
               <aside class="contact-status" aria-label="Availability">
                 <p class="contact-status__label">Open To</p>
                 <p class="contact-status__item">Selective freelance and contract work</p>
