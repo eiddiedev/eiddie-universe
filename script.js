@@ -322,10 +322,9 @@ const PROJECT_DETAILS = {
       },
     },
     preview: {
-      poster: "/projects/edreading/edreading-poster.png",
-      videoSrc:
-        "https://ediproject.oss-cn-shanghai.aliyuncs.com/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4",
-      videoType: "video/mp4",
+      poster: "/projects/edreading/edreading-video-poster.png",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/EDReading-540p.m4v",
+      videoType: "video/x-m4v",
       label: {
         zh: "真实项目预览",
         en: "Live project preview",
@@ -343,32 +342,32 @@ const PROJECT_DETAILS = {
     proofs: [
       {
         title: {
-          zh: "用户小额打赏",
-          en: "Small user tip",
+          zh: "真实用户付费记录",
+          en: "Real user payments",
         },
         description: {
-          zh: "真实使用后的主动付费反馈，证明产品不只是展示稿。",
-          en: "A voluntary payment from a real user, showing the product is more than a visual mockup.",
+          zh: "多笔真实付费与打赏记录，说明产品已经产生持续使用和明确的付费意愿。",
+          en: "Multiple real payments and tips show continued usage and a clear willingness to pay.",
         },
-        src: "/projects/edreading/proof-tip.jpg",
+        src: "/projects/edreading/proof-payments.jpg",
         alt: {
-          zh: "EDReading 用户小额打赏证明截图",
-          en: "Screenshot of an EDReading user tip as proof of real usage",
+          zh: "EDReading 真实用户付费记录截图",
+          en: "Screenshot of real EDReading user payments",
         },
       },
       {
         title: {
-          zh: "后台使用痕迹",
-          en: "Usage traces in the dashboard",
+          zh: "真实用户规模",
+          en: "Verified user count",
         },
         description: {
-          zh: "后台截图用于证明产品已进入真实使用链路。",
-          en: "Dashboard evidence showing the product has entered a real usage loop.",
+          zh: "后台截图显示累计 171 位用户，证明产品已经进入真实使用链路，而不只是 demo 展示。",
+          en: "A backend snapshot showing 171 users confirms the product has moved beyond a demo into real usage.",
         },
-        src: "/projects/edreading/proof-dashboard.png",
+        src: "/projects/edreading/proof-users.png",
         alt: {
-          zh: "EDReading 用户后台证明截图",
-          en: "Dashboard screenshot showing real EDReading usage",
+          zh: "EDReading 累计 171 位用户的后台截图",
+          en: "Backend screenshot showing 171 EDReading users",
         },
       },
     ],
@@ -433,17 +432,20 @@ const PROJECT_DETAILS = {
       },
     },
     preview: {
+      poster: "/projects/futmap/futmap-video-poster.png",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/4%E6%9C%8813%E6%97%A5-540p.m4v",
+      videoType: "video/x-m4v",
       label: {
-        zh: "Fut.Map 项目预览待补充",
-        en: "Fut.Map preview pending",
+        zh: "Fut.Map 项目预览",
+        en: "Fut.Map project preview",
       },
       title: {
-        zh: "演示视频待补充",
-        en: "Demo video coming soon",
+        zh: "点击播放完整功能演示",
+        en: "Play the full product walkthrough",
       },
       note: {
-        zh: "当前先展示项目信息，演示视频后续补上。",
-        en: "Project details are live first. The demo video will be added later.",
+        zh: "",
+        en: "",
       },
       stats: [],
     },
@@ -461,19 +463,19 @@ const PROJECT_DETAILS = {
     githubLabel: "GitHub / ScriptMind",
     frontIntro: {
       zh: "把美剧字幕做成交互式英语学习，兼顾口语、剧情和跟读。",
-      en: "Turns TV subtitles into interactive English study with speaking, story, and shadowing.",
+      en: "TV subtitles turned into interactive speaking practice.",
     },
     description: {
       zh: "ScriptMind 是一个基于美剧字幕的英语学习 Web 应用，支持按季导入、按集学习和场景化练习。产品前端基于 Next.js 与 TypeScript 构建，后端采用 Postgres、pgvector 和 AI 解析流程，把原始字幕整理成可用于口语训练、剧情理解和表达学习的结构化内容。",
-      en: "ScriptMind is a subtitle-based English learning web app built around season imports, episode study, and scene-based practice. The frontend uses Next.js and TypeScript, while the backend combines Postgres, pgvector, and an AI parsing pipeline to turn raw subtitles into structured material for speaking drills, story comprehension, and expression learning.",
+      en: "ScriptMind is a subtitle-driven English learning web app built around season imports, episode-by-episode study, and scene-based practice. The frontend is built with Next.js and TypeScript, while the backend combines Postgres, pgvector, and an AI parsing pipeline to turn raw subtitles into structured material for speaking drills, story comprehension, and expression building.",
     },
     meta: {
       zh: "Next.js / TypeScript / Postgres / pgvector / AI 字幕解析 / 场景化学习",
-      en: "Next.js / TypeScript / Postgres / pgvector / AI Subtitle Parsing / Scene-Based Learning",
+      en: "Next.js / TypeScript / Postgres / pgvector / AI Subtitle Parsing / Scene-Based Study",
     },
     signals: {
       zh: ["按季导入", "按集学习", "场景化练习"],
-      en: ["Season imports", "Episode study", "Scene-based practice"],
+      en: ["Season imports", "Episode-based study", "Scene practice"],
     },
     cover: {
       profile: "scriptmind-wave",
@@ -506,18 +508,20 @@ const PROJECT_DETAILS = {
       },
     },
     preview: {
-      poster: "/projects/scriptmind/scriptmind-cover.jpeg",
+      poster: "/projects/scriptmind/scriptmind-video-poster.png",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/4%E6%9C%8813%E6%97%A5%20%281%29-540p.m4v",
+      videoType: "video/x-m4v",
       label: {
-        zh: "ScriptMind 项目预览待补充",
-        en: "ScriptMind preview pending",
+        zh: "ScriptMind 项目预览",
+        en: "ScriptMind project preview",
       },
       title: {
-        zh: "演示视频待补充",
-        en: "Demo video coming soon",
+        zh: "点击播放完整功能演示",
+        en: "Play the full product walkthrough",
       },
       note: {
-        zh: "当前先展示项目视觉与信息，演示视频后续补上。",
-        en: "The card and project details are live first. A demo video will be added later.",
+        zh: "",
+        en: "",
       },
       stats: [],
     },
@@ -526,28 +530,28 @@ const PROJECT_DETAILS = {
   bugpet: {
     title: "BugPet",
     type: {
-      zh: "AI开发 / 桌面陪伴 / 宠物养成",
-      en: "AI Coding / Desktop Companion / Pet Growth",
+      zh: "原生 / 桌宠 / 效率",
+      en: "Native / Desktop Pet / Focus",
     },
-    link: "",
-    linkLabel: "",
+    link: "https://bp.eiddie.top",
+    linkLabel: "bp.eiddie.top",
     githubLink: "https://github.com/eiddiedev/BugPet",
     githubLabel: "GitHub / BugPet",
     frontIntro: {
-      zh: "一个会感知专注状态、陪你把 vibe coding 持续推进下去的桌面宠物应用。",
-      en: "A desktop pet that senses your focus rhythm and keeps you company through vibe coding sessions.",
+      zh: "一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。",
+      en: "A native macOS desktop pet and focus growth system built for vibe coding.",
     },
     description: {
-      zh: "BugPet 是一款基于 Tauri、React 和 TypeScript 开发的轻量级桌面宠物应用，但它不是传统意义上的挂机摆件，而是面向 AI coding workflow 设计的陪伴型工具。它会结合开发状态变化与角色化反馈，在 Codex、Claude Code 等场景里提供更自然的专注提醒、陪伴感和沉浸节奏，并把你的效率成长与长期使用过程转化成一只会一起进化的桌面宠物。",
-      en: "BugPet is a lightweight desktop pet built with Tauri, React, and TypeScript, but it is designed as a companion for AI coding workflows rather than a passive novelty app. It responds to shifts in your working state with character-driven feedback, adding focus cues, companionship, and a steadier sense of rhythm in Codex, Claude Code, and similar environments while turning your long-term progress into a pet that grows with you.",
+      zh: "BugPet 使用 Swift、AppKit 与 SpriteKit 构建，是一个原生 macOS 桌面宠物应用。它通过前台应用识别、状态判断与交互反馈，把 coding 时长转化为宠物成长、专注统计和轻量游戏化体验。项目重点放在原生桌面交互、行为反馈机制和可持续扩展的宠物系统设计上。",
+      en: "BugPet is a native macOS desktop pet built with Swift, AppKit, and SpriteKit. It uses foreground app detection, state judgment, and interaction feedback to turn coding time into pet progression, focus stats, and lightweight gamified loops. The project centers on native desktop interaction, behavioral feedback, and a pet system designed for sustainable expansion.",
     },
     meta: {
-      zh: "Tauri / React / TypeScript / 桌面宠物 / AI Coding Workflow / 状态反馈",
-      en: "Tauri / React / TypeScript / Desktop Pet / AI Coding Workflow / State Feedback",
+      zh: "一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。",
+      en: "A native macOS desktop pet and focus growth system built for vibe coding.",
     },
     signals: {
-      zh: ["专注感知", "桌面陪伴", "成长反馈"],
-      en: ["Focus sensing", "Desktop companion", "Growth feedback"],
+      zh: ["原生 macOS", "桌宠成长", "专注反馈"],
+      en: ["Native macOS", "Pet growth", "Focus feedback"],
     },
     cover: {
       profile: "bugpet-pixel",
@@ -585,18 +589,20 @@ const PROJECT_DETAILS = {
       },
     },
     preview: {
-      poster: "/projects/bugpet/bugpet-cover.jpg",
+      poster: "/projects/bugpet/bugpet-video-poster.png",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/4%E6%9C%8814%E6%97%A5%20%281%29-540p.m4v",
+      videoType: "video/x-m4v",
       label: {
-        zh: "BugPet 项目预览待补充",
-        en: "BugPet preview pending",
+        zh: "BugPet 项目预览",
+        en: "BugPet project preview",
       },
       title: {
-        zh: "演示视频待补充",
-        en: "Demo video coming soon",
+        zh: "点击播放完整功能演示",
+        en: "Play the full product walkthrough",
       },
       note: {
-        zh: "当前先展示项目视觉和产品定位，演示视频后续补上。",
-        en: "The project visual and product framing are live first. A demo video will be added later.",
+        zh: "",
+        en: "",
       },
       stats: [],
     },
@@ -1398,14 +1404,17 @@ const updateSkillsTransition = () => {
   }
 
   skillBadges.forEach((badge) => {
+    const badgeNumber = getToolBadgeNumber(badge);
     const order = Number.parseFloat(badge.style.getPropertyValue("--badge-order")) || 0;
     const normalizedOrder = skillBadges.length > 1 ? order / (skillBadges.length - 1) : 0;
     const badgeSpread = isPhoneViewport ? 0.46 : 0.68;
     const badgeWindow = isPhoneViewport ? 0.42 : 0.32;
-    const badgeStart = normalizedOrder * badgeSpread;
-    const badgeEnd = Math.min(badgeStart + badgeWindow, 1);
+    const badgeLead = badgeNumber === 12 ? (isPhoneViewport ? 0.16 : 0.18) : 0;
+    const badgeStart = Math.max(0, normalizedOrder * badgeSpread - badgeLead);
+    const badgeEnd = Math.min(badgeStart + badgeWindow + (badgeNumber === 12 ? 0.08 : 0), 1);
     const badgeRaw = clamp((iconsProgress - badgeStart) / (badgeEnd - badgeStart), 0, 1);
-    const badgePop = easeOutCubic(clamp((badgeRaw - 0.06) / 0.84, 0, 1));
+    const badgePopBase = easeOutCubic(clamp((badgeRaw - 0.06) / 0.84, 0, 1));
+    const badgePop = badgeNumber === 12 ? Math.max(badgePopBase, iconsProgress * 0.38) : badgePopBase;
     const badgeFloat = easeInOutQuad(clamp((badgeRaw - 0.82) / 0.18, 0, 1));
     const burstEnvelope = Math.sin(badgeRaw * Math.PI);
     const burstLift = burstEnvelope * (1 - badgeRaw * 0.22) * (isPhoneViewport ? 10 : 18);
