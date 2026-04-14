@@ -5370,11 +5370,19 @@ body[data-issue="06"] {
 }
 
 .project-modal__meta a[hidden],
+.project-modal__meta-note[hidden],
 .project-modal__meta p[hidden],
 .project-modal__signals[hidden],
 .project-modal__proof-trigger[hidden],
 .project-modal__proof-sheet[hidden] {
   display: none;
+}
+
+.project-modal__meta-note {
+  margin: -0.1rem 0 0.1rem;
+  color: rgba(245, 241, 230, 0.56);
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .contact-section {

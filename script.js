@@ -35,6 +35,8 @@ const modalTitle = document.getElementById("project-modal-title");
 const modalType = document.getElementById("project-modal-type");
 const modalDescription = document.getElementById("project-modal-description");
 const modalDomain = document.getElementById("project-modal-domain");
+const modalGithub = document.getElementById("project-modal-github");
+const modalGithubNote = document.getElementById("project-modal-github-note");
 const modalMeta = document.getElementById("project-modal-meta");
 const modalSignals = document.getElementById("project-modal-signals");
 const modalPreview = document.getElementById("project-modal-preview");
@@ -265,6 +267,12 @@ const PROJECT_DETAILS = {
     },
     link: "https://www.eiddie.top",
     linkLabel: "www.eiddie.top",
+    githubLink: "",
+    githubLabel: "GitHub",
+    githubNote: {
+      zh: "比赛进行中，仓库暂不公开。",
+      en: "The repository is private while the competition is ongoing.",
+    },
     frontIntro: {
       zh: "AI 驱动的跨端英语外刊阅读与复习工具。",
       en: "An AI-powered cross-device tool for reading and reviewing English articles.",
@@ -310,7 +318,8 @@ const PROJECT_DETAILS = {
     },
     preview: {
       poster: "/projects/edreading/edreading-poster.png",
-      videoSrc: "/projects/edreading/edreading-demo.m4v",
+      videoSrc:
+        "https://ediproject.oss-cn-shanghai.aliyuncs.com/%E6%BC%94%E7%A4%BA%E8%A7%86%E9%A2%91.mp4",
       videoType: "video/mp4",
       label: {
         zh: "真实项目预览",
@@ -321,8 +330,8 @@ const PROJECT_DETAILS = {
         en: "Play the full product walkthrough",
       },
       note: {
-        zh: "压缩版录屏，按需加载。",
-        en: "Compressed capture, loaded on demand.",
+        zh: "",
+        en: "",
       },
       stats: [],
     },
@@ -367,6 +376,8 @@ const PROJECT_DETAILS = {
     },
     link: "https://fm.eiddie.top",
     linkLabel: "fm.eiddie.top",
+    githubLink: "https://github.com/eiddiedev/Fut.Map",
+    githubLabel: "GitHub / Fut.Map",
     frontIntro: {
       zh: "以 3D 地球和 2D 世界地图联动展示足球数据，打造更具沉浸感的探索体验。",
       en: "A football explorer linking a 3D globe and 2D map.",
@@ -441,6 +452,8 @@ const PROJECT_DETAILS = {
     },
     link: "https://sm.eiddie.top",
     linkLabel: "sm.eiddie.top",
+    githubLink: "https://github.com/eiddiedev/ScriptMind",
+    githubLabel: "GitHub / ScriptMind",
     frontIntro: {
       zh: "把美剧字幕做成交互式英语学习，兼顾口语、剧情和跟读。",
       en: "Turns TV subtitles into interactive English study with speaking, story, and shadowing.",
@@ -513,6 +526,8 @@ const PROJECT_DETAILS = {
     },
     link: "",
     linkLabel: "",
+    githubLink: "https://github.com/eiddiedev/BugPet",
+    githubLabel: "GitHub / BugPet",
     frontIntro: {
       zh: "一个会感知专注状态、陪你把 vibe coding 持续推进下去的桌面宠物应用。",
       en: "A desktop pet that senses your focus rhythm and keeps you company through vibe coding sessions.",
@@ -628,6 +643,7 @@ const localizeProjectDetail = (detail) => {
     frontIntro: localizeValue(detail.frontIntro),
     description: localizeValue(detail.description),
     meta: localizeValue(detail.meta),
+    githubNote: localizeValue(detail.githubNote),
     signals: localizeValue(detail.signals) ?? [],
     cover: detail.cover
       ? {
@@ -1934,6 +1950,14 @@ const clearModalCardScene = () => {
 };
 
 const clearModalProjectContent = () => {
+  const previewVideo = modalPreview?.querySelector("video");
+  if (previewVideo instanceof HTMLVideoElement) {
+    previewVideo.pause();
+    previewVideo.removeAttribute("src");
+    previewVideo.querySelectorAll("source").forEach((source) => source.remove());
+    previewVideo.load();
+  }
+
   if (modalSignals) modalSignals.replaceChildren();
   if (modalPreview) modalPreview.replaceChildren();
   if (modalProofs) modalProofs.replaceChildren();
@@ -2127,6 +2151,19 @@ const populateModalContent = (projectDetail) => {
     modalDomain.textContent = projectDetail.linkLabel ?? href;
     modalDomain.href = href || "#";
     modalDomain.hidden = !href;
+  }
+
+  if (modalGithub) {
+    const href = projectDetail.githubLink ?? "";
+    modalGithub.textContent = projectDetail.githubLabel ?? "GitHub";
+    modalGithub.href = href || "#";
+    modalGithub.hidden = !href;
+  }
+
+  if (modalGithubNote) {
+    const note = projectDetail.githubNote ?? "";
+    modalGithubNote.textContent = note;
+    modalGithubNote.hidden = !note.trim();
   }
 
   if (modalMeta) {
