@@ -82,7 +82,11 @@ body.is-site-loading {
   z-index: 120;
   display: grid;
   place-items: center;
-  background: #020202;
+  background:
+    #020202
+    url("/site-loader-poster.jpg")
+    center / cover
+    no-repeat;
   opacity: 1;
   overflow: hidden;
   transition: opacity 520ms ease, visibility 520ms ease;
