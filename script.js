@@ -1,6 +1,7 @@
 const root = document.documentElement;
 const siteLoader = document.getElementById("site-loader");
 const siteLoaderProgress = document.getElementById("site-loader-progress");
+const siteLoaderVideo = document.querySelector(".site-loader__video");
 const heroSection = document.querySelector(".hero-section");
 const heroPeelElement = document.getElementById("hero-peel");
 const nameSection = document.querySelector(".name-section");
@@ -92,6 +93,8 @@ const lowMemoryDevice =
   Boolean(navigator.connection?.saveData) ||
   (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 8);
 const LOADER_MIN_VISIBLE_MS = 1800;
+const LOADER_MAX_WAIT_MS = 15000;
+const LOADER_RESOURCE_TIMEOUT_MS = 12000;
 const ABOUT_CHAT_TIMEOUT_MS = 6500;
 const RESUME_URLS = {
   zh: "/resume/jia-yongshuo-experience-design-frontend-zh.pdf",
@@ -902,6 +905,142 @@ const setSiteLoaderProgress = (value) => {
   if (!(siteLoaderProgress instanceof HTMLElement)) return;
   siteLoaderProgress.style.inlineSize = `${Math.max(0, Math.min(100, value))}%`;
 };
+
+const normalizeAssetUrl = (value) => {
+  if (!value || value.startsWith("data:") || value.startsWith("blob:")) return null;
+  try {
+    const url = new URL(value, window.location.href);
+    if (url.origin !== window.location.origin) return null;
+    return url.href;
+  } catch {
+    return null;
+  }
+};
+
+const extractUrlsFromText = (text = "") => {
+  const urls = [];
+  const urlPattern = /url\((['"]?)(.*?)\1\)/g;
+  let match = urlPattern.exec(text);
+  while (match) {
+    const normalized = normalizeAssetUrl(match[2]);
+    if (normalized) urls.push(normalized);
+    match = urlPattern.exec(text);
+  }
+  return urls;
+};
+
+const collectDeclaredAssetUrls = () => {
+  const urls = new Set();
+
+  document.querySelectorAll("img[src], video[src], source[src]").forEach((node) => {
+    const src = node.getAttribute("src");
+    const normalized = normalizeAssetUrl(src);
+    if (normalized) urls.add(normalized);
+  });
+
+  document.querySelectorAll("[style]").forEach((node) => {
+    extractUrlsFromText(node.getAttribute("style") ?? "").forEach((url) => urls.add(url));
+  });
+
+  Array.from(document.styleSheets).forEach((sheet) => {
+    let rules = [];
+    try {
+      rules = Array.from(sheet.cssRules ?? []);
+    } catch {
+      return;
+    }
+
+    const visitRule = (rule) => {
+      extractUrlsFromText(rule.cssText ?? "").forEach((url) => urls.add(url));
+      Array.from(rule.cssRules ?? []).forEach(visitRule);
+    };
+
+    rules.forEach(visitRule);
+  });
+
+  return Array.from(urls).filter((url) => /\.(avif|webp|png|jpe?g|gif|svg|mp4)(\?.*)?$/i.test(url));
+};
+
+const waitForImageAsset = (url) =>
+  new Promise((resolve) => {
+    const image = new Image();
+    const done = () => resolve(url);
+    image.decoding = "async";
+    image.onload = done;
+    image.onerror = done;
+    image.src = url;
+    if (image.complete) done();
+  });
+
+const waitForVideoMetadata = (url) =>
+  new Promise((resolve) => {
+    const video = document.createElement("video");
+    const done = () => resolve(url);
+    video.muted = true;
+    video.preload = "metadata";
+    video.onloadedmetadata = done;
+    video.onerror = done;
+    video.src = url;
+    video.load();
+  });
+
+const waitForDeclaredAssets = () => {
+  const urls = collectDeclaredAssetUrls();
+  const waiters = urls.map((url) =>
+    /\.mp4(\?.*)?$/i.test(url) ? waitForVideoMetadata(url) : waitForImageAsset(url),
+  );
+
+  return Promise.race([
+    Promise.allSettled(waiters),
+    new Promise((resolve) => window.setTimeout(resolve, LOADER_RESOURCE_TIMEOUT_MS)),
+  ]);
+};
+
+const promoteInitialMediaLoading = () => {
+  document.querySelectorAll("img[loading='lazy']").forEach((image) => {
+    image.loading = "eager";
+    image.decoding = "auto";
+  });
+};
+
+const waitForLoaderVideoPlayback = () =>
+  new Promise((resolve) => {
+    if (!(siteLoaderVideo instanceof HTMLVideoElement)) {
+      resolve();
+      return;
+    }
+
+    let resolved = false;
+    const done = () => {
+      if (resolved) return;
+      resolved = true;
+      cleanup();
+      resolve();
+    };
+    const handleTimeUpdate = () => {
+      if (siteLoaderVideo.currentTime > 0.08) done();
+    };
+    const cleanup = () => {
+      window.clearTimeout(timeout);
+      siteLoaderVideo.removeEventListener("timeupdate", handleTimeUpdate);
+      siteLoaderVideo.removeEventListener("playing", handleTimeUpdate);
+      siteLoaderVideo.removeEventListener("canplay", tryPlay);
+      siteLoaderVideo.removeEventListener("error", done);
+    };
+    const tryPlay = () => {
+      const playAttempt = siteLoaderVideo.play();
+      if (playAttempt?.catch) playAttempt.catch(() => {});
+      handleTimeUpdate();
+    };
+    const timeout = window.setTimeout(done, 4200);
+
+    siteLoaderVideo.addEventListener("timeupdate", handleTimeUpdate);
+    siteLoaderVideo.addEventListener("playing", handleTimeUpdate);
+    siteLoaderVideo.addEventListener("canplay", tryPlay);
+    siteLoaderVideo.addEventListener("error", done);
+    if (siteLoaderVideo.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) tryPlay();
+    else siteLoaderVideo.load();
+  });
 
 const applyFolderLanguage = () => {
   const lang = currentLanguage;
@@ -2835,9 +2974,24 @@ const updateSiteLoaderProgress = () => {
   window.requestAnimationFrame(updateSiteLoaderProgress);
 };
 
+promoteInitialMediaLoading();
 window.requestAnimationFrame(updateSiteLoaderProgress);
 
-const completeInitialLoad = () => {
+let initialLoadCompletionStarted = false;
+const waitForWindowLoad = () =>
+  document.readyState === "complete"
+    ? Promise.resolve()
+    : new Promise((resolve) => window.addEventListener("load", resolve, { once: true }));
+
+const completeInitialLoad = async () => {
+  if (initialLoadCompletionStarted) return;
+  initialLoadCompletionStarted = true;
+
+  await Promise.race([
+    Promise.all([waitForLoaderVideoPlayback(), waitForWindowLoad().then(waitForDeclaredAssets)]),
+    new Promise((resolve) => window.setTimeout(resolve, LOADER_MAX_WAIT_MS)),
+  ]);
+
   const elapsed = performance.now() - loaderStartTime;
   const remaining = Math.max(0, LOADER_MIN_VISIBLE_MS - elapsed);
   window.setTimeout(() => {
@@ -2846,8 +3000,4 @@ const completeInitialLoad = () => {
   }, remaining);
 };
 
-if (document.readyState === "complete") {
-  completeInitialLoad();
-} else {
-  window.addEventListener("load", completeInitialLoad, { once: true });
-}
+completeInitialLoad();
