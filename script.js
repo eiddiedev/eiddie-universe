@@ -1,5 +1,6 @@
 const root = document.documentElement;
 const siteLoader = document.getElementById("site-loader");
+const siteLoaderProgress = document.getElementById("site-loader-progress");
 const heroSection = document.querySelector(".hero-section");
 const heroPeelElement = document.getElementById("hero-peel");
 const nameSection = document.querySelector(".name-section");
@@ -12,6 +13,11 @@ const issueSections = [...document.querySelectorAll(".issue-section[data-issue]"
 const aboutSection = document.querySelector(".issue-section--about");
 const aboutHeading = document.querySelector(".issue-section--about .section-heading");
 const aboutPanel = document.querySelector(".issue-section--about .about-panel");
+const aboutSpiderScene = document.getElementById("about-spider-chat-trigger");
+const aboutChatPaper = document.getElementById("about-chat-paper");
+const aboutChatScroll = document.getElementById("about-chat-scroll");
+const aboutChatForm = document.getElementById("about-chat-form");
+const aboutChatInput = document.getElementById("about-chat-input");
 const skillsSection = document.querySelector(".issue-section--skills");
 const projectsSection = document.querySelector(".issue-section--projects");
 const contactSection = document.querySelector(".issue-section--contact");
@@ -21,13 +27,7 @@ const skillBadges = [...document.querySelectorAll(".issue-section--skills .tool-
 const revealItems = [...document.querySelectorAll(".reveal")].filter(
   (item) => !item.classList.contains("project-card"),
 );
-const questionChips = document.querySelectorAll(".question-chip");
-const answerBox = document.getElementById("assistant-answer");
-const askForm = document.getElementById("assistant-ask-form");
-const askInput = document.getElementById("assistant-question");
-const askSubmit = document.getElementById("assistant-ask-submit");
-const askStatus = document.getElementById("assistant-status");
-const projectButtons = document.querySelectorAll(".project-card__button");
+const projectButtons = document.querySelectorAll(".project-card__button[data-project-id]");
 const projectModal = document.getElementById("project-modal");
 const modalPanel = document.querySelector(".project-modal__panel");
 const modalFront = document.getElementById("project-modal-front");
@@ -46,6 +46,7 @@ const modalProofTrigger = document.getElementById("project-modal-proof-trigger")
 const modalProofSheet = document.getElementById("project-modal-proof-sheet");
 const contactIcon = document.querySelector(".contact-callout__icon");
 const copyContactButtons = [...document.querySelectorAll(".contact-link--copy[data-copy-value]")];
+const resumeLink = document.querySelector(".contact-link--resume");
 const languageToggle = document.getElementById("language-toggle");
 const heroScrollLabel = document.querySelector(".hero-scroll__label");
 const nameTranslationNodes = [...document.querySelectorAll(".name-translation")];
@@ -60,7 +61,6 @@ const nameLetterOverlayNodes = nameRows.map((row, index) => {
   shell.append(overlay);
   return overlay;
 });
-const aboutFactBodies = [...document.querySelectorAll(".about-facts article p:not(.fact-label)")];
 const contactCopy = document.querySelector(".contact-copy");
 const modalProofHeading = document.querySelector(".project-modal__proof-heading");
 const modalProofNote = document.querySelector(".project-modal__proof-note");
@@ -73,14 +73,13 @@ let flipTimer = null;
 let collapseAnimation = null;
 let suppressedHoverButton = null;
 let lastPointerPosition = null;
-let assistantRequestId = 0;
 let heroPeel = null;
 let heroPeelTime = 0;
 let currentLanguage = "zh";
-let pendingAssistantQuestion = "";
 const visibleIssueSections = new Set();
 const issueIntersectionRatios = new Map();
 const copyFeedbackTimers = new WeakMap();
+let aboutChatTypingTimer = null;
 
 const PANEL_TRANSITION_MS = 620;
 const CLOSE_RETURN_DELAY_MS = 520;
@@ -89,12 +88,15 @@ const FLIP_DELAY_MS = 120;
 const MODAL_EXIT_BUFFER_MS = 90;
 const SKILL_BADGE_SEQUENCE = [7, 2, 10, 4, 1, 13, 8, 14, 9, 16, 6, 15, 5, 11, 3, 12];
 const LANGUAGE_STORAGE_KEY = "site-language";
-const defaultAssistantAnswer = answerBox?.textContent?.trim() ?? "";
-const defaultAssistantStatus = askStatus?.textContent?.trim() ?? "";
 const lowMemoryDevice =
   Boolean(navigator.connection?.saveData) ||
   (typeof navigator.deviceMemory === "number" && navigator.deviceMemory <= 8);
-const LOADER_MIN_VISIBLE_MS = 520;
+const LOADER_MIN_VISIBLE_MS = 1800;
+const ABOUT_CHAT_TIMEOUT_MS = 6500;
+const RESUME_URLS = {
+  zh: "/resume/jia-yongshuo-experience-design-frontend-zh.pdf",
+  en: "/resume/jia-yongshuo-experience-design-frontend-en.pdf",
+};
 const LANGUAGE_COPY = {
   zh: {
     buttonLabel: "CH",
@@ -103,50 +105,12 @@ const LANGUAGE_COPY = {
     heroScroll: "向下滑动",
     nameTranslations: [
       "工程实现",
-      "AI 智能",
-      "全栈开发",
+      "界面审美",
+      "前端开发",
       "体验设计",
       "系统落地",
       "持续迭代",
     ],
-    assistant: {
-      defaultAnswer:
-        "我更喜欢做那些有明确个性和记忆点的项目。对我来说，好的产品不是把功能机械拼起来，而是能让人一眼记住、愿意继续用下去。",
-      defaultStatus: defaultAssistantStatus,
-      emptyQuestion: "先输入一个和 EIDDIE 相关的问题，我再继续回答。",
-      loadingAnswer: (question) => `正在整理关于“${question}”的回答...`,
-      loadingStatus: "DeepSeek 正在生成回答，只回答和 EIDDIE 本人、经历、技能、项目、合作方式相关的问题。",
-      followUpStatus: "也可以继续换个问法，直接聊我做的项目、技能和合作方式。",
-      requestError: "暂时无法连接 DeepSeek，已先切回预设回答。",
-      placeholder: "比如：如果我想和你一起做 AI 产品，你会先从哪里开始？",
-      questions: [
-        {
-          label: "你最想做什么样的项目？",
-          answer:
-            "我更喜欢做那些有明确个性和记忆点的项目。对我来说，好的产品不是把功能机械拼起来，而是能让人一眼记住、愿意继续用下去。我会更容易被那种有方向感、有表达欲、同时又真的能落地的项目吸引。",
-        },
-        {
-          label: "你常用哪些技术和工具？",
-          answer:
-            "我更习惯用全栈的方式去做产品，而不是只负责其中一个环节。前端、后端、数据库、AI 接入、部署上线这些部分我都能自己接起来，所以我可以把一个想法从 demo 一路推进到真正可用的版本。比起分得很细，我更擅长把整条链路做完整。",
-        },
-        {
-          label: "你做产品时最在意什么？",
-          answer:
-            "我最在意的是一个产品最后能不能成立，而不是只停留在一个好看的想法上。成立意味着逻辑清楚、体验顺畅、细节可靠，也意味着它真的能被用户持续使用。对我来说，完成度和真实可用性比表面的热闹更重要。",
-        },
-        {
-          label: "你想和什么样的人一起做事？",
-          answer:
-            "我喜欢和有创造力、有判断力、也有执行力的人一起做事。最好是那种愿意交流、也真的想把事情做成的人，而不是只按部就班地完成任务。像乔布斯说的“the crazy ones”，那种有灵魂、有想法的人会让我很有共鸣。",
-        },
-      ],
-      facts: [
-        "做 AI 产品、前端体验、后端能力和自动化流程的整合型开发。",
-        "先抓核心体验，再搭系统骨架，最后把细节和质感一并补齐。",
-        "我在意可用性、迭代速度、表达张力，以及产品上线后的真实存活能力。",
-      ],
-    },
     secondaryProjects: {
       "project-two.dev": {
         intro: "前台体验和后台逻辑同一个节奏推进。",
@@ -185,51 +149,12 @@ const LANGUAGE_COPY = {
     heroScroll: "Scroll Down",
     nameTranslations: [
       "Engineering",
-      "AI Systems",
-      "Full-Stack Build",
+      "Interface Taste",
+      "Frontend Dev",
       "Experience Design",
       "System Delivery",
       "Continuous Iteration",
     ],
-    assistant: {
-      defaultAnswer:
-        "I like projects with a clear identity and a real sense of memory. A good product, to me, is not a pile of features. It is something people remember immediately and want to keep using.",
-      defaultStatus: "Ask something real.",
-      emptyQuestion: "Enter a question about EIDDIE first, then I can answer it.",
-      loadingAnswer: (question) => `Drafting a response about \"${question}\"...`,
-      loadingStatus:
-        "DeepSeek is generating an answer and will stay focused on EIDDIE, his background, skills, projects, and collaboration style.",
-      followUpStatus: "Try another angle if you want. We can keep talking about projects, skills, or how I work.",
-      requestError: "DeepSeek is unavailable right now. Reverted to the default answer.",
-      placeholder: "For example: if we built an AI product together, where would you start first?",
-      questions: [
-        {
-          label: "What kinds of projects do you most want to build?",
-          answer:
-            "I'm drawn to projects with a clear identity and a strong memory to them. I don't just want to stack features. I want to build things that people remember quickly and keep using. I'm especially interested in projects that have direction, personality, and real execution behind them.",
-        },
-        {
-          label: "What tools and technologies do you use most?",
-          answer:
-            "I work in a full-stack way instead of owning only one slice of the product. I can connect frontend, backend, databases, AI integration, and deployment myself, which lets me take an idea from demo to something people can actually use. I'm strongest when I can carry the whole chain through.",
-        },
-        {
-          label: "What matters most to you when building a product?",
-          answer:
-            "What matters most to me is whether a product truly holds up in the end, not whether it only starts as an attractive idea. That means the logic is clear, the experience is smooth, the details are reliable, and people can keep using it over time. Real usability and finish matter more to me than surface-level excitement.",
-        },
-        {
-          label: "What kind of people do you want to work with?",
-          answer:
-            "I like working with people who have ideas, judgment, and real execution. Ideally they're willing to communicate and genuinely want to build something meaningful, not just complete a checklist. That crazy-ones energy still matters to me when I choose collaborators.",
-        },
-      ],
-      facts: [
-        "I build AI products across frontend experience, backend capability, and automation workflows as one connected system.",
-        "I lock the core experience first, build the system frame next, then push detail and finish until the whole thing feels right.",
-        "I care about usability, iteration speed, expressive tension, and whether a product can actually survive after launch.",
-      ],
-    },
     secondaryProjects: {
       "project-two.dev": {
         intro: "Interface quality and backend logic move forward in the same rhythm.",
@@ -608,6 +533,238 @@ const PROJECT_DETAILS = {
     },
     proofs: [],
   },
+  yeverse: {
+    title: "YeVerse",
+    type: {
+      zh: "前端设计 / 交互体验 / 视觉原型",
+      en: "Frontend Design / Interaction Design / Visual Prototype",
+    },
+    link: "https://ye.eiddie.me",
+    linkLabel: "ye.eiddie.me",
+    githubLink: "https://github.com/eiddiedev/YeVerse",
+    githubLabel: "GitHub / YeVerse",
+    frontIntro: {
+      zh: "暗黑 issue 切换式艺人宇宙，围绕音乐时间线与专辑档案展开。",
+      en: "A dark issue-based artist universe for music timelines and album archives.",
+    },
+    description: {
+      zh: "YeVerse 是一个非官方音乐人物档案网站原型，用沉浸界面重组艺人时间线、唱片和文化资料。我负责视觉方向、信息架构、React 前端实现和交互动效。项目把 Hero、Timeline、Discography、Archive、About 拆成独立 issue，并重点实现 3D CD 专辑展示、点击翻面、专辑详情和中英切换。",
+      en: "YeVerse is an unofficial artist archive prototype that reorganizes music timelines, albums, and cultural material through an immersive interface. I handled visual direction, information architecture, React implementation, and interaction motion. Hero, Timeline, Discography, Archive, and About are separated into issue-style screens, with a 3D CD shelf, flip interaction, album details, and bilingual content as the core experience.",
+    },
+    meta: {
+      zh: "React / TypeScript / Vite / Three.js / CSS Animation / i18n / 音乐资料整理",
+      en: "React / TypeScript / Vite / Three.js / CSS Animation / i18n / Music Research",
+    },
+    signals: {
+      zh: ["Issue 式导航", "3D CD 专辑", "中英双语"],
+      en: ["Issue navigation", "3D CD shelf", "Bilingual content"],
+    },
+    cover: {
+      profile: "yeverse-archive",
+      art: {
+        asset: "/projects/yeverse/yeverse-cover.jpg",
+      },
+      logo: {
+        asset: "/projects/yeverse/yeverse-logo.png",
+      },
+      theme: {
+        originX: "48%",
+        originY: "30%",
+        logoMuted: "rgba(245, 245, 245, 0.9)",
+        logoActive: "#f5f1e8",
+        logoGlow: "rgba(255, 255, 255, 0.2)",
+        burstAccent: "#f5f1e8",
+        burstSoft: "rgba(255, 255, 255, 0.88)",
+        dotMuted: "rgba(245, 241, 232, 0.09)",
+        dotActive: "rgba(245, 241, 232, 0.2)",
+        lineMuted: "rgba(245, 241, 232, 0.1)",
+        rayLight: "rgba(245, 241, 232, 0.9)",
+        rayInk: "rgba(2, 2, 3, 0.98)",
+        panelTint: "rgba(245, 241, 232, 0.12)",
+        borderActive: "rgba(245, 241, 232, 0.22)",
+        shadowActive: "rgba(0, 0, 0, 0.52)",
+      },
+      impact: {
+        text: "YE",
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/yeverse/yeverse-cover.jpg",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/yeverse_540p.mp4",
+      videoType: "video/mp4",
+      label: {
+        zh: "YeVerse 项目预览",
+        en: "YeVerse project preview",
+      },
+      title: {
+        zh: "点击播放沉浸式艺人档案演示",
+        en: "Play the immersive artist archive demo",
+      },
+      note: {
+        zh: "",
+        en: "",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
+  consilium: {
+    title: "Consilium",
+    type: {
+      zh: "AI 应用 / 前端设计 / 医疗工具",
+      en: "AI Application / Frontend Design / Healthcare Tool",
+    },
+    link: "https://asm-healthcare-agent.vercel.app",
+    linkLabel: "asm-healthcare-agent.vercel.app",
+    githubLink: "https://github.com/eiddiedev/Consilium",
+    githubLabel: "GitHub / Consilium",
+    frontIntro: {
+      zh: "多专科临床 AI Agent Demo，展示建议冲突与优先级排序。",
+      en: "A clinical AI agent demo for specialist advice, conflicts, and ranked priorities.",
+    },
+    description: {
+      zh: "Consilium 是面向心衰、慢性肾病、糖尿病等多病共存场景的多 Agent 临床决策支持原型。心内科、肾内科、内分泌科 agents 生成结构化建议，再由确定性 TOPSIS 逻辑排序优先级。我负责产品界面、A2A 后端接入、FHIR context 支持、结果解析、错误兜底、演示视频和提交材料。",
+      en: "Consilium is a multi-agent clinical decision support prototype for complex chronic cases such as heart failure, CKD, and diabetes. Cardiology, nephrology, and endocrinology agents generate structured recommendations, then deterministic TOPSIS scoring ranks priorities. I built the product interface, A2A backend integration, FHIR context support, response parsing, fallback behavior, demo video, and submission materials.",
+    },
+    meta: {
+      zh: "React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel",
+      en: "React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel",
+    },
+    signals: {
+      zh: ["A2A Agent 后端", "TOPSIS 排序", "FHIR context"],
+      en: ["A2A backend", "TOPSIS ranking", "FHIR context"],
+    },
+    cover: {
+      profile: "consilium-med",
+      art: {
+        asset: "/projects/consilium/consilium-cover.jpg",
+      },
+      logo: {
+        asset: "/projects/consilium/consilium-logo.png",
+      },
+      theme: {
+        originX: "50%",
+        originY: "36%",
+        logoMuted: "rgba(216, 255, 250, 0.9)",
+        logoActive: "#2ee7d3",
+        logoGlow: "rgba(46, 231, 211, 0.28)",
+        burstAccent: "#35e9c8",
+        burstSoft: "rgba(228, 255, 250, 0.96)",
+        dotMuted: "rgba(208, 255, 249, 0.11)",
+        dotActive: "rgba(216, 255, 249, 0.28)",
+        lineMuted: "rgba(121, 232, 214, 0.13)",
+        rayLight: "rgba(233, 255, 250, 0.96)",
+        rayInk: "rgba(5, 22, 20, 0.96)",
+        panelTint: "rgba(80, 210, 188, 0.18)",
+        borderActive: "rgba(80, 230, 210, 0.34)",
+        shadowActive: "rgba(16, 104, 95, 0.38)",
+      },
+      impact: {
+        text: "A2A",
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/consilium/consilium-cover.jpg",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/Consilium%20%E2%80%94%20Multi-Specialty%20Clinical%20Decision%20System%20Demo_540p.mp4",
+      videoType: "video/mp4",
+      label: {
+        zh: "Consilium 项目预览",
+        en: "Consilium project preview",
+      },
+      title: {
+        zh: "点击播放多专科临床决策演示",
+        en: "Play the multi-specialty clinical decision demo",
+      },
+      note: {
+        zh: "",
+        en: "",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
+  lyricflow: {
+    title: "LyricFlow",
+    type: {
+      zh: "前端开发 / AI 应用 / 教育工具",
+      en: "Frontend Development / AI Application / EdTech",
+    },
+    link: "https://app-blursfj73bi9.appmedo.com",
+    linkLabel: "app-blursfj73bi9.appmedo.com",
+    githubLink: "",
+    githubLabel: "GitHub",
+    githubNote: {
+      zh: "仓库暂未公开。",
+      en: "The repository is not public yet.",
+    },
+    frontIntro: {
+      zh: "AI 逐行标注英文歌词发音，把连读、弱读和重音可视化。",
+      en: "AI line-by-line lyric annotations for liaison, weak forms, and stress.",
+    },
+    description: {
+      zh: "LyricFlow 面向非母语者学唱英文歌时的发音细节痛点。用户搜索或导入歌词后，Gemini AI 会逐行分析连读、弱读、省音和重音，并由前端实时渲染。我独立完成产品定义、UI/UX、React 前端、Supabase Edge Function、Prompt 调优和歌词解析器，并用 JSON 模式与 8 行分块策略提升稳定性和首屏速度。",
+      en: "LyricFlow helps non-native speakers understand pronunciation details when singing English songs. After users search or import lyrics, Gemini AI analyzes liaison, weak forms, elision, and stress line by line, then the frontend renders inline annotations. I handled product definition, UI/UX, React frontend, Supabase Edge Functions, prompt tuning, and a custom lyrics parser, using JSON mode and 8-line chunking to improve stability and first-result speed.",
+    },
+    meta: {
+      zh: "React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API",
+      en: "React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API",
+    },
+    signals: {
+      zh: ["JSON 模式", "分块渐进渲染", "7 语言界面"],
+      en: ["JSON mode", "Chunked rendering", "7-language UI"],
+    },
+    cover: {
+      profile: "lyricflow-sheet",
+      art: {
+        asset: "/projects/lyricflow/lyricflow-cover.png",
+      },
+      logo: {
+        asset: "/projects/lyricflow/lyricflow-logo.png",
+      },
+      theme: {
+        originX: "50%",
+        originY: "40%",
+        logoMuted: "rgba(245, 232, 214, 0.9)",
+        logoActive: "#e4c19f",
+        logoGlow: "rgba(228, 193, 159, 0.28)",
+        burstAccent: "#e1b58e",
+        burstSoft: "rgba(255, 246, 232, 0.96)",
+        dotMuted: "rgba(248, 232, 210, 0.12)",
+        dotActive: "rgba(255, 243, 225, 0.3)",
+        lineMuted: "rgba(226, 190, 154, 0.13)",
+        rayLight: "rgba(255, 244, 226, 0.95)",
+        rayInk: "rgba(32, 24, 20, 0.96)",
+        panelTint: "rgba(230, 200, 166, 0.16)",
+        borderActive: "rgba(230, 200, 166, 0.3)",
+        shadowActive: "rgba(120, 82, 54, 0.34)",
+      },
+      impact: {
+        text: "LYRIC",
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/lyricflow/lyricflow-cover.png",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/LyricFlow_540p.mp4",
+      videoType: "video/mp4",
+      label: {
+        zh: "LyricFlow 项目预览",
+        en: "LyricFlow project preview",
+      },
+      title: {
+        zh: "点击播放歌词发音标注演示",
+        en: "Play the lyric pronunciation annotation demo",
+      },
+      note: {
+        zh: "",
+        en: "",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
 };
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -636,7 +793,6 @@ const storeLanguage = (language) => {
 };
 
 const getCopy = () => LANGUAGE_COPY[currentLanguage];
-const getAssistantCopy = () => getCopy().assistant;
 const getModalCopy = () => getCopy().modal;
 
 const localizeValue = (value) => {
@@ -687,21 +843,6 @@ const localizeProjectDetail = (detail) => {
   };
 };
 
-const getAssistantStatusKey = (value) => {
-  if (!value) return null;
-
-  const statusKeys = ["defaultStatus", "emptyQuestion", "loadingStatus", "followUpStatus", "requestError"];
-  for (const language of ["zh", "en"]) {
-    for (const key of statusKeys) {
-      if (LANGUAGE_COPY[language].assistant[key] === value) {
-        return key;
-      }
-    }
-  }
-
-  return null;
-};
-
 const applyStaticLanguage = () => {
   const copy = getCopy();
 
@@ -728,6 +869,13 @@ const applyStaticLanguage = () => {
     contactCopy.textContent = copy.contactCopy;
   }
 
+  if (resumeLink instanceof HTMLAnchorElement) {
+    const localizedHref =
+      resumeLink.dataset[`resumeHref${currentLanguage === "en" ? "En" : "Zh"}`] ??
+      RESUME_URLS[currentLanguage];
+    resumeLink.setAttribute("href", localizedHref);
+  }
+
   if (modalProofHeading) {
     modalProofHeading.textContent = copy.modal.proofHeading;
   }
@@ -741,6 +889,7 @@ const dismissSiteLoader = () => {
   if (!(siteLoader instanceof HTMLElement) || siteLoader.dataset.dismissed === "true") return;
 
   siteLoader.dataset.dismissed = "true";
+  if (siteLoaderProgress instanceof HTMLElement) siteLoaderProgress.style.inlineSize = "100%";
   document.body.classList.remove("is-site-loading");
   siteLoader.classList.add("is-loaded");
 
@@ -749,45 +898,22 @@ const dismissSiteLoader = () => {
   }, 620);
 };
 
-const applyAssistantLanguage = () => {
-  const assistantCopy = getAssistantCopy();
-  const activeChip = [...questionChips].find((chip) => chip.classList.contains("is-active"));
-  const currentAnswer = answerBox?.textContent?.trim() ?? "";
-  const currentStatus = askStatus?.textContent?.trim() ?? "";
+const setSiteLoaderProgress = (value) => {
+  if (!(siteLoaderProgress instanceof HTMLElement)) return;
+  siteLoaderProgress.style.inlineSize = `${Math.max(0, Math.min(100, value))}%`;
+};
 
-  questionChips.forEach((chip, index) => {
-    const question = assistantCopy.questions[index];
-    if (!question) return;
-    chip.textContent = question.label;
-    chip.dataset.answer = question.answer;
+const applyFolderLanguage = () => {
+  const lang = currentLanguage;
+  document.querySelectorAll("[data-lang-zh]").forEach((node) => {
+    const text = node.dataset[`lang${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
+    if (text) node.textContent = text;
   });
 
-  if (askInput) {
-    askInput.placeholder = assistantCopy.placeholder;
-  }
-
-  aboutFactBodies.forEach((node, index) => {
-    const nextText = assistantCopy.facts[index];
-    if (nextText) node.textContent = nextText;
-  });
-
-  if (answerBox) {
-    if (answerBox.classList.contains("is-loading") && pendingAssistantQuestion) {
-      answerBox.textContent = assistantCopy.loadingAnswer(pendingAssistantQuestion);
-    } else if (activeChip?.dataset.answer) {
-      answerBox.textContent = activeChip.dataset.answer;
-    } else if (
-      !currentAnswer ||
-      currentAnswer === LANGUAGE_COPY.zh.assistant.defaultAnswer ||
-      currentAnswer === LANGUAGE_COPY.en.assistant.defaultAnswer
-    ) {
-      answerBox.textContent = assistantCopy.defaultAnswer;
-    }
-  }
-
-  if (askStatus) {
-    const statusKey = getAssistantStatusKey(currentStatus);
-    askStatus.textContent = statusKey ? assistantCopy[statusKey] : assistantCopy.defaultStatus;
+  const resumePreviewImage = document.querySelector(".resume-page__preview");
+  if (resumePreviewImage) {
+    const src = resumePreviewImage.dataset[`resumeSrc${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
+    if (src) resumePreviewImage.setAttribute("src", src);
   }
 };
 
@@ -813,7 +939,7 @@ const applyLanguage = (language, { persist = true } = {}) => {
   }
 
   applyStaticLanguage();
-  applyAssistantLanguage();
+  applyFolderLanguage();
   applySecondaryProjectLanguage();
   hydrateProjectCards();
 
@@ -1029,6 +1155,9 @@ const resetProjectCardVariants = (button) => {
     "project-card__button--bugpet-pixel",
     "project-card__button--football-ink",
     "project-card__button--scriptmind-wave",
+    "project-card__button--yeverse-archive",
+    "project-card__button--consilium-med",
+    "project-card__button--lyricflow-sheet",
   );
 };
 
@@ -1070,6 +1199,20 @@ const renderProjectCardCover = (button, localizedDetail) => {
     const indexLabel = getProjectCardIndexLabel(button);
     resetProjectCardVariants(button);
     button.classList.add("project-card__button--logo-burst", "project-card__button--bugpet-pixel");
+    button.dataset.coverProfile = cover.profile;
+    applyProjectCoverTheme(button, cover);
+    button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
+    return true;
+  }
+
+  if (["yeverse-archive", "consilium-med", "lyricflow-sheet"].includes(cover.profile)) {
+    const indexLabel = getProjectCardIndexLabel(button);
+    resetProjectCardVariants(button);
+    button.classList.add(
+      "project-card__button--logo-burst",
+      "project-card__button--scriptmind-wave",
+      `project-card__button--${cover.profile}`,
+    );
     button.dataset.coverProfile = cover.profile;
     applyProjectCoverTheme(button, cover);
     button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
@@ -1244,6 +1387,99 @@ const copyTextToClipboard = async (value) => {
   return fallbackCopyText(value);
 };
 
+const getAssistantFallback = (question = "") => {
+  const normalized = question.trim();
+  if (currentLanguage === "en") {
+    return normalized
+      ? "From this portfolio, EIDDIE is strongest at turning frontend experience ideas into usable, visually memorable product prototypes. Ask me about a project, design stack, or collaboration style and I will keep it specific."
+      : "What do you want to ask me?";
+  }
+
+  return normalized
+    ? "从这个作品集看，EIDDIE 最擅长把前端体验想法做成真的能用、也有视觉记忆点的产品原型。你可以继续问项目、设计栈或者合作方式，我会尽量说具体。"
+    : "你有什么想问我的？";
+};
+
+const appendAboutChatMessage = (text, type = "spider") => {
+  if (!aboutChatScroll) return null;
+  const message = document.createElement("p");
+  message.className = `about-chat-message about-chat-message--${type}`;
+  message.textContent = text;
+  aboutChatScroll.append(message);
+  aboutChatScroll.scrollTop = aboutChatScroll.scrollHeight;
+  return message;
+};
+
+const typeAboutChatMessage = (target, text) =>
+  new Promise((resolve) => {
+    if (!target) {
+      resolve();
+      return;
+    }
+
+    window.clearInterval(aboutChatTypingTimer);
+    target.textContent = "";
+    let index = 0;
+    aboutChatTypingTimer = window.setInterval(() => {
+      target.textContent += text.charAt(index);
+      index += 1;
+      if (aboutChatScroll) aboutChatScroll.scrollTop = aboutChatScroll.scrollHeight;
+      if (index >= text.length) {
+        window.clearInterval(aboutChatTypingTimer);
+        aboutChatTypingTimer = null;
+        resolve();
+      }
+    }, 18);
+  });
+
+const openAboutChat = () => {
+  if (!aboutSpiderScene || !aboutChatPaper) return;
+  aboutSpiderScene.classList.add("is-chat-open");
+  aboutChatPaper.hidden = false;
+  aboutChatPaper.getBoundingClientRect();
+  aboutChatPaper.classList.add("is-visible");
+  aboutChatInput?.focus({ preventScroll: true });
+};
+
+const closeAboutChat = () => {
+  if (!aboutSpiderScene || !aboutChatPaper || aboutChatPaper.hidden) return;
+  aboutSpiderScene.classList.remove("is-chat-open");
+  aboutChatPaper.classList.remove("is-visible");
+  window.setTimeout(() => {
+    if (!aboutChatPaper.classList.contains("is-visible")) aboutChatPaper.hidden = true;
+  }, 280);
+};
+
+const askAboutSpider = async (question) => {
+  const trimmedQuestion = question.trim();
+  if (!trimmedQuestion || !aboutChatForm) return;
+
+  appendAboutChatMessage(trimmedQuestion, "user");
+  if (aboutChatInput) aboutChatInput.value = "";
+
+  const pending = appendAboutChatMessage("", "spider");
+  aboutChatForm.classList.add("is-loading");
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  const timeoutId = controller ? window.setTimeout(() => controller.abort(), ABOUT_CHAT_TIMEOUT_MS) : null;
+
+  try {
+    const response = await fetch("/api/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      signal: controller?.signal,
+      body: JSON.stringify({ question: trimmedQuestion, language: currentLanguage }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    const answer = response.ok ? payload.answer : getAssistantFallback(trimmedQuestion);
+    await typeAboutChatMessage(pending, answer || getAssistantFallback(trimmedQuestion));
+  } catch {
+    await typeAboutChatMessage(pending, getAssistantFallback(trimmedQuestion));
+  } finally {
+    if (timeoutId) window.clearTimeout(timeoutId);
+    aboutChatForm.classList.remove("is-loading");
+  }
+};
+
 const setCopyFeedbackState = (button, state) => {
   button.classList.remove("is-copied", "is-copy-failed");
 
@@ -1331,11 +1567,12 @@ const updateNameProgress = () => {
 const updateProjectsProgress = () => {
   if (!projectsSection || !projectGrid || projectCards.length === 0) return;
 
-  const rect = projectGrid.getBoundingClientRect();
+  const sectionRect = projectsSection.getBoundingClientRect();
+  const gridTop = sectionRect.top + projectGrid.offsetTop;
   const start = window.innerHeight * 0.92;
   const end = window.innerHeight * 0.24;
   const distance = start - end;
-  const sectionProgress = distance > 0 ? clamp((start - rect.top) / distance, 0, 1) : 0;
+  const sectionProgress = distance > 0 ? clamp((start - gridTop) / distance, 0, 1) : 0;
   const cardFlow = clamp((sectionProgress - 0.05) / 0.82, 0, 1);
   const titleEnter = easeOutCubic(clamp((sectionProgress - 0.02) / 0.17, 0, 1));
   const titleHoldEnd = 0.82;
@@ -1627,122 +1864,209 @@ document.addEventListener("click", (event) => {
   setTopbarMenuState(false);
 });
 
-const clearQuestionChipState = () => {
-  questionChips.forEach((chip) => chip.classList.remove("is-active"));
+/* ── Folder toggle & paper modal ── */
+const folderScene = document.querySelector(".folder-scene");
+const folderCover = document.querySelector(".folder-cover");
+const folderInterior = document.querySelector(".folder-interior");
+const folderCloseGuide = document.querySelector(".folder-close-guide");
+const folderCards = document.querySelectorAll(".folder-card");
+const paperModal = document.getElementById("paper-modal");
+const paperModalContent = document.getElementById("paper-modal-content");
+
+const PAPER_MODAL_CONTENT = {
+  profile: {
+    zh: {
+      title: "个人档案",
+      body: `<p><strong>EIDDIE</strong>（贾永硕）</p><p>前端设计师，专注于体验设计、交互表达和可落地的 Web 产品。</p><p>擅长把界面审美、前端工程、AI 工作流和产品判断串联起来，从想法推进到可展示、可使用的版本。</p><p class="paper-modal__detail">坐标：湖南 · 湖南工业大学</p>`,
+    },
+    en: {
+      title: "Personal Profile",
+      body: `<p><strong>EIDDIE</strong> (Jia Yongshuo)</p><p>Frontend Designer focused on experience design, interaction expression, and shippable web products.</p><p>Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment into usable prototypes.</p><p class="paper-modal__detail">Based in Hunan, China</p>`,
+    },
+  },
+  motto: {
+    zh: {
+      title: "座右铭",
+      body: `<p style="font-family:'Satisfy',cursive;font-size:1.5rem;text-align:center;padding:20px 0;color:#4a3520;">审美 · 执行力 · 想象力</p><p style="text-align:right;font-family:'Satisfy',cursive;color:rgba(80,50,20,0.5);">— EIDDIE</p>`,
+    },
+    en: {
+      title: "Motto",
+      body: `<p style="font-family:'Satisfy',cursive;font-size:1.5rem;text-align:center;padding:20px 0;color:#4a3520;">Aesthetic · Execution · Imagination</p><p style="text-align:right;font-family:'Satisfy',cursive;color:rgba(80,50,20,0.5);">— EIDDIE</p>`,
+    },
+  },
+  skills: {
+    zh: {
+      title: "技能索引",
+      body: `<p><strong>前端</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">React</span><span class="paper-modal__tag">Next.js</span><span class="paper-modal__tag">TypeScript</span><span class="paper-modal__tag">PWA</span></div><p><strong>后端</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">Node.js</span><span class="paper-modal__tag">Supabase</span><span class="paper-modal__tag">PostgreSQL</span><span class="paper-modal__tag">pgvector</span></div><p><strong>AI</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">OpenAI</span><span class="paper-modal__tag">DeepSeek</span><span class="paper-modal__tag">Claude Code</span><span class="paper-modal__tag">Codex</span></div><p><strong>工具</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">Figma</span><span class="paper-modal__tag">Vercel</span><span class="paper-modal__tag">Git</span><span class="paper-modal__tag">Cursor</span></div>`,
+    },
+    en: {
+      title: "Skill Index",
+      body: `<p><strong>Frontend</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">React</span><span class="paper-modal__tag">Next.js</span><span class="paper-modal__tag">TypeScript</span><span class="paper-modal__tag">PWA</span></div><p><strong>Backend</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">Node.js</span><span class="paper-modal__tag">Supabase</span><span class="paper-modal__tag">PostgreSQL</span><span class="paper-modal__tag">pgvector</span></div><p><strong>AI</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">OpenAI</span><span class="paper-modal__tag">DeepSeek</span><span class="paper-modal__tag">Claude Code</span><span class="paper-modal__tag">Codex</span></div><p><strong>Tools</strong></p><div class="paper-modal__tags"><span class="paper-modal__tag">Figma</span><span class="paper-modal__tag">Vercel</span><span class="paper-modal__tag">Git</span><span class="paper-modal__tag">Cursor</span></div>`,
+    },
+  },
+  education: {
+    zh: {
+      title: "教育经历",
+      body: `<p><strong>湖南工业大学</strong></p><p>人工智能专业 · 本科</p><p>2024.09 — 2028.06</p><p>大二在读</p><p>核心课程：机器学习、深度学习、计算机视觉、数据结构与算法、数据库原理</p>`,
+    },
+    en: {
+      title: "Education",
+      body: `<p><strong>Hunan University of Technology</strong></p><p>Artificial Intelligence · B.S.</p><p>Sep 2024 — Jun 2028</p><p>Sophomore</p><p>Core courses: Machine Learning, Deep Learning, Computer Vision, Data Structures & Algorithms, Database Principles</p>`,
+    },
+  },
+  experience: {
+    zh: {
+      title: "荣誉与经历",
+      body: `<ul><li><strong>TRAEFriends@Wuhan Hackathon 冠军</strong>围绕 AI 编程与 Prompt 工作流完成项目设计和实现。</li><li><strong>Trae on Campus 校园大使</strong>参与 Trae IDE 校园推广、开发者活动与社群运营。</li><li><strong>独立项目实践</strong>持续完成 AI 应用、前端体验设计和产品原型项目，并沉淀为可展示作品。</li></ul>`,
+    },
+    en: {
+      title: "Honors & Experience",
+      body: `<ul><li><strong>TRAEFriends@Wuhan Hackathon Champion</strong>Designed and built around AI programming and prompt workflows.</li><li><strong>Trae on Campus Ambassador</strong>Worked on Trae IDE campus promotion, developer activities, and community operations.</li><li><strong>Independent Project Practice</strong>Built AI apps, frontend experience design projects, and shippable product prototypes.</li></ul>`,
+    },
+  },
+  bio: {
+    zh: {
+      title: "个人简介",
+      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我现在更明确地把自己放在前端设计师的位置：既关心页面气质、交互节奏，也关心它最后能不能真的跑起来。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我会先抓核心体验和视觉记忆点，再用前端工程把它做成可用的产品原型。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我在意的是一个作品最后能不能成立 —— 逻辑清楚、体验顺畅、细节可靠，能被用户持续使用。</p>`,
+    },
+    en: {
+      title: "About Me",
+      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I position myself as a frontend designer: someone who cares about visual character, interaction rhythm, and whether the work actually runs.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I lock the core experience and visual memory first, then use frontend engineering to turn it into a usable prototype.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">What matters to me is whether a product truly holds up — clear logic, smooth experience, reliable details, and real usability over time.</p>`,
+    },
+  },
+  contact: {
+    zh: {
+      title: "联系方式",
+      body: `<p><strong>Email</strong></p><p>eiddiedev@qq.com</p><p><strong>GitHub</strong></p><p>github.com/eiddiedev</p><p><strong>微信</strong></p><p>eiddie2006</p><p><strong>Portfolio</strong></p><p>eiddie.me</p>`,
+    },
+    en: {
+      title: "Contact",
+      body: `<p><strong>Email</strong></p><p>eiddiedev@qq.com</p><p><strong>GitHub</strong></p><p>github.com/eiddiedev</p><p><strong>WeChat</strong></p><p>eiddie2006</p><p><strong>Portfolio</strong></p><p>eiddie.me</p>`,
+    },
+  },
+  interests: {
+    zh: {
+      title: "兴趣标签",
+      body: `<div class="paper-modal__tags" style="margin-top:8px;"><span class="paper-modal__tag">前端设计</span><span class="paper-modal__tag">体验设计</span><span class="paper-modal__tag">AI 交互</span><span class="paper-modal__tag">英语学习</span><span class="paper-modal__tag">开源</span><span class="paper-modal__tag">校园创业</span></div>`,
+    },
+    en: {
+      title: "Interests",
+      body: `<div class="paper-modal__tags" style="margin-top:8px;"><span class="paper-modal__tag">Frontend Design</span><span class="paper-modal__tag">Experience Design</span><span class="paper-modal__tag">AI Interaction</span><span class="paper-modal__tag">English Learning</span><span class="paper-modal__tag">Open Source</span><span class="paper-modal__tag">Campus Startup</span></div>`,
+    },
+  },
+  spider: {
+    zh: {
+      title: "出生档案",
+      body: `<p><strong>born in 03/16/2006</strong></p>`,
+    },
+    en: {
+      title: "Birth File",
+      body: `<p><strong>born in 03/16/2006</strong></p>`,
+    },
+  },
+  location: {
+    zh: {
+      title: "家乡坐标",
+      body: `<p><strong>Liaocheng Shandong</strong></p><p>山东聊城莘县</p>`,
+    },
+    en: {
+      title: "Hometown",
+      body: `<p><strong>Liaocheng Shandong</strong></p><p>Shenxian, Liaocheng, Shandong.</p>`,
+    },
+  },
+  resume: {
+    zh: {
+      title: "简历档案",
+      body: `<img class="resume-modal__image" src="/resume/jia-yongshuo-resume-preview-zh.png" alt="贾永硕简历预览" /><p class="resume-modal__actions"><a href="${RESUME_URLS.zh}" target="_blank" rel="noreferrer">打开 PDF 简历</a></p>`,
+    },
+    en: {
+      title: "Resume File",
+      body: `<img class="resume-modal__image" src="/resume/jia-yongshuo-resume-preview-en.png" alt="Jia Yongshuo resume preview" /><p class="resume-modal__actions"><a href="${RESUME_URLS.en}" target="_blank" rel="noreferrer">Open resume PDF</a></p>`,
+    },
+  },
 };
 
-const setAssistantState = ({
-  answer,
-  status = getAssistantCopy().defaultStatus,
-  isLoading = false,
-  disableInput = false,
-}) => {
-  if (answerBox && typeof answer === "string") {
-    answerBox.textContent = answer;
-    answerBox.classList.toggle("is-loading", isLoading);
-  }
+const openPaperModal = (cardType) => {
+  if (!paperModal || !paperModalContent) return;
+  const content = PAPER_MODAL_CONTENT[cardType]?.[currentLanguage];
+  if (!content) return;
 
-  if (askStatus) {
-    askStatus.textContent = status;
-  }
-
-  if (askInput) {
-    askInput.disabled = disableInput;
-  }
-
-  if (askSubmit) {
-    askSubmit.disabled = disableInput;
-  }
+  paperModalContent.innerHTML = `<h3>${content.title}</h3>${content.body}`;
+  paperModal.hidden = false;
+  document.body.style.overflow = "hidden";
+  requestAnimationFrame(() => {
+    paperModal.classList.add("is-visible");
+  });
 };
 
-const askPortfolioAssistant = async (question, fallbackAnswer = getAssistantCopy().defaultAnswer) => {
-  const trimmedQuestion = question.trim();
-  if (!trimmedQuestion) {
-    setAssistantState({
-      answer: fallbackAnswer,
-      status: getAssistantCopy().emptyQuestion,
-    });
+const closePaperModal = () => {
+  if (!paperModal) return;
+  paperModal.classList.remove("is-visible");
+  setTimeout(() => {
+    paperModal.hidden = true;
+    paperModalContent.innerHTML = "";
+    document.body.style.overflow = "";
+  }, 400);
+};
+
+const setFolderOpen = (isOpen) => {
+  folderScene?.classList.toggle("is-open", isOpen);
+  folderCover?.setAttribute("aria-expanded", String(isOpen));
+  folderInterior?.setAttribute("aria-hidden", String(!isOpen));
+};
+
+folderCover?.addEventListener("click", (e) => {
+  const isOpen = folderScene?.classList.contains("is-open");
+  if (isOpen) {
+    if (e.target.closest(".folder-card")) return;
+    setFolderOpen(false);
     return;
   }
+  setFolderOpen(true);
+});
 
-  const currentRequestId = ++assistantRequestId;
-  pendingAssistantQuestion = trimmedQuestion;
-
-  setAssistantState({
-    answer: getAssistantCopy().loadingAnswer(trimmedQuestion),
-    status: getAssistantCopy().loadingStatus,
-    isLoading: true,
-    disableInput: true,
-  });
-
-  try {
-    const response = await fetch("/api/ask", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        question: trimmedQuestion,
-        language: currentLanguage,
-      }),
-    });
-
-    const data = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      throw new Error(data.error || getAssistantCopy().requestError);
-    }
-
-    if (currentRequestId !== assistantRequestId) return;
-
-    setAssistantState({
-      answer: data.answer || fallbackAnswer,
-      status: getAssistantCopy().followUpStatus,
-    });
-  } catch (error) {
-    if (currentRequestId !== assistantRequestId) return;
-
-    setAssistantState({
-      answer: fallbackAnswer,
-      status: error instanceof Error ? getAssistantCopy().requestError : getAssistantCopy().requestError,
-    });
-  } finally {
-    if (currentRequestId === assistantRequestId) {
-      pendingAssistantQuestion = "";
-      setAssistantState({
-        answer: answerBox?.textContent?.trim() ?? fallbackAnswer,
-        status: askStatus?.textContent?.trim() ?? getAssistantCopy().defaultStatus,
-        disableInput: false,
-      });
-    }
+folderCover?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    setFolderOpen(!folderScene?.classList.contains("is-open"));
   }
-};
+});
 
-questionChips.forEach((chip) => {
-  chip.addEventListener("click", () => {
-    clearQuestionChipState();
-    chip.classList.add("is-active");
-    setAssistantState({
-      answer: chip.dataset.answer ?? getAssistantCopy().defaultAnswer,
-      status: getAssistantCopy().defaultStatus,
-    });
+folderCards.forEach((card) => {
+  card.addEventListener("click", (e) => {
+    e.stopPropagation();
+    openPaperModal(card.dataset.card);
+  });
+  card.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      e.stopPropagation();
+      openPaperModal(card.dataset.card);
+    }
   });
 });
 
-askForm?.addEventListener("submit", (event) => {
-  event.preventDefault();
+folderCloseGuide?.addEventListener("click", (e) => {
+  e.stopPropagation();
+  setFolderOpen(false);
+});
 
-  const question = askInput?.value?.trim() ?? "";
-  if (!question) {
-    setAssistantState({
-      answer: getAssistantCopy().defaultAnswer,
-      status: getAssistantCopy().emptyQuestion,
-    });
-    askInput?.focus();
-    return;
+folderCloseGuide?.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    e.stopPropagation();
+    setFolderOpen(false);
   }
+});
 
-  clearQuestionChipState();
-  void askPortfolioAssistant(question);
+paperModal?.querySelectorAll("[data-paper-close]").forEach((el) => {
+  el.addEventListener("click", closePaperModal);
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && paperModal && !paperModal.hidden) {
+    closePaperModal();
+  }
 });
 
 const revealObserver = new IntersectionObserver(
@@ -2351,6 +2675,49 @@ projectButtons.forEach((button) => {
   button.addEventListener("click", () => openModal(button));
 });
 
+aboutSpiderScene?.addEventListener("click", (event) => {
+  if (!(event.target instanceof Element)) return;
+  if (event.target.closest(".about-chat-paper")) {
+    event.stopPropagation();
+    return;
+  }
+  if (event.target.closest(".about-spider")) {
+    event.stopPropagation();
+    openAboutChat();
+  }
+});
+
+aboutSpiderScene?.addEventListener("keydown", (event) => {
+  if (
+    (event.key === "Enter" || event.key === " ") &&
+    event.target instanceof Element &&
+    event.target.closest(".about-spider")
+  ) {
+    event.preventDefault();
+    openAboutChat();
+  }
+});
+
+aboutChatPaper?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+document.addEventListener("click", (event) => {
+  if (!(aboutChatPaper instanceof HTMLElement) || aboutChatPaper.hidden) return;
+  if (event.target instanceof Element && event.target.closest(".about-chat-paper")) return;
+  closeAboutChat();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeAboutChat();
+});
+
+aboutChatForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!(aboutChatInput instanceof HTMLInputElement)) return;
+  askAboutSpider(aboutChatInput.value);
+});
+
 modalPreview?.addEventListener("click", async (event) => {
   const trigger = event.target instanceof Element ? event.target.closest("[data-preview-play='true']") : null;
   if (!(trigger instanceof HTMLButtonElement) || !activeProjectData?.preview?.videoSrc) return;
@@ -2460,10 +2827,23 @@ window.addEventListener("resize", () => {
 });
 
 const loaderStartTime = performance.now();
+const updateSiteLoaderProgress = () => {
+  if (!(siteLoader instanceof HTMLElement) || siteLoader.dataset.dismissed === "true") return;
+  const elapsed = performance.now() - loaderStartTime;
+  const progress = Math.min(92, 12 + (elapsed / LOADER_MIN_VISIBLE_MS) * 72);
+  setSiteLoaderProgress(progress);
+  window.requestAnimationFrame(updateSiteLoaderProgress);
+};
+
+window.requestAnimationFrame(updateSiteLoaderProgress);
+
 const completeInitialLoad = () => {
   const elapsed = performance.now() - loaderStartTime;
   const remaining = Math.max(0, LOADER_MIN_VISIBLE_MS - elapsed);
-  window.setTimeout(dismissSiteLoader, remaining);
+  window.setTimeout(() => {
+    setSiteLoaderProgress(100);
+    window.setTimeout(dismissSiteLoader, 180);
+  }, remaining);
 };
 
 if (document.readyState === "complete") {

@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EIDDIE | AI Full-Stack Developer</title>
+    <title>EIDDIE | Frontend Designer</title>
     <meta
       name="description"
-      content="A comic-inspired personal portfolio for EIDDIE, an AI full-stack developer."
+      content="A comic-inspired personal portfolio for EIDDIE, a frontend designer."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Bowlby+One+SC&family=Changa+One&family=Lilita+One&family=Luckiest+Guy&family=Manrope:wght@400;500;700;800&family=Sigmar&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Bowlby+One+SC&family=Caveat:wght@400;700&family=Changa+One&family=Courier+Prime&family=IM+Fell+English:ital@0;1&family=Kalam:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&family=Luckiest+Guy&family=Manrope:wght@400;500;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Satisfy&family=Sigmar&family=Special+Elite&family=UnifrakturMaguntia&family=Zhi+Mang+Xing&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/vendor/peel.css" />
@@ -19,12 +19,22 @@
   </head>
   <body class="is-site-loading">
     <div class="site-loader" id="site-loader" aria-hidden="true">
-      <p class="site-loader__label">LOADING</p>
+      <video
+        class="site-loader__video"
+        src="/site-loader.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+      <div class="site-loader__progress" aria-hidden="true">
+        <span class="site-loader__progress-bar" id="site-loader-progress"></span>
+      </div>
     </div>
     <div class="page-noise" aria-hidden="true"></div>
 
     <header class="topbar">
-      <a class="brand" href="#hero" aria-label="Go to top">EIDDIE</a>
       <div class="topbar-menu">
         <button
           class="topbar-language"
@@ -84,8 +94,8 @@
             <h2>EIDDIE</h2>
           </div>
           <p class="section-summary">
-            AI FULL-STACK DEVELOPER. I bring product taste, interaction design, full-stack
-            engineering, and AI workflows into one universe.
+            FRONTEND DESIGNER. I bring product taste, interaction design, frontend engineering,
+            and AI workflows into one universe.
           </p>
         </div>
 
@@ -113,8 +123,8 @@
                 <span class="name-letter">I</span>
               </span>
               <div class="name-copy">
-                <em>Intelligence</em>
-                <small class="name-translation">AI 智能</small>
+                <em>Interface</em>
+                <small class="name-translation">界面审美</small>
               </div>
             </div>
             <div class="name-row" data-index="2">
@@ -123,7 +133,7 @@
               </span>
               <div class="name-copy">
                 <em>Develop</em>
-                <small class="name-translation">全栈开发</small>
+                <small class="name-translation">前端开发</small>
               </div>
             </div>
             <div class="name-row" data-index="3">
@@ -170,7 +180,7 @@
 
         <div class="about-layout">
           <div class="about-visual">
-            <div class="about-spider-scene" aria-hidden="true">
+            <div class="about-spider-scene" id="about-spider-chat-trigger">
               <div class="about-burst">
                 <img class="about-burst__art" src="/about-scene-bg.svg" alt="" loading="lazy" decoding="async" />
               </div>
@@ -184,13 +194,42 @@
                   decoding="async"
                 />
                 <span class="about-spider-prompt__text">
-                  <span class="about-spider-prompt__line">ASK ME</span>
-                  <span class="about-spider-prompt__line">SOMETHING</span>
+                  <span class="about-spider-prompt__line">CLICK ME</span>
+                  <span class="about-spider-prompt__line">OR THE FILE</span>
                 </span>
               </div>
 
               <div class="about-spider-shell">
-                <img class="about-spider" src="/about-spider.svg" alt="" loading="lazy" decoding="async" />
+                <img
+                  class="about-spider"
+                  src="/about-spider.svg"
+                  alt=""
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open spider chat"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div class="about-chat-paper" id="about-chat-paper" aria-live="polite" hidden>
+                <div class="about-chat-paper__scroll" id="about-chat-scroll">
+                  <p class="about-chat-message about-chat-message--spider" id="about-chat-intro">
+                    你有什么想问我的？
+                  </p>
+                </div>
+                <form class="about-chat-form" id="about-chat-form">
+                  <label class="sr-only" for="about-chat-input">Ask EIDDIE's spider</label>
+                  <input
+                    id="about-chat-input"
+                    class="about-chat-input"
+                    name="question"
+                    type="text"
+                    maxlength="180"
+                    autocomplete="off"
+                    placeholder="问项目、技能、合作方式..."
+                  />
+                  <button class="about-chat-submit" type="submit">Ask</button>
+                </form>
               </div>
             </div>
             <p class="about-ghost" aria-hidden="true">
@@ -209,76 +248,100 @@
           </div>
 
           <div class="about-panel">
-            <div class="assistant-console">
-              <p class="assistant-console__label">Ask the spider</p>
-              <div class="assistant-answer" id="assistant-answer">
-                我更喜欢做那些有明确个性和记忆点的项目。对我来说，好的产品不是把功能机械拼起来，而是能让人一眼记住、愿意继续用下去。
-              </div>
-              <div class="question-grid" role="list">
-                <button
-                  type="button"
-                  class="question-chip is-active"
-                  data-answer="我更喜欢做那些有明确个性和记忆点的项目。对我来说，好的产品不是把功能机械拼起来，而是能让人一眼记住、愿意继续用下去。我会更容易被那种有方向感、有表达欲、同时又真的能落地的项目吸引。"
-                >
-                  你最想做什么样的项目？
-                </button>
-                <button
-                  type="button"
-                  class="question-chip"
-                  data-answer="我更习惯用全栈的方式去做产品，而不是只负责其中一个环节。前端、后端、数据库、AI 接入、部署上线这些部分我都能自己接起来，所以我可以把一个想法从 demo 一路推进到真正可用的版本。比起分得很细，我更擅长把整条链路做完整。"
-                >
-                  你常用哪些技术和工具？
-                </button>
-                <button
-                  type="button"
-                  class="question-chip"
-                  data-answer="我最在意的是一个产品最后能不能成立，而不是只停留在一个好看的想法上。成立意味着逻辑清楚、体验顺畅、细节可靠，也意味着它真的能被用户持续使用。对我来说，完成度和真实可用性比表面的热闹更重要。"
-                >
-                  你做产品时最在意什么？
-                </button>
-                <button
-                  type="button"
-                  class="question-chip"
-                  data-answer="我喜欢和有创造力、有判断力、也有执行力的人一起做事。最好是那种愿意交流、也真的想把事情做成的人，而不是只按部就班地完成任务。像乔布斯说的“the crazy ones”，那种有灵魂、有想法的人会让我很有共鸣。"
-                >
-                  你想和什么样的人一起做事？
-                </button>
-              </div>
-              <form class="assistant-ask" id="assistant-ask-form">
-                <label class="assistant-ask__label" for="assistant-question">Ask something specific</label>
-                <div class="assistant-ask__controls">
-                  <input
-                    class="assistant-ask__input"
-                    id="assistant-question"
-                    name="question"
-                    type="text"
-                    maxlength="180"
-                    autocomplete="off"
-                    placeholder="比如：如果我想和你一起做 AI 产品，你会先从哪里开始？"
-                  />
-                  <button class="assistant-ask__submit" id="assistant-ask-submit" type="submit">
-                    Ask
-                  </button>
+            <div class="folder-scene">
+              <!-- Folder cover (closed state) -->
+              <div class="folder-cover" role="button" tabindex="0" aria-label="Open personal file folder" aria-expanded="false">
+                <div class="folder-tab">EIDDIE</div>
+                <div class="folder-side-tabs">
+                  <span class="folder-side-tab folder-side-tab--green"></span>
+                  <span class="folder-side-tab folder-side-tab--yellow"></span>
+                  <span class="folder-side-tab folder-side-tab--red"></span>
                 </div>
-                <p class="assistant-ask__status" id="assistant-status">
-                  问我点真的。
+                <div class="folder-clip" aria-hidden="true">
+                  <img src="/dossier-binder-clip.png" alt="" loading="lazy" decoding="async" />
+                </div>
+                <div class="folder-label">
+                  <span class="folder-label__top">PERSONAL DOSSIER</span>
+                  <span class="folder-label__main">EIDDIE</span>
+                  <span class="folder-label__sub">Jia Yongshuo / Case File</span>
+                </div>
+                <div class="folder-confidential">CONFIDENTIAL</div>
+                <button class="folder-close-guide" type="button" data-lang-zh="单击合上文档" data-lang-en="Click to close document">单击合上文档</button>
+                <div class="folder-left-notes" aria-hidden="true">
+                  <figure class="folder-photo folder-photo--spider folder-card" data-card="spider" role="button" tabindex="0">
+                    <img src="/about-folder-spider.jpg" alt="" loading="lazy" decoding="async" />
+                    <figcaption>born in 03/16/2006</figcaption>
+                  </figure>
+                  <article class="folder-note folder-note--profile folder-card" data-card="profile" role="button" tabindex="0">
+                    <p class="folder-note__label">FILE 01</p>
+                    <h3>EIDDIE</h3>
+                    <p data-lang-zh="贾永硕 · 前端设计师" data-lang-en="Jia Yongshuo · Frontend Designer">贾永硕 · 前端设计师</p>
+                  </article>
+                  <article class="folder-note folder-note--sticky folder-card" data-card="motto" role="button" tabindex="0">
+                    <p data-lang-zh="审美 / 前端 / 体验设计" data-lang-en="taste / frontend / experience">审美 / 前端 / 体验设计</p>
+                    <span>keep useful things weird.</span>
+                  </article>
+                  <article class="folder-note folder-note--school folder-card" data-card="education" role="button" tabindex="0">
+                    <p class="folder-note__label" data-lang-zh="教育" data-lang-en="Education">教育</p>
+                    <p data-lang-zh="湖南工业大学" data-lang-en="Hunan University of Technology">湖南工业大学</p>
+                    <p data-lang-zh="人工智能 · 本科 · 2024-2028" data-lang-en="Artificial Intelligence · B.S. · 2024-2028">人工智能 · 本科 · 2024-2028</p>
+                  </article>
+                  <article class="folder-note folder-note--proof folder-card" data-card="experience" role="button" tabindex="0">
+                    <p class="folder-note__label">PROOF</p>
+                    <ul>
+                      <li>Frontend experience design</li>
+                      <li>Product prototype shipping</li>
+                      <li>Creative web engineering</li>
+                    </ul>
+                  </article>
+                  <article class="folder-note folder-note--contact folder-card" data-card="contact" role="button" tabindex="0">
+                    <p>eiddiedev@qq.com</p>
+                    <p>github.com/eiddiedev</p>
+                    <p>WeChat / eiddie2006</p>
+                  </article>
+                  <figure class="folder-photo folder-photo--location folder-card" data-card="location" role="button" tabindex="0">
+                    <img src="/about-folder-location.png" alt="" loading="lazy" decoding="async" />
+                    <figcaption>Liaocheng Shandong</figcaption>
+                  </figure>
+                  <img class="folder-loose-clip folder-loose-clip--note" src="/dossier-paperclip-horizontal.png" alt="" loading="lazy" decoding="async" />
+                  <img class="folder-loose-clip folder-loose-clip--photo" src="/dossier-paperclip-vertical.png" alt="" loading="lazy" decoding="async" />
+                  <div class="folder-red-clip" aria-hidden="true"></div>
+                </div>
+                <p class="folder-hint">
+                  <span data-lang-zh="— 单击展开档案 —" data-lang-en="— Click to open file —">— 单击展开档案 —</span>
                 </p>
-              </form>
-            </div>
+              </div>
 
-            <div class="about-facts">
-              <article>
-                <p class="fact-label">What I do</p>
-                <p>做 AI 产品、前端体验、后端能力和自动化流程的整合型开发。</p>
-              </article>
-              <article>
-                <p class="fact-label">How I work</p>
-                <p>先抓核心体验，再搭系统骨架，最后把细节和质感一并补齐。</p>
-              </article>
-              <article>
-                <p class="fact-label">What I care about</p>
-                <p>我在意可用性、迭代速度、表达张力，以及产品上线后的真实存活能力。</p>
-              </article>
+              <!-- Folder interior (open state) -->
+              <div class="folder-interior" aria-hidden="true">
+                <div class="folder-back-panel" aria-hidden="true"></div>
+                <article
+                  class="folder-resume-page folder-card"
+                  data-card="resume"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open resume preview"
+                >
+                  <img class="resume-page__clip" src="/dossier-binder-clip.png" alt="" loading="lazy" decoding="async" />
+                  <img class="folder-inner-paperclip folder-inner-paperclip--top" src="/dossier-paperclip-horizontal.png" alt="" loading="lazy" decoding="async" />
+                  <img class="folder-inner-paperclip folder-inner-paperclip--side" src="/dossier-paperclip-vertical.png" alt="" loading="lazy" decoding="async" />
+                  <div class="resume-page__preview-wrap">
+                    <img
+                      class="resume-page__preview"
+                      src="/resume/jia-yongshuo-resume-preview-zh.png"
+                      data-resume-src-zh="/resume/jia-yongshuo-resume-preview-zh.png"
+                      data-resume-src-en="/resume/jia-yongshuo-resume-preview-en.png"
+                      alt="Resume preview"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="resume-page__footer">
+                    <span>eiddiedev@qq.com</span>
+                    <span data-lang-zh="点击阅读完整简历" data-lang-en="Click to read full resume">点击阅读完整简历</span>
+                  </div>
+                </article>
+              </div>
             </div>
           </div>
         </div>
@@ -481,33 +544,34 @@
         </div>
 
         <div class="projects-stage projects-stage--right">
+          <div class="project-carousel" aria-label="Selected projects carousel">
           <div class="project-grid">
             <article class="project-card reveal">
-            <button
-              class="project-card__button project-card__button--logo-burst"
-              type="button"
-              data-project-id="edreading"
-              data-project-index="01"
-            >
-              <span class="project-card__cover" aria-hidden="true">
-                <span class="project-card__cover-panel"></span>
-                <span class="project-card__cover-burst"></span>
-                <span class="project-card__cover-dots"></span>
-                <span class="project-card__cover-rays"></span>
-                <span class="project-card__cover-bubble"></span>
-                <span class="project-card__cover-fragments"></span>
-                <span class="project-card__logo">
-                  <span class="project-card__logo-mark"></span>
+              <button
+                class="project-card__button project-card__button--logo-burst project-card__button--yeverse-archive"
+                type="button"
+                data-project-id="yeverse"
+                data-project-index="01"
+              >
+                <span class="project-card__cover" aria-hidden="true">
+                  <span class="project-card__cover-panel"></span>
+                  <span class="project-card__cover-burst"></span>
+                  <span class="project-card__cover-dots"></span>
+                  <span class="project-card__cover-rays"></span>
+                  <span class="project-card__cover-bubble"></span>
+                  <span class="project-card__cover-fragments"></span>
+                  <span class="project-card__logo">
+                    <span class="project-card__logo-mark"></span>
+                  </span>
                 </span>
-              </span>
-              <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">SYNC!</span>
-              <span class="project-card__copy">
-                <span class="project-card__index">01</span>
-                <strong>EDReading</strong>
-                <span class="project-card__type">AI阅读 / PWA应用 / 云端同步</span>
-                <p>AI 驱动的跨端英语外刊阅读与复习工具。</p>
-              </span>
-            </button>
+                <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">YE</span>
+                <span class="project-card__copy">
+                  <span class="project-card__index">01</span>
+                  <strong>YeVerse</strong>
+                  <span class="project-card__type">前端设计 / 交互体验 / 视觉原型</span>
+                  <p>暗黑 issue 切换式艺人宇宙，围绕音乐时间线与专辑档案展开。</p>
+                </span>
+              </button>
             </article>
 
             <article class="project-card reveal">
@@ -545,8 +609,36 @@
             <button
               class="project-card__button project-card__button--logo-burst"
               type="button"
-              data-project-id="bugpet"
+              data-project-id="edreading"
               data-project-index="03"
+            >
+              <span class="project-card__cover" aria-hidden="true">
+                <span class="project-card__cover-panel"></span>
+                <span class="project-card__cover-burst"></span>
+                <span class="project-card__cover-dots"></span>
+                <span class="project-card__cover-rays"></span>
+                <span class="project-card__cover-bubble"></span>
+                <span class="project-card__cover-fragments"></span>
+                <span class="project-card__logo">
+                  <span class="project-card__logo-mark"></span>
+                </span>
+              </span>
+              <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">SYNC!</span>
+              <span class="project-card__copy">
+                <span class="project-card__index">03</span>
+                <strong>EDReading</strong>
+                <span class="project-card__type">AI阅读 / PWA应用 / 云端同步</span>
+                <p>AI 驱动的跨端英语外刊阅读与复习工具。</p>
+              </span>
+            </button>
+            </article>
+
+            <article class="project-card reveal">
+            <button
+              class="project-card__button project-card__button--logo-burst"
+              type="button"
+              data-project-id="bugpet"
+              data-project-index="04"
             >
               <span class="project-card__cover" aria-hidden="true">
                 <span class="project-card__cover-panel"></span>
@@ -561,7 +653,7 @@
               </span>
               <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">PAWS!</span>
               <span class="project-card__copy">
-                <span class="project-card__index">03</span>
+                <span class="project-card__index">04</span>
                 <strong>BugPet</strong>
                 <span class="project-card__type">原生 / 桌宠 / 效率</span>
                 <p>一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。</p>
@@ -570,11 +662,39 @@
             </article>
 
             <article class="project-card reveal">
+              <button
+                class="project-card__button project-card__button--logo-burst project-card__button--consilium-med"
+                type="button"
+                data-project-id="consilium"
+                data-project-index="05"
+              >
+                <span class="project-card__cover" aria-hidden="true">
+                  <span class="project-card__cover-panel"></span>
+                  <span class="project-card__cover-burst"></span>
+                  <span class="project-card__cover-dots"></span>
+                  <span class="project-card__cover-rays"></span>
+                  <span class="project-card__cover-bubble"></span>
+                  <span class="project-card__cover-fragments"></span>
+                  <span class="project-card__logo">
+                    <span class="project-card__logo-mark"></span>
+                  </span>
+                </span>
+                <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">A2A</span>
+                <span class="project-card__copy">
+                  <span class="project-card__index">05</span>
+                  <strong>Consilium</strong>
+                  <span class="project-card__type">AI 应用 / 前端设计 / 医疗工具</span>
+                  <p>多专科临床 AI Agent Demo，展示建议冲突与优先级排序。</p>
+                </span>
+              </button>
+            </article>
+
+            <article class="project-card reveal">
             <button
               class="project-card__button project-card__button--logo-burst"
               type="button"
               data-project-id="scriptmind"
-              data-project-index="04"
+              data-project-index="06"
             >
               <span class="project-card__cover" aria-hidden="true">
                 <span class="project-card__cover-panel"></span>
@@ -589,14 +709,50 @@
               </span>
               <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">SPEAK!</span>
               <span class="project-card__copy">
-                <span class="project-card__index">04</span>
+                <span class="project-card__index">06</span>
                 <strong>ScriptMind</strong>
                 <span class="project-card__type">字幕解析 / AI 学习 / 口语训练</span>
                 <p>把美剧字幕做成交互式英语学习，兼顾口语、剧情和跟读。</p>
               </span>
             </button>
             </article>
+
+            <article class="project-card reveal">
+              <button
+                class="project-card__button project-card__button--logo-burst project-card__button--lyricflow-sheet"
+                type="button"
+                data-project-id="lyricflow"
+                data-project-index="07"
+              >
+                <span class="project-card__cover" aria-hidden="true">
+                  <span class="project-card__cover-panel"></span>
+                  <span class="project-card__cover-burst"></span>
+                  <span class="project-card__cover-dots"></span>
+                  <span class="project-card__cover-rays"></span>
+                  <span class="project-card__cover-bubble"></span>
+                  <span class="project-card__cover-fragments"></span>
+                  <span class="project-card__logo">
+                    <span class="project-card__logo-mark"></span>
+                  </span>
+                </span>
+                <span class="project-card__impact project-card__impact--subtle" aria-hidden="true">LYRIC</span>
+                <span class="project-card__copy">
+                  <span class="project-card__index">07</span>
+                  <strong>LyricFlow</strong>
+                  <span class="project-card__type">前端开发 / AI 应用 / 教育工具</span>
+                  <p>AI 逐行标注英文歌词发音，把连读、弱读和重音可视化。</p>
+                </span>
+              </button>
+            </article>
           </div>
+          </div>
+          <p
+            class="project-carousel-hint"
+            data-lang-zh="点击卡片查看项目详情 · 左右滑动查看更多项目"
+            data-lang-en="Click a card to view details · Swipe to see more"
+          >
+            点击卡片查看项目详情 · 左右滑动查看更多项目
+          </p>
         </div>
       </section>
 
@@ -610,7 +766,7 @@
 
             <div class="contact-intro">
               <h2 class="contact-title">
-                <span class="contact-title__line" data-text="LET’S">LET’S</span>
+                <span class="contact-title__line" data-text="LET'S">LET'S</span>
                 <span class="contact-title__line" data-text="BUILD">BUILD</span>
                 <span class="contact-title__line" data-text="SOMETHING">SOMETHING</span>
                 <span class="contact-title__line" data-text="SHARP,">SHARP,</span>
@@ -647,7 +803,7 @@
               <aside class="contact-status" aria-label="Availability">
                 <p class="contact-status__label">Open To</p>
                 <p class="contact-status__item">Selective freelance and contract work</p>
-                <p class="contact-status__item">AI product builds and creative web systems</p>
+                <p class="contact-status__item">Frontend experience design and creative web systems</p>
                 <p class="contact-status__item contact-status__item--meta">Usually replies within 24 hours</p>
               </aside>
             </div>
@@ -697,7 +853,9 @@
               </button>
               <a
                 class="contact-link contact-link--resume"
-                href="/resume/jia-yongshuo-frontend-fullstack-product-manager.pdf"
+                href="/resume/jia-yongshuo-experience-design-frontend-zh.pdf"
+                data-resume-href-zh="/resume/jia-yongshuo-experience-design-frontend-zh.pdf"
+                data-resume-href-en="/resume/jia-yongshuo-experience-design-frontend-en.pdf"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Open resume PDF"
@@ -769,6 +927,18 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paper modal for folder cards -->
+    <div class="paper-modal" id="paper-modal" hidden>
+      <div class="paper-modal__backdrop" data-paper-close="true"></div>
+      <div class="paper-modal__sheet">
+        <button class="paper-modal__close" type="button" aria-label="Close" data-paper-close="true">&times;</button>
+        <div class="paper-modal__content" id="paper-modal-content"></div>
+        <div class="paper-modal__stamp" aria-hidden="true">
+          <span>EIDDIE</span>
         </div>
       </div>
     </div>
