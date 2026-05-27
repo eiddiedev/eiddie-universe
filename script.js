@@ -2154,6 +2154,46 @@ const setFolderOpen = (isOpen) => {
   folderInterior?.setAttribute("aria-hidden", String(!isOpen));
 };
 
+function closeAboutDossierOverlays() {
+  if (folderScene?.classList.contains("is-open")) {
+    setFolderOpen(false);
+  }
+
+  if (paperModal && !paperModal.hidden) {
+    closePaperModal();
+  }
+}
+
+let lastAutoCloseScrollY = window.scrollY;
+let autoCloseTouchStartY = null;
+
+function handleAboutAutoCloseScroll() {
+  const nextScrollY = window.scrollY;
+  if (nextScrollY > lastAutoCloseScrollY + 8) {
+    closeAboutDossierOverlays();
+  }
+  lastAutoCloseScrollY = nextScrollY;
+}
+
+function handleAboutAutoCloseWheel(event) {
+  if (event.deltaY > 8) {
+    closeAboutDossierOverlays();
+  }
+}
+
+function handleAboutAutoCloseTouchStart(event) {
+  autoCloseTouchStartY = event.touches?.[0]?.clientY ?? null;
+}
+
+function handleAboutAutoCloseTouchMove(event) {
+  if (autoCloseTouchStartY === null) return;
+  const currentY = event.touches?.[0]?.clientY;
+  if (typeof currentY === "number" && autoCloseTouchStartY - currentY > 10) {
+    closeAboutDossierOverlays();
+    autoCloseTouchStartY = currentY;
+  }
+}
+
 folderCover?.addEventListener("click", (e) => {
   const isOpen = folderScene?.classList.contains("is-open");
   if (isOpen) {
@@ -2207,6 +2247,11 @@ document.addEventListener("keydown", (e) => {
     closePaperModal();
   }
 });
+
+window.addEventListener("scroll", handleAboutAutoCloseScroll, { passive: true });
+window.addEventListener("wheel", handleAboutAutoCloseWheel, { passive: true });
+window.addEventListener("touchstart", handleAboutAutoCloseTouchStart, { passive: true });
+window.addEventListener("touchmove", handleAboutAutoCloseTouchMove, { passive: true });
 
 const revealObserver = new IntersectionObserver(
   (entries) => {
