@@ -99,6 +99,8 @@ const ABOUT_CHAT_TIMEOUT_MS = 6500;
 const RESUME_URLS = {
   zh: "/resume/jia-yongshuo-experience-design-frontend-zh.pdf",
   en: "/resume/jia-yongshuo-experience-design-frontend-en.pdf",
+  previewZh: "/resume/jia-yongshuo-resume-preview-zh.png",
+  previewEn: "/resume/jia-yongshuo-resume-preview-en.png",
 };
 const LANGUAGE_COPY = {
   zh: {
@@ -873,10 +875,7 @@ const applyStaticLanguage = () => {
   }
 
   if (resumeLink instanceof HTMLAnchorElement) {
-    const localizedHref =
-      resumeLink.dataset[`resumeHref${currentLanguage === "en" ? "En" : "Zh"}`] ??
-      RESUME_URLS[currentLanguage];
-    resumeLink.setAttribute("href", localizedHref);
+    resumeLink.setAttribute("href", RESUME_URLS[currentLanguage]);
   }
 
   if (modalProofHeading) {
@@ -1051,8 +1050,7 @@ const applyFolderLanguage = () => {
 
   const resumePreviewImage = document.querySelector(".resume-page__preview");
   if (resumePreviewImage) {
-    const src = resumePreviewImage.dataset[`resumeSrc${lang.charAt(0).toUpperCase()}${lang.slice(1)}`];
-    if (src) resumePreviewImage.setAttribute("src", src);
+    resumePreviewImage.setAttribute("src", lang === "en" ? RESUME_URLS.previewEn : RESUME_URLS.previewZh);
   }
 };
 
@@ -2116,11 +2114,11 @@ const PAPER_MODAL_CONTENT = {
   resume: {
     zh: {
       title: "简历档案",
-      body: `<img class="resume-modal__image" src="/resume/jia-yongshuo-resume-preview-zh.png" alt="贾永硕简历预览" /><p class="resume-modal__actions"><a href="${RESUME_URLS.zh}" target="_blank" rel="noreferrer">打开 PDF 简历</a></p>`,
+      body: `<img class="resume-modal__image" src="${RESUME_URLS.previewZh}" alt="贾永硕简历预览" /><p class="resume-modal__actions"><a href="${RESUME_URLS.zh}" target="_blank" rel="noreferrer">打开 PDF 简历</a></p>`,
     },
     en: {
       title: "Resume File",
-      body: `<img class="resume-modal__image" src="/resume/jia-yongshuo-resume-preview-en.png" alt="Jia Yongshuo resume preview" /><p class="resume-modal__actions"><a href="${RESUME_URLS.en}" target="_blank" rel="noreferrer">Open resume PDF</a></p>`,
+      body: `<img class="resume-modal__image" src="${RESUME_URLS.previewEn}" alt="Jia Yongshuo resume preview" /><p class="resume-modal__actions"><a href="${RESUME_URLS.en}" target="_blank" rel="noreferrer">Open resume PDF</a></p>`,
     },
   },
 };
