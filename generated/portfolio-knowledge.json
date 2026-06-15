@@ -1,0 +1,991 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-15T07:39:38.311Z",
+  "entries": [
+    {
+      "id": "site-overview",
+      "type": "overview",
+      "title": "EIDDIE | Frontend Designer",
+      "aliases": [
+        "EIDDIE",
+        "作品集",
+        "portfolio"
+      ],
+      "keywords": [
+        "Engineer",
+        "Interface",
+        "Develop",
+        "Design",
+        "Implement",
+        "Evolve",
+        "工程实现",
+        "界面审美",
+        "前端开发",
+        "体验设计",
+        "系统落地",
+        "持续迭代",
+        "frontend designer",
+        "前端设计师",
+        "Frontend Designer",
+        "product taste",
+        "interaction design",
+        "frontend engineering",
+        "AI workflows"
+      ],
+      "priority": 90,
+      "sourceHash": "ecbaea9715501709c0d9ba9d9bad84d09cd1a165c5e6fd92d8b9db480a908908",
+      "facts": {
+        "zh": "EIDDIE 是一名前端设计师，擅长工程实现、界面审美、前端开发、体验设计、系统落地和持续迭代。",
+        "en": "EIDDIE is a Frontend Designer who combines product taste, interaction design, frontend engineering, and AI workflows."
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "profile",
+      "type": "profile",
+      "title": "Personal Profile",
+      "aliases": [
+        "个人档案",
+        "Personal Profile"
+      ],
+      "keywords": [
+        "个人档案",
+        "Personal Profile",
+        "EIDDIE",
+        "（贾永硕）",
+        "前端设计师，专注于体验设计",
+        "交互表达和可落地的",
+        "Web",
+        "产品。",
+        "擅长把界面审美",
+        "前端工程",
+        "AI",
+        "工作流和产品判断串联起来，从想法推进到可展示",
+        "可使用的版本。",
+        "坐标：湖南",
+        "湖南工业大学"
+      ],
+      "priority": 100,
+      "sourceHash": "91a7cd9463334d600370eab30e0f6596f537971ce69dc42b4265aba02eb1cf9e",
+      "facts": {
+        "zh": "EIDDIE （贾永硕） 前端设计师，专注于体验设计、交互表达和可落地的 Web 产品。 擅长把界面审美、前端工程、AI 工作流和产品判断串联起来，从想法推进到可展示、可使用的版本。 坐标：湖南 · 湖南工业大学",
+        "en": "EIDDIE (Jia Yongshuo) Frontend Designer focused on experience design, interaction expression, and shippable web products. Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment into usable prototypes. Based in Hunan, China"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "motto",
+      "type": "dossier",
+      "title": "Motto",
+      "aliases": [
+        "座右铭",
+        "Motto"
+      ],
+      "keywords": [
+        "座右铭",
+        "Motto",
+        "审美",
+        "执行力",
+        "想象力",
+        "—",
+        "EIDDIE"
+      ],
+      "priority": 30,
+      "sourceHash": "d99c5933a67b6b0d305b0f881a12592beb3061826b7e1e9a64f60b0c0a3bfd7b",
+      "facts": {
+        "zh": "审美 · 执行力 · 想象力 — EIDDIE",
+        "en": "Aesthetic · Execution · Imagination — EIDDIE"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "skills",
+      "type": "dossier",
+      "title": "Skill Index",
+      "aliases": [
+        "技能索引",
+        "Skill Index"
+      ],
+      "keywords": [
+        "技能索引",
+        "Skill Index",
+        "前端",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "PWA",
+        "后端",
+        "Node.js",
+        "Supabase",
+        "PostgreSQL",
+        "pgvector",
+        "AI",
+        "OpenAI",
+        "DeepSeek",
+        "Claude",
+        "Code",
+        "Codex"
+      ],
+      "priority": 85,
+      "sourceHash": "7e56821a0a28b81a379a7aa52b95e3369f93104c0316599f567914e6c64c5dd6",
+      "facts": {
+        "zh": "前端 React Next.js TypeScript PWA 后端 Node.js Supabase PostgreSQL pgvector AI OpenAI DeepSeek Claude Code Codex 工具 Figma Vercel Git Cursor",
+        "en": "Frontend React Next.js TypeScript PWA Backend Node.js Supabase PostgreSQL pgvector AI OpenAI DeepSeek Claude Code Codex Tools Figma Vercel Git Cursor"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "education",
+      "type": "dossier",
+      "title": "Education",
+      "aliases": [
+        "教育经历",
+        "Education"
+      ],
+      "keywords": [
+        "教育经历",
+        "Education",
+        "湖南工业大学",
+        "人工智能专业",
+        "本科",
+        "2024.09",
+        "—",
+        "2028.06",
+        "大二在读",
+        "核心课程：机器学习",
+        "深度学习",
+        "计算机视觉",
+        "数据结构与算法",
+        "数据库原理"
+      ],
+      "priority": 70,
+      "sourceHash": "d9ab6ae43b0c3776a467923317fc4977010aa1ee80a3e95a81b8fff2040174c4",
+      "facts": {
+        "zh": "湖南工业大学 人工智能专业 · 本科 2024.09 — 2028.06 大二在读 核心课程：机器学习、深度学习、计算机视觉、数据结构与算法、数据库原理",
+        "en": "Hunan University of Technology Artificial Intelligence · B.S. Sep 2024 — Jun 2028 Sophomore Core courses: Machine Learning, Deep Learning, Computer Vision, Data Structures & Algorithms, Database Principles"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "experience",
+      "type": "dossier",
+      "title": "Honors & Experience",
+      "aliases": [
+        "荣誉与经历",
+        "Honors & Experience"
+      ],
+      "keywords": [
+        "荣誉与经历",
+        "Honors & Experience",
+        "TRAEFriends@Wuhan",
+        "Hackathon",
+        "冠军",
+        "围绕",
+        "AI",
+        "编程与",
+        "Prompt",
+        "工作流完成项目设计和实现。",
+        "Trae",
+        "on",
+        "Campus",
+        "校园大使",
+        "参与",
+        "IDE",
+        "校园推广",
+        "开发者活动与社群运营。",
+        "TRAEFriends",
+        "Wuhan Hackathon",
+        "Champion",
+        "Trae on Campus",
+        "Ambassador",
+        "AI编程",
+        "AI programming",
+        "Prompt工作流",
+        "Prompt workflows",
+        "前端设计",
+        "frontend design",
+        "产品原型",
+        "product prototypes"
+      ],
+      "priority": 75,
+      "sourceHash": "55850abed113176abdd45ef1a7a8b72e39a11b6d03c6e0d6c645d7ddf04e5e14",
+      "facts": {
+        "zh": "TRAEFriends@Wuhan Hackathon 冠军，围绕 AI 编程与 Prompt 工作流完成项目设计和实现。Trae on Campus 校园大使，参与 Trae IDE 校园推广、开发者活动与社群运营。独立项目实践，持续完成 AI 应用、前端体验设计和产品原型项目，并沉淀为可展示作品。",
+        "en": "TRAEFriends@Wuhan Hackathon Champion, designed and built around AI programming and prompt workflows. Trae on Campus Ambassador, worked on Trae IDE campus promotion, developer activities, and community operations. Independent project practice, built AI apps, frontend experience design projects, and shippable product prototypes."
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "bio",
+      "type": "dossier",
+      "title": "About Me",
+      "aliases": [
+        "个人简介",
+        "About Me"
+      ],
+      "keywords": [
+        "个人简介",
+        "About Me",
+        "我现在更明确地把自己放在前端设计师的位置：既关心页面气质",
+        "交互节奏，也关心它最后能不能真的跑起来。",
+        "我会先抓核心体验和视觉记忆点，再用前端工程把它做成可用的产品原型。",
+        "我在意的是一个作品最后能不能成立",
+        "——",
+        "逻辑清楚",
+        "体验顺畅",
+        "细节可靠，能被用户持续使用。",
+        "前端设计师",
+        "frontend designer",
+        "交互节奏",
+        "interaction rhythm",
+        "视觉记忆",
+        "visual memory",
+        "产品原型",
+        "prototype",
+        "用户体验",
+        "user experience"
+      ],
+      "priority": 80,
+      "sourceHash": "412f0f54edcb8852a3b9bb886944983bfc66dfeafdffcc32b74d7330f1581bec",
+      "facts": {
+        "zh": "定位为前端设计师，关心页面气质、交互节奏和产品能否跑起来。先抓核心体验和视觉记忆点，再用前端工程做成可用的产品原型。在意作品逻辑清楚、体验顺畅、细节可靠，能被用户持续使用。",
+        "en": "Positions as a frontend designer, cares about visual character, interaction rhythm, and whether the work actually runs. Locks core experience and visual memory first, then uses frontend engineering to turn it into a usable prototype. Values clear logic, smooth experience, reliable details, and real usability over time."
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "contact",
+      "type": "dossier",
+      "title": "Contact",
+      "aliases": [
+        "联系方式",
+        "Contact"
+      ],
+      "keywords": [
+        "联系方式",
+        "Contact",
+        "Email",
+        "eiddiedev@qq.com",
+        "GitHub",
+        "github.com",
+        "eiddiedev",
+        "微信",
+        "eiddie2006",
+        "Portfolio",
+        "eiddie.me",
+        "github.com/eiddiedev"
+      ],
+      "priority": 65,
+      "sourceHash": "28ef1537b5187e8130b2c4dc58bf568f02dd6dcc18589edec3f503b829592eb6",
+      "facts": {
+        "zh": "Email: eiddiedev@qq.com, GitHub: github.com/eiddiedev, 微信: eiddie2006, Portfolio: eiddie.me",
+        "en": "Email: eiddiedev@qq.com, GitHub: github.com/eiddiedev, WeChat: eiddie2006, Portfolio: eiddie.me"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "interests",
+      "type": "dossier",
+      "title": "Interests",
+      "aliases": [
+        "兴趣标签",
+        "Interests"
+      ],
+      "keywords": [
+        "兴趣标签",
+        "Interests",
+        "前端设计",
+        "体验设计",
+        "AI",
+        "交互",
+        "英语学习",
+        "开源",
+        "校园创业",
+        "Frontend Design",
+        "Experience Design",
+        "AI交互",
+        "AI Interaction",
+        "English Learning",
+        "Open Source",
+        "Campus Startup"
+      ],
+      "priority": 40,
+      "sourceHash": "1de9487f70bb6621242d3273576f4811bc7a228714d7fdf30e25120d0583d95c",
+      "facts": {
+        "zh": "前端设计、体验设计、AI 交互、英语学习、开源、校园创业",
+        "en": "Frontend Design, Experience Design, AI Interaction, English Learning, Open Source, Campus Startup"
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "spider",
+      "type": "dossier",
+      "title": "Birth File",
+      "aliases": [
+        "出生档案",
+        "Birth File"
+      ],
+      "keywords": [
+        "出生档案",
+        "Birth File",
+        "born",
+        "in",
+        "03",
+        "16",
+        "2006",
+        "birth"
+      ],
+      "priority": 20,
+      "sourceHash": "0d298eb0fe600f7c97881f753053e3e1c6a1959476534ed7fe8cde80a9419c83",
+      "facts": {
+        "zh": "出生于2006年3月16日。",
+        "en": "Born on March 16, 2006."
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "location",
+      "type": "dossier",
+      "title": "Hometown",
+      "aliases": [
+        "家乡坐标",
+        "Hometown"
+      ],
+      "keywords": [
+        "家乡坐标",
+        "Hometown",
+        "Liaocheng",
+        "Shandong",
+        "山东聊城莘县",
+        "hometown"
+      ],
+      "priority": 45,
+      "sourceHash": "bf54eb2c92d32a71eb216a4d471a5a7018d7d8ef36969c1c8ebb5232127a5a4e",
+      "facts": {
+        "zh": "家乡是山东省聊城市莘县。",
+        "en": "Hometown is Shenxian, Liaocheng, Shandong."
+      },
+      "hardFacts": {},
+      "links": [],
+      "source": "website"
+    },
+    {
+      "id": "project-index",
+      "type": "index",
+      "title": "Projects",
+      "aliases": [
+        "项目",
+        "作品",
+        "projects",
+        "portfolio"
+      ],
+      "keywords": [
+        "EDReading",
+        "edreading",
+        "www.eiddie.top",
+        "GitHub",
+        "Fut.Map",
+        "futmap",
+        "fm.eiddie.top",
+        "ScriptMind",
+        "scriptmind",
+        "sm.eiddie.top",
+        "BugPet",
+        "bugpet",
+        "bp.eiddie.top",
+        "YeVerse",
+        "yeverse",
+        "ye.eiddie.me",
+        "Consilium",
+        "consilium",
+        "asm-healthcare-agent.vercel.app",
+        "LyricFlow",
+        "lyricflow",
+        "app-blursfj73bi9.appmedo.com",
+        "projects"
+      ],
+      "priority": 55,
+      "sourceHash": "639d00b3aa4731e6747988326dd27f700d99cfcc94d5c026e988beb55975e59a",
+      "facts": {
+        "zh": "当前公开项目包括：EDReading、Fut.Map、ScriptMind、BugPet、YeVerse、Consilium、LyricFlow。",
+        "en": "Current public projects include: EDReading, Fut.Map, ScriptMind, BugPet, YeVerse, Consilium, LyricFlow."
+      },
+      "hardFacts": {},
+      "links": [
+        "https://www.eiddie.top",
+        "https://fm.eiddie.top",
+        "https://github.com/eiddiedev/Fut.Map",
+        "https://sm.eiddie.top",
+        "https://github.com/eiddiedev/ScriptMind",
+        "https://bp.eiddie.top",
+        "https://github.com/eiddiedev/BugPet",
+        "https://ye.eiddie.me",
+        "https://github.com/eiddiedev/YeVerse",
+        "https://asm-healthcare-agent.vercel.app",
+        "https://github.com/eiddiedev/Consilium",
+        "https://app-blursfj73bi9.appmedo.com"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-edreading",
+      "type": "project",
+      "title": "EDReading",
+      "aliases": [
+        "edreading",
+        "EDReading",
+        "www.eiddie.top",
+        "GitHub"
+      ],
+      "keywords": [
+        "AI阅读",
+        "PWA应用",
+        "云端同步",
+        "AI Reading",
+        "PWA App",
+        "Cloud Sync",
+        "Next.js",
+        "TypeScript",
+        "Supabase",
+        "大模型接口",
+        "PWA",
+        "LLM API",
+        "已部署上线",
+        "真实用户反馈",
+        "Live and deployed",
+        "Real user feedback",
+        "EDReading",
+        "LLM",
+        "cloud sync",
+        "AI reading"
+      ],
+      "priority": 60,
+      "sourceHash": "7f730dac7953572f2dbbd1ed4712a9ad005b43b431719973d77cc0ee99131ad4",
+      "facts": {
+        "zh": "EDReading是一个AI驱动的跨端英语外刊阅读与复习工具，基于Next.js、TypeScript、Supabase和大模型接口开发，支持外刊聚合、AI精读分析、词典增强、PWA安装与云端同步，已部署上线并获得真实用户反馈。",
+        "en": "EDReading is an AI-powered cross-device tool for reading and reviewing English articles, built with Next.js, TypeScript, Supabase, and LLM APIs. It features article aggregation, AI close reading, dictionary enhancement, PWA installability, and cloud sync. It is live with real user feedback."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "Live and deployed",
+            "Real user feedback"
+          ],
+          "stack": "Next.js / TypeScript / Supabase / LLM API / PWA / Cloud Sync",
+          "type": "AI Reading / PWA App / Cloud Sync"
+        },
+        "zh": {
+          "亮点": [
+            "已部署上线",
+            "真实用户反馈"
+          ],
+          "技术栈": "Next.js / TypeScript / Supabase / 大模型接口 / PWA / 云端同步",
+          "类型": "AI阅读 / PWA应用 / 云端同步"
+        }
+      },
+      "links": [
+        "https://www.eiddie.top"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-futmap",
+      "type": "project",
+      "title": "Fut.Map",
+      "aliases": [
+        "futmap",
+        "Fut.Map",
+        "fm.eiddie.top",
+        "GitHub"
+      ],
+      "keywords": [
+        "足球数据",
+        "地图可视化",
+        "交互体验",
+        "Football Data",
+        "Geo Viz",
+        "UX",
+        "Next.js",
+        "TypeScript",
+        "Three.js",
+        "Mapbox GL",
+        "Framer Motion",
+        "天地图",
+        "Tianditu",
+        "3D 地球联动",
+        "沉浸式探索",
+        "3D globe sync",
+        "Immersive exploration"
+      ],
+      "priority": 60,
+      "sourceHash": "65ca6514ae9a8088a75cf6f796a9b4be5a37e5f71143cee00b50722e4348c795",
+      "facts": {
+        "zh": "以 3D 地球和 2D 世界地图联动展示足球数据，打造更具沉浸感的探索体验。 基于 Next.js、TypeScript、Three.js 和 Mapbox GL 构建，用 Framer Motion 做落地页转场，用 Three.js 与 Mapbox GL 实现 3D 地球和 2D 地图的联动展示，结合天地图底图与 Mapbox 渲染，兼顾国内场景下的地图合规性与交互表现。",
+        "en": "A football explorer linking a 3D globe and 2D map. Built with Next.js, TypeScript, Three.js, and Mapbox GL, with Framer Motion driving the landing-page transitions. It links a 3D globe and a 2D world map to present football data, combining Tianditu basemaps with Mapbox rendering to balance map compliance in mainland use cases with strong interaction quality."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "3D globe sync",
+            "Immersive exploration"
+          ],
+          "stack": "Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / Tianditu",
+          "type": "Football Data / Geo Viz / UX"
+        },
+        "zh": {
+          "亮点": [
+            "3D 地球联动",
+            "沉浸式探索"
+          ],
+          "技术栈": "Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / 天地图",
+          "类型": "足球数据 / 地图可视化 / 交互体验"
+        }
+      },
+      "links": [
+        "https://fm.eiddie.top",
+        "https://github.com/eiddiedev/Fut.Map"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-scriptmind",
+      "type": "project",
+      "title": "ScriptMind",
+      "aliases": [
+        "scriptmind",
+        "ScriptMind",
+        "sm.eiddie.top",
+        "GitHub"
+      ],
+      "keywords": [
+        "字幕解析",
+        "AI 学习",
+        "口语训练",
+        "Subtitle Parsing",
+        "AI Learning",
+        "Speaking Practice",
+        "Next.js",
+        "TypeScript",
+        "Postgres",
+        "pgvector",
+        "AI 字幕解析",
+        "场景化学习",
+        "AI Subtitle Parsing",
+        "Scene-Based Study",
+        "按季导入",
+        "按集学习",
+        "场景化练习",
+        "Season imports",
+        "Episode-based study",
+        "Scene practice"
+      ],
+      "priority": 60,
+      "sourceHash": "5cef1652f6d8c07b45ce37ccc297e838caadf481f91249f9f17f404b9eb02122",
+      "facts": {
+        "zh": "把美剧字幕做成交互式英语学习，兼顾口语、剧情和跟读。 ScriptMind 是一个基于美剧字幕的英语学习 Web 应用，支持按季导入、按集学习和场景化练习。产品前端基于 Next.js 与 TypeScript 构建，后端采用 Postgres、pgvector 和 AI 解析流程，把原始字幕整理成可用于口语训练、剧情理解和表达学习的结构化内容。",
+        "en": "TV subtitles turned into interactive speaking practice. ScriptMind is a subtitle-driven English learning web app built around season imports, episode-by-episode study, and scene-based practice. The frontend is built with Next.js and TypeScript, while the backend combines Postgres, pgvector, and an AI parsing pipeline to turn raw subtitles into structured material for speaking drills, story comprehension, and expression building."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "Season imports",
+            "Episode-based study",
+            "Scene practice"
+          ],
+          "stack": "Next.js / TypeScript / Postgres / pgvector / AI Subtitle Parsing / Scene-Based Study",
+          "type": "Subtitle Parsing / AI Learning / Speaking Practice"
+        },
+        "zh": {
+          "亮点": [
+            "按季导入",
+            "按集学习",
+            "场景化练习"
+          ],
+          "技术栈": "Next.js / TypeScript / Postgres / pgvector / AI 字幕解析 / 场景化学习",
+          "类型": "字幕解析 / AI 学习 / 口语训练"
+        }
+      },
+      "links": [
+        "https://sm.eiddie.top",
+        "https://github.com/eiddiedev/ScriptMind"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-bugpet",
+      "type": "project",
+      "title": "BugPet",
+      "aliases": [
+        "bugpet",
+        "BugPet",
+        "bp.eiddie.top",
+        "GitHub"
+      ],
+      "keywords": [
+        "原生",
+        "桌宠",
+        "效率",
+        "Native",
+        "Desktop Pet",
+        "Focus",
+        "一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。",
+        "A native macOS desktop pet and focus growth system built for vibe coding.",
+        "原生 macOS",
+        "桌宠成长",
+        "专注反馈",
+        "Native macOS",
+        "Pet growth",
+        "Focus feedback"
+      ],
+      "priority": 60,
+      "sourceHash": "9614bbc9bd2241764bfbdf8ea153edb3e2354f446cc7ebc2ccb5b7b1baca9abc",
+      "facts": {
+        "zh": "一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。 BugPet 使用 Swift、AppKit 与 SpriteKit 构建，是一个原生 macOS 桌面宠物应用。它通过前台应用识别、状态判断与交互反馈，把 coding 时长转化为宠物成长、专注统计和轻量游戏化体验。项目重点放在原生桌面交互、行为反馈机制和可持续扩展的宠物系统设计上。",
+        "en": "A native macOS desktop pet and focus growth system built for vibe coding. BugPet is a native macOS desktop pet built with Swift, AppKit, and SpriteKit. It uses foreground app detection, state judgment, and interaction feedback to turn coding time into pet progression, focus stats, and lightweight gamified loops. The project centers on native desktop interaction, behavioral feedback, and a pet system designed for sustainable expansion."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "Native macOS",
+            "Pet growth",
+            "Focus feedback"
+          ],
+          "stack": "A native macOS desktop pet and focus growth system built for vibe coding.",
+          "type": "Native / Desktop Pet / Focus"
+        },
+        "zh": {
+          "亮点": [
+            "原生 macOS",
+            "桌宠成长",
+            "专注反馈"
+          ],
+          "技术栈": "一个面向 vibe coding 的原生 macOS 桌宠与专注成长系统。",
+          "类型": "原生 / 桌宠 / 效率"
+        }
+      },
+      "links": [
+        "https://bp.eiddie.top",
+        "https://github.com/eiddiedev/BugPet"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-yeverse",
+      "type": "project",
+      "title": "YeVerse",
+      "aliases": [
+        "yeverse",
+        "YeVerse",
+        "ye.eiddie.me",
+        "GitHub"
+      ],
+      "keywords": [
+        "前端设计",
+        "交互体验",
+        "视觉原型",
+        "Frontend Design",
+        "Interaction Design",
+        "Visual Prototype",
+        "React",
+        "TypeScript",
+        "Vite",
+        "Three.js",
+        "CSS Animation",
+        "i18n",
+        "音乐资料整理",
+        "Music Research",
+        "Issue 式导航",
+        "3D CD 专辑",
+        "中英双语",
+        "Issue navigation",
+        "3D CD shelf",
+        "Bilingual content"
+      ],
+      "priority": 60,
+      "sourceHash": "38d708eb7e4f4bafc7ea95336ab56d01f334b706ebf67c4c85e7d44aea0cc395",
+      "facts": {
+        "zh": "暗黑 issue 切换式艺人宇宙，围绕音乐时间线与专辑档案展开。 YeVerse 是一个非官方音乐人物档案网站原型，用沉浸界面重组艺人时间线、唱片和文化资料。我负责视觉方向、信息架构、React 前端实现和交互动效。项目把 Hero、Timeline、Discography、Archive、About 拆成独立 issue，并重点实现 3D CD 专辑展示、点击翻面、专辑详情和中英切换。",
+        "en": "A dark issue-based artist universe for music timelines and album archives. YeVerse is an unofficial artist archive prototype that reorganizes music timelines, albums, and cultural material through an immersive interface. I handled visual direction, information architecture, React implementation, and interaction motion. Hero, Timeline, Discography, Archive, and About are separated into issue-style screens, with a 3D CD shelf, flip interaction, album details, and bilingual content as the core experience."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "Issue navigation",
+            "3D CD shelf",
+            "Bilingual content"
+          ],
+          "stack": "React / TypeScript / Vite / Three.js / CSS Animation / i18n / Music Research",
+          "type": "Frontend Design / Interaction Design / Visual Prototype"
+        },
+        "zh": {
+          "亮点": [
+            "Issue 式导航",
+            "3D CD 专辑",
+            "中英双语"
+          ],
+          "技术栈": "React / TypeScript / Vite / Three.js / CSS Animation / i18n / 音乐资料整理",
+          "类型": "前端设计 / 交互体验 / 视觉原型"
+        }
+      },
+      "links": [
+        "https://ye.eiddie.me",
+        "https://github.com/eiddiedev/YeVerse"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-consilium",
+      "type": "project",
+      "title": "Consilium",
+      "aliases": [
+        "consilium",
+        "Consilium",
+        "asm-healthcare-agent.vercel.app",
+        "GitHub"
+      ],
+      "keywords": [
+        "AI 应用",
+        "前端设计",
+        "医疗工具",
+        "AI Application",
+        "Frontend Design",
+        "Healthcare Tool",
+        "React",
+        "Vite",
+        "FastAPI",
+        "Google ADK",
+        "A2A",
+        "FHIR",
+        "LiteLLM",
+        "DeepSeek",
+        "Cloud Run",
+        "Vercel",
+        "A2A Agent 后端",
+        "TOPSIS 排序",
+        "FHIR context",
+        "A2A backend",
+        "TOPSIS ranking",
+        "clinical AI",
+        "multi-agent",
+        "TOPSIS"
+      ],
+      "priority": 60,
+      "sourceHash": "f9a25474a52f33715272a7052b9af5603b548a3f08595d1792f1520b390e162d",
+      "facts": {
+        "zh": "多专科临床 AI Agent Demo，展示建议冲突与优先级排序。面向心衰、慢性肾病、糖尿病等多病共存场景的多 Agent 临床决策支持原型。心内科、肾内科、内分泌科 agents 生成结构化建议，再由确定性 TOPSIS 逻辑排序优先级。负责产品界面、A2A 后端接入、FHIR context 支持、结果解析、错误兜底、演示视频和提交材料。技术栈：React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel。",
+        "en": "A clinical AI agent demo for specialist advice, conflicts, and ranked priorities. Multi-agent clinical decision support prototype for complex chronic cases such as heart failure, CKD, and diabetes. Cardiology, nephrology, and endocrinology agents generate structured recommendations, then deterministic TOPSIS scoring ranks priorities. Built product interface, A2A backend integration, FHIR context support, response parsing, fallback behavior, demo video, and submission materials. Stack: React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "A2A backend",
+            "TOPSIS ranking",
+            "FHIR context"
+          ],
+          "stack": "React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel",
+          "type": "AI Application / Frontend Design / Healthcare Tool"
+        },
+        "zh": {
+          "亮点": [
+            "A2A Agent 后端",
+            "TOPSIS 排序",
+            "FHIR context"
+          ],
+          "技术栈": "React / Vite / FastAPI / Google ADK / A2A / FHIR / LiteLLM / DeepSeek / Cloud Run / Vercel",
+          "类型": "AI 应用 / 前端设计 / 医疗工具"
+        }
+      },
+      "links": [
+        "https://asm-healthcare-agent.vercel.app",
+        "https://github.com/eiddiedev/Consilium"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-lyricflow",
+      "type": "project",
+      "title": "LyricFlow",
+      "aliases": [
+        "lyricflow",
+        "LyricFlow",
+        "app-blursfj73bi9.appmedo.com",
+        "GitHub"
+      ],
+      "keywords": [
+        "前端开发",
+        "AI 应用",
+        "教育工具",
+        "Frontend Development",
+        "AI Application",
+        "EdTech",
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS",
+        "shadcn-ui",
+        "Supabase Edge Functions",
+        "Gemini 2.5 Flash",
+        "Apple Music API",
+        "JSON 模式",
+        "分块渐进渲染",
+        "7 语言界面",
+        "JSON mode",
+        "Chunked rendering",
+        "7-language UI",
+        "AI",
+        "lyrics",
+        "pronunciation",
+        "Gemini",
+        "React",
+        "Supabase",
+        "Edge Functions",
+        "liaison",
+        "weak forms",
+        "stress"
+      ],
+      "priority": 60,
+      "sourceHash": "2b082018c6e2eba25ca1a187d9d8b1a1fafebd8bba6fb0b7887630b0233baa08",
+      "facts": {
+        "zh": "AI 逐行标注英文歌词发音，把连读、弱读和重音可视化。面向非母语者学唱英文歌时的发音细节痛点。用户搜索或导入歌词后，Gemini AI 逐行分析连读、弱读、省音和重音，并由前端实时渲染。独立完成产品定义、UI/UX、React 前端、Supabase Edge Function、Prompt 调优和歌词解析器，并用 JSON 模式与 8 行分块策略提升稳定性和首屏速度。技术栈：React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API。",
+        "en": "AI line-by-line lyric annotations for liaison, weak forms, and stress. Helps non-native speakers understand pronunciation details when singing English songs. After users search or import lyrics, Gemini AI analyzes liaison, weak forms, elision, and stress line by line, then frontend renders inline annotations. Handled product definition, UI/UX, React frontend, Supabase Edge Functions, prompt tuning, and custom lyrics parser, using JSON mode and 8-line chunking to improve stability and first-result speed. Stack: React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "JSON mode",
+            "Chunked rendering",
+            "7-language UI"
+          ],
+          "stack": "React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API",
+          "type": "Frontend Development / AI Application / EdTech"
+        },
+        "zh": {
+          "亮点": [
+            "JSON 模式",
+            "分块渐进渲染",
+            "7 语言界面"
+          ],
+          "技术栈": "React 19 / TypeScript / Vite / Tailwind CSS / shadcn-ui / Supabase Edge Functions / Gemini 2.5 Flash / Apple Music API",
+          "类型": "前端开发 / AI 应用 / 教育工具"
+        }
+      },
+      "links": [
+        "https://app-blursfj73bi9.appmedo.com"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "resume-zh",
+      "type": "resume",
+      "title": "中文简历",
+      "aliases": [
+        "简历",
+        "履历",
+        "贾永硕",
+        "Jia Yongshuo"
+      ],
+      "keywords": [
+        "教育",
+        "项目",
+        "荣誉",
+        "技能",
+        "前端实习",
+        "Design Engineer",
+        "UX",
+        "湖南工业大学",
+        "人工智能",
+        "React",
+        "Next.js",
+        "Three.js",
+        "Mapbox GL",
+        "Framer Motion",
+        "PWA",
+        "Node.js",
+        "Supabase",
+        "PostgreSQL",
+        "Vercel",
+        "Trae on Campus",
+        "字节跳动",
+        "黑客松",
+        "挑战杯"
+      ],
+      "priority": 50,
+      "sourceHash": "cb80f7e86c803d7b326a50eb05086591eb10b1cbdb5601262dc22660d1a12375",
+      "facts": {
+        "zh": "贾永硕，173-6229-2247，eiddiedev@qq.com，github.com/eiddiedev，eiddie.me。求职意向：体验设计型前端实习 / Design Engineer 实习 / UX 方向实习（暑期到岗）。教育背景：湖南工业大学，人工智能专业（本科），2024.09 - 2028.06。项目经历：YeVerse（沉浸式音乐文化数字体验）、Fut.Map（全球足球数据地图可视化）、EDReading（AI 英语外刊阅读工具）、BugPet（macOS 原生桌宠与专注成长系统）。专业技能：前端开发（React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA）、设计与表达（UI 设计 / 交互设计 / 视觉方案 / 海报设计 / 视频剪辑 / 摄影）、全栈实现（Node.js / Supabase / PostgreSQL / API 对接 / Vercel 部署）、AI 与产品（AI 功能接入 / 内容结构化 / 需求拆解 / 原型验证）。荣誉：Trae on Campus 校园大使（字节跳动）、TRAEFriends@武汉黑客松第一名、抖音 AI 创变者黑客松（长沙站）二等奖、抖音 AI 创变者黑客松（株洲站）一等奖、挑战杯省赛入围。",
+        "en": ""
+      },
+      "hardFacts": {},
+      "links": [
+        "/resume/jia-yongshuo-experience-design-frontend-zh.pdf"
+      ],
+      "source": "resume"
+    },
+    {
+      "id": "resume-en",
+      "type": "resume",
+      "title": "English Resume",
+      "aliases": [
+        "resume",
+        "cv",
+        "Jiayongshuo",
+        "Jia Yongshuo"
+      ],
+      "keywords": [
+        "education",
+        "projects",
+        "honors",
+        "skills",
+        "Design Engineer",
+        "frontend intern",
+        "UX",
+        "Hunan University of Technology",
+        "Artificial Intelligence",
+        "React",
+        "Next.js",
+        "Three.js",
+        "Mapbox GL",
+        "Framer Motion",
+        "PWA",
+        "Node.js",
+        "Supabase",
+        "PostgreSQL",
+        "Vercel",
+        "ByteDance",
+        "hackathon",
+        "Challenge Cup"
+      ],
+      "priority": 50,
+      "sourceHash": "79ea440fd1c808f0f1ef8fbb4f3c3565ac03908c51a1438b3c4073011358e913",
+      "facts": {
+        "zh": "",
+        "en": "Jiayongshuo, 173-6229-2247, eiddiedev@qq.com, github.com/eiddiedev, eiddie.me. Target: Design Engineer Intern / Experience Design Frontend Intern / UX-Oriented Internship (Summer). Education: Hunan University of Technology, B.Eng. in Artificial Intelligence, Sep 2024 - Jun 2028. Projects: YeVerse (Immersive Music Culture Digital Experience), Fut.Map (Global Football Data Map Visualization), EDReading (AI-Powered English Reading Tool), BugPet (Native macOS Desktop Pet for Focus Growth). Skills: Frontend Development (React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA), Visual and Interaction Design (UI Design / Interaction Design / Motion Rhythm / Narrative Layout / Poster Design / Video Editing / Photography), Application Engineering (Node.js / Supabase / PostgreSQL / REST API Integration / Vercel Deployment), AI and Product (LLM API Integration / AI Feature Design / Content Structuring / Requirement Breakdown / Prototype Validation). Additional Experience: Trae on Campus Ambassador (ByteDance), 1st Place TRAEFriends Wuhan Hackathon, 2nd Prize Douyin AI Hackathon (Changsha), 1st Prize Douyin AI Hackathon (Zhuzhou), Challenge Cup Provincial Round Finalist."
+      },
+      "hardFacts": {},
+      "links": [
+        "/resume/jia-yongshuo-experience-design-frontend-en.pdf"
+      ],
+      "source": "resume"
+    }
+  ]
+}

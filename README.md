@@ -92,8 +92,29 @@ It is used to:
 Core AI-related files:
 
 - [server/assistant-handler.mjs](./server/assistant-handler.mjs)
+- [server/knowledge-retriever.mjs](./server/knowledge-retriever.mjs)
+- [scripts/build-knowledge.mjs](./scripts/build-knowledge.mjs)
 - [api/ask.js](./api/ask.js)
 - [vite.config.js](./vite.config.js)
+
+### Automatic Knowledge Sync｜知识自动同步
+
+`npm run build` 会先从网站当前使用的项目配置、About 档案内容和中英文简历中提取公开信息，再生成 `generated/portfolio-knowledge.json`。
+
+`npm run build` first extracts public facts from the project data and About dossier currently used by the site, plus the Chinese and English resumes, then writes `generated/portfolio-knowledge.json`.
+
+- 每个内容模块都有独立哈希，未变化内容不会再次请求 DeepSeek
+
+  Every content block has its own hash, so unchanged blocks are not sent to DeepSeek again
+- DeepSeek 只在构建阶段压缩发生变化的内容；接口不可用时会使用确定性摘要继续构建
+
+  DeepSeek only compresses changed content during builds; deterministic summaries keep builds working if the API is unavailable
+- 访客提问时，本地检索只选择个人概况和最相关的少量条目，不会把整份知识文件发送给模型
+
+  At question time, local retrieval selects the profile and a small set of relevant entries instead of sending the entire knowledge file
+- 网站内容与简历冲突时，以网站内容为准
+
+  Website content takes priority over resume content when facts conflict
 
 ## Repository Notes｜仓库说明
 
