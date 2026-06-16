@@ -2165,17 +2165,36 @@ function closeAboutDossierOverlays() {
 let lastAutoCloseScrollY = window.scrollY;
 let autoCloseTouchStartY = null;
 
+function shouldAutoCloseAboutDossier() {
+  if (!folderScene) return false;
+  if (!folderScene.classList.contains("is-open") && (paperModal?.hidden ?? true)) return false;
+  const rect = folderScene.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  if (rect.height <= 0 || viewportHeight <= 0) return false;
+  const visibleTop = clamp(rect.top, 0, viewportHeight);
+  const visibleBottom = clamp(rect.bottom, 0, viewportHeight);
+  const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+  const thresholdBase = Math.min(rect.height, viewportHeight);
+  return visibleHeight <= thresholdBase * 0.5;
+}
+
+function closeAboutDossierOverlaysIfPastThreshold() {
+  if (shouldAutoCloseAboutDossier()) {
+    closeAboutDossierOverlays();
+  }
+}
+
 function handleAboutAutoCloseScroll() {
   const nextScrollY = window.scrollY;
   if (nextScrollY > lastAutoCloseScrollY + 8) {
-    closeAboutDossierOverlays();
+    closeAboutDossierOverlaysIfPastThreshold();
   }
   lastAutoCloseScrollY = nextScrollY;
 }
 
 function handleAboutAutoCloseWheel(event) {
   if (event.deltaY > 8) {
-    closeAboutDossierOverlays();
+    requestAnimationFrame(closeAboutDossierOverlaysIfPastThreshold);
   }
 }
 
@@ -2187,7 +2206,7 @@ function handleAboutAutoCloseTouchMove(event) {
   if (autoCloseTouchStartY === null) return;
   const currentY = event.touches?.[0]?.clientY;
   if (typeof currentY === "number" && autoCloseTouchStartY - currentY > 10) {
-    closeAboutDossierOverlays();
+    requestAnimationFrame(closeAboutDossierOverlaysIfPastThreshold);
     autoCloseTouchStartY = currentY;
   }
 }
