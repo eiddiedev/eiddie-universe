@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-15T07:39:38.311Z",
+  "generatedAt": "2026-06-17T11:04:25.643Z",
   "entries": [
     {
       "id": "site-overview",
@@ -900,39 +900,18 @@
       "title": "中文简历",
       "aliases": [
         "简历",
-        "履历",
-        "贾永硕",
-        "Jia Yongshuo"
+        "履历"
       ],
       "keywords": [
         "教育",
         "项目",
         "荣誉",
-        "技能",
-        "前端实习",
-        "Design Engineer",
-        "UX",
-        "湖南工业大学",
-        "人工智能",
-        "React",
-        "Next.js",
-        "Three.js",
-        "Mapbox GL",
-        "Framer Motion",
-        "PWA",
-        "Node.js",
-        "Supabase",
-        "PostgreSQL",
-        "Vercel",
-        "Trae on Campus",
-        "字节跳动",
-        "黑客松",
-        "挑战杯"
+        "技能"
       ],
       "priority": 50,
-      "sourceHash": "cb80f7e86c803d7b326a50eb05086591eb10b1cbdb5601262dc22660d1a12375",
+      "sourceHash": "07ae3ffda7444e5d40418d8dfce9a4de3958e95729028284eb7c4fc51aae612b",
       "facts": {
-        "zh": "贾永硕，173-6229-2247，eiddiedev@qq.com，github.com/eiddiedev，eiddie.me。求职意向：体验设计型前端实习 / Design Engineer 实习 / UX 方向实习（暑期到岗）。教育背景：湖南工业大学，人工智能专业（本科），2024.09 - 2028.06。项目经历：YeVerse（沉浸式音乐文化数字体验）、Fut.Map（全球足球数据地图可视化）、EDReading（AI 英语外刊阅读工具）、BugPet（macOS 原生桌宠与专注成长系统）。专业技能：前端开发（React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA）、设计与表达（UI 设计 / 交互设计 / 视觉方案 / 海报设计 / 视频剪辑 / 摄影）、全栈实现（Node.js / Supabase / PostgreSQL / API 对接 / Vercel 部署）、AI 与产品（AI 功能接入 / 内容结构化 / 需求拆解 / 原型验证）。荣誉：Trae on Campus 校园大使（字节跳动）、TRAEFriends@武汉黑客松第一名、抖音 AI 创变者黑客松（长沙站）二等奖、抖音 AI 创变者黑客松（株洲站）一等奖、挑战杯省赛入围。",
+        "zh": "贾永硕 173-6229-2247 ｜ eiddiedev@qq.com ｜ github.com/eiddiedev ｜ eiddie.me 个人网站 / 作品集： eiddie.me （项目合集 / 在线演示 / 视频介绍） 求职意向： 体验设计型前端实习 / Design Engineer 实习 / UX 方向实习 （暑期到岗） 偏体验设计与前端表达， 擅长围绕内容场景与用户感受搭建完整视觉语言、 交互节奏与可运行界面， 并用工程方式完成高完成度展示。 教育背景湖南工业大学 ｜ 人工智能专业（本科） 2024.09 - 2028.06 主修课程： 机器学习、 深度学习、 计算机视觉、 数据结构与算法、 数据库原理项目经历 YeVerse - 沉浸式音乐文化数字体验 ye.eiddie.me 独立开发 ｜ React / TypeScript / Three.js / Vite / Spotify Embed 围绕音乐与文化内容搭建沉浸式数字体验， 独立完成整体视觉系统、 模块拆解、 交互节奏与前端落地。 设计时间线、 3D 专辑架与电影感转场等多个模块， 把内容浏览转化为更具叙事感、 氛围感与探索欲的交互体验。 形成可在线访问的完整代表作， 并在社交媒体上获得较多乐迷关注与正向反馈。 Fut.Map - 全球足球数据地图可视化 fm.eiddie.top 独立开发 ｜ Next.js / Three.js / Mapbox GL / Framer Motion 面向足球内容场景独立完成视觉方案、 交互逻辑与前端实现， 解决传统数据展示不够沉浸、 记忆点不足的问题。 基于 Three.js + Mapbox GL 实现 3D 地球与 2D 地图联动， 并通过首屏动效优化强化信息层级与浏览完成度。 EDReading - AI 英语外刊阅读工具 eiddie.top 独立开发 ｜ Next.js / TypeScript / Supabase / AI API 围绕英语阅读学习流程设计清晰的信息层级与交互反馈， 独立完成产品界面、 核心功能与上线迭代。 结合 AI 精读分析、 词典增强与复习内容生成， 提升长文本阅读场景中的内容可用性与学习效率。 支持 PWA 安装与云端同步， 完成产品上线并获得近 200 注册用户的真实验证。 BugPet - macOS 原生桌宠与专注成长系统 bp.eiddie.top 独立开发 ｜ Swift / AppKit / SpriteKit 围绕桌面效率场景设计 “ 陪伴式反馈 + 游戏化成长 ” 机制， 探索工具产品的情绪价值与长期使用动机。 使用 SpriteKit 与原生桌面交互能力完成角色表现、 状态反馈与成长映射， 让功能反馈更具可视化与趣味性。 专业技能前端开发： React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA / 多端体验优化设计与表达： UI 设计 / 交互设计 / 视觉方案 / 海报设计 / 视频剪辑 / 摄影 / 演示页面制作全栈实现： Node.js / Supabase / PostgreSQL / 基础 API 对接 / 数据存储 / Vercel 部署 AI 与产品： AI 功能接入 / 内容结构化 / 需求拆解 / 原型验证 / 多版本快速迭代荣誉与经历 Trae on Campus 校园大使 （字节跳动） TRAEFriends@ 武汉黑客松第一名抖音 AI 创变者黑客松 （长沙站） 二等奖抖音 AI 创变者黑客松 （株洲站） 一等奖挑战杯省赛入围 （进行中） 独立 / 协助开发 GitHub 项目 10+ 美团AI Hackathon 全国Top 30",
         "en": ""
       },
       "hardFacts": {},
@@ -947,39 +926,19 @@
       "title": "English Resume",
       "aliases": [
         "resume",
-        "cv",
-        "Jiayongshuo",
-        "Jia Yongshuo"
+        "cv"
       ],
       "keywords": [
         "education",
         "projects",
         "honors",
-        "skills",
-        "Design Engineer",
-        "frontend intern",
-        "UX",
-        "Hunan University of Technology",
-        "Artificial Intelligence",
-        "React",
-        "Next.js",
-        "Three.js",
-        "Mapbox GL",
-        "Framer Motion",
-        "PWA",
-        "Node.js",
-        "Supabase",
-        "PostgreSQL",
-        "Vercel",
-        "ByteDance",
-        "hackathon",
-        "Challenge Cup"
+        "skills"
       ],
       "priority": 50,
-      "sourceHash": "79ea440fd1c808f0f1ef8fbb4f3c3565ac03908c51a1438b3c4073011358e913",
+      "sourceHash": "ab5a5d95e9ddc11dc84e0bf42feae3285246087c39eb5579eb60a956e0ec8f81",
       "facts": {
         "zh": "",
-        "en": "Jiayongshuo, 173-6229-2247, eiddiedev@qq.com, github.com/eiddiedev, eiddie.me. Target: Design Engineer Intern / Experience Design Frontend Intern / UX-Oriented Internship (Summer). Education: Hunan University of Technology, B.Eng. in Artificial Intelligence, Sep 2024 - Jun 2028. Projects: YeVerse (Immersive Music Culture Digital Experience), Fut.Map (Global Football Data Map Visualization), EDReading (AI-Powered English Reading Tool), BugPet (Native macOS Desktop Pet for Focus Growth). Skills: Frontend Development (React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA), Visual and Interaction Design (UI Design / Interaction Design / Motion Rhythm / Narrative Layout / Poster Design / Video Editing / Photography), Application Engineering (Node.js / Supabase / PostgreSQL / REST API Integration / Vercel Deployment), AI and Product (LLM API Integration / AI Feature Design / Content Structuring / Requirement Breakdown / Prototype Validation). Additional Experience: Trae on Campus Ambassador (ByteDance), 1st Place TRAEFriends Wuhan Hackathon, 2nd Prize Douyin AI Hackathon (Changsha), 1st Prize Douyin AI Hackathon (Zhuzhou), Challenge Cup Provincial Round Finalist."
+        "en": "Jiayongshuo 173-6229-2247 | eiddiedev@qq.com | github.com/eiddiedev | eiddie.me Portfolio: eiddie.me (project collection / live demos / demo videos) Target: Design Engineer Intern / Experience Design Frontend Intern / UX-Oriented Internship (Available for Summer Internship) Experience-focused frontend builder with strong visual taste and hands-on practice turning content ideas into polished, interactive, and shipped digital experiences through design and code. Education Hunan University of Technology | B.Eng. in Arti fi cial Intelligence Sep 2024 - Jun 2028 Relevant Coursework: Machine Learning, Deep Learning, Computer Vision, Data Structures and Algorithms, Database Systems Projects YeVerse - Immersive Music Culture Digital Experience ye.eiddie.me Independent Project | React / TypeScript / Three.js / Vite / Spotify Embed Built an immersive digital experience around music and cultural content, independently owning the visual system, modular structure, interaction rhythm, and frontend implementation. Designed an interactive timeline, a 3D album shelf, and cinematic transitions to turn content browsing into a more atmospheric and story-driven experience. Shipped it as a live experience and received strong positive feedback from music fans on social platforms. Fut.Map - Global Football Data Map Visualization fm.eiddie.top Independent Project | Next.js / Three.js / Mapbox GL / Framer Motion Designed and implemented the visual system, interaction logic, and frontend experience for a football data product aimed at improving immersion and memorability. Built a connected 3D globe and 2D world map experience with Three.js and Mapbox GL, using motion design to strengthen hierarchy and fi rst- screen impact. EDReading - AI-Powered English Reading Tool eiddie.top Independent Project | Next.js / TypeScript / Supabase / AI API Designed a clear reading work fl ow for long-form English content and independently built the core interface, features, and release iterations. Integrated AI-based close reading analysis, dictionary enhancement, and review generation to improve usability in long-text learning scenarios. Reached nearly 200 registered users, supported PWA installation and cloud sync, and completed the fi rst paid conversion validation. BugPet - Native macOS Desktop Pet for Focus Growth bp.eiddie.top Independent Project | Swift / AppKit / SpriteKit Designed a lightweight companion experience for desktop focus scenarios, using gami fi ed feedback to strengthen emotional value and long- term motivation. Built character animation, state feedback, and growth mapping with SpriteKit and native desktop capabilities to make productivity data more visible and engaging. Skills Frontend Development: React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA / Responsive UI Visual and Interaction Design: UI Design / Interaction Design / Motion Rhythm / Narrative Layout / Poster Design / Video Editing / Photography Application Engineering: Node.js / Supabase / PostgreSQL / REST API Integration / Data Storage / Vercel Deployment AI and Product: LLM API Integration / AI Feature Design / Content Structuring / Requirement Breakdown / Prototype Validation Additional Experience Trae on Campus Ambassador (ByteDance) 1st Place, TRAEFriends Wuhan Hackathon 2nd Prize, Douyin AI Hackathon (Changsha) 1st Prize, Douyin AI Hackathon (Zhuzhou) Challenge Cup Provincial Round Finalist (In Progress) 10+ GitHub Projects Built Independently / Collaboratively Meituan AI Hackathon National Top 30"
       },
       "hardFacts": {},
       "links": [
