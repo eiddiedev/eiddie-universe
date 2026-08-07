@@ -614,6 +614,82 @@ const PROJECT_DETAILS = {
     },
     proofs: [],
   },
+  targeting2026: {
+    title: "Targeting 2026",
+    type: {
+      zh: "游戏策划 / 互动系统 / 像素体验",
+      en: "Game Design / Interactive System / Pixel Experience",
+    },
+    link: "https://fifa.eiddie.top",
+    linkLabel: "fifa.eiddie.top",
+    githubLink: "https://github.com/eiddiedev/world-cup-game",
+    githubLabel: "GitHub / world-cup-game",
+    frontIntro: {
+      zh: "2026 世界杯像素足球经营游戏，从选队征召到实时比赛的完整循环。",
+      en: "A pixel football manager for World Cup 2026, from squad building to live matches.",
+    },
+    description: {
+      zh: "剑指美加墨是以 2026 世界杯为主题的像素足球经营游戏。我负责大部分策划与开发：搭建选队、征召、阵型、后勤、实时比赛、临场决策到赛后复盘的完整流程，设计国家队、候选池、战术姿态、天气与点球等系统，并通过模拟脚本验证数值策略和决策收益，避免硬编码式胜负。项目重点是把复杂系统、内容叙事、玩法反馈和工程落地组织成一个完整可玩的整体。",
+      en: "Targeting 2026 is a pixel football management game built around World Cup 2026. I handled most of the design and development: team selection, call-ups, formations, logistics, live matches, in-game decisions, and post-match review as one complete loop, with systems for national teams, player pools, tactical stances, weather, and penalties. Simulation scripts validate the numbers behind every decision instead of hard-coded outcomes. The focus is combining complex systems, content narrative, gameplay feedback, and solid engineering into one playable whole.",
+    },
+    meta: {
+      zh: "游戏策划 / 数值系统 / 实时模拟 / Web 前端 / 像素美术",
+      en: "Game Design / Tuning Systems / Live Simulation / Web Frontend / Pixel Art",
+    },
+    signals: {
+      zh: ["完整比赛循环", "数值模拟验证", "像素美术"],
+      en: ["Full match loop", "Simulation-tested tuning", "Pixel art"],
+    },
+    cover: {
+      profile: "targeting-map",
+      art: {
+        asset: "/projects/targeting2026/targeting2026-cover.jpg",
+      },
+      logo: {
+        asset: "/projects/targeting2026/targeting2026-logo.png",
+      },
+      theme: {
+        originX: "50%",
+        originY: "34%",
+        logoMuted: "rgba(235, 245, 220, 0.9)",
+        logoActive: "#8bc34a",
+        logoGlow: "rgba(139, 195, 74, 0.3)",
+        burstAccent: "#7cb342",
+        burstSoft: "rgba(245, 241, 232, 0.9)",
+        dotMuted: "rgba(245, 241, 232, 0.09)",
+        dotActive: "rgba(245, 241, 232, 0.2)",
+        lineMuted: "rgba(245, 241, 232, 0.1)",
+        rayLight: "rgba(232, 185, 60, 0.9)",
+        rayInk: "rgba(2, 2, 3, 0.98)",
+        panelTint: "rgba(245, 241, 232, 0.12)",
+        borderActive: "rgba(245, 241, 232, 0.22)",
+        shadowActive: "rgba(0, 0, 0, 0.52)",
+      },
+      impact: {
+        text: "KICKOFF!",
+        mode: "subtle",
+      },
+    },
+    preview: {
+      poster: "/projects/targeting2026/targeting2026-poster.jpg",
+      videoSrc: "https://ediproject.oss-cn-shanghai.aliyuncs.com/%E7%BE%8E%E5%8A%A0%E5%A2%A8-540p.mp4",
+      videoType: "video/mp4",
+      label: {
+        zh: "剑指美加墨 项目预览",
+        en: "Targeting 2026 project preview",
+      },
+      title: {
+        zh: "点击播放完整功能演示",
+        en: "Play the full product walkthrough",
+      },
+      note: {
+        zh: "",
+        en: "",
+      },
+      stats: [],
+    },
+    proofs: [],
+  },
   consilium: {
     title: "Consilium",
     type: {
@@ -1291,6 +1367,7 @@ const resetProjectCardVariants = (button) => {
     "project-card__button--logo-burst",
     "project-card__button--bugpet-pixel",
     "project-card__button--football-ink",
+    "project-card__button--targeting-map",
     "project-card__button--scriptmind-wave",
     "project-card__button--yeverse-archive",
     "project-card__button--consilium-med",
@@ -1319,6 +1396,16 @@ const renderProjectCardCover = (button, localizedDetail) => {
     button.dataset.coverProfile = cover.profile;
     applyProjectCoverTheme(button, cover);
     button.innerHTML = buildFootballInkCardMarkup({ indexLabel, detail: localizedDetail, cover });
+    return true;
+  }
+
+  if (cover.profile === "targeting-map") {
+    const indexLabel = getProjectCardIndexLabel(button);
+    resetProjectCardVariants(button);
+    button.classList.add("project-card__button--logo-burst", "project-card__button--targeting-map");
+    button.dataset.coverProfile = cover.profile;
+    applyProjectCoverTheme(button, cover);
+    button.innerHTML = buildLogoBurstCardMarkup({ indexLabel, detail: localizedDetail, cover });
     return true;
   }
 
@@ -2014,11 +2101,11 @@ const PAPER_MODAL_CONTENT = {
   profile: {
     zh: {
       title: "个人档案",
-      body: `<p><strong>EIDDIE</strong>（贾永硕）</p><p>前端设计师，专注于体验设计、交互表达和可落地的 Web 产品。</p><p>擅长把界面审美、前端工程、AI 工作流和产品判断串联起来，从想法推进到可展示、可使用的版本。</p><p class="paper-modal__detail">坐标：湖南 · 湖南工业大学</p>`,
+      body: `<p><strong>EIDDIE</strong>（贾永硕）</p><p>前端工程师，专注于体验设计、交互表达和可落地的 Web 产品。</p><p>擅长把界面审美、前端工程、AI 工作流和产品判断串联起来，从想法推进到可展示、可使用的版本。</p><p class="paper-modal__detail">坐标：湖南 · 湖南工业大学</p>`,
     },
     en: {
       title: "Personal Profile",
-      body: `<p><strong>EIDDIE</strong> (Jia Yongshuo)</p><p>Frontend Designer focused on experience design, interaction expression, and shippable web products.</p><p>Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment into usable prototypes.</p><p class="paper-modal__detail">Based in Hunan, China</p>`,
+      body: `<p><strong>EIDDIE</strong> (Jia Yongshuo)</p><p>Frontend Engineer focused on experience design, interaction expression, and shippable web products.</p><p>Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment into usable prototypes.</p><p class="paper-modal__detail">Based in Hunan, China</p>`,
     },
   },
   motto: {
@@ -2064,11 +2151,11 @@ const PAPER_MODAL_CONTENT = {
   bio: {
     zh: {
       title: "个人简介",
-      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我现在更明确地把自己放在前端设计师的位置：既关心页面气质、交互节奏，也关心它最后能不能真的跑起来。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我会先抓核心体验和视觉记忆点，再用前端工程把它做成可用的产品原型。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我在意的是一个作品最后能不能成立 —— 逻辑清楚、体验顺畅、细节可靠，能被用户持续使用。</p>`,
+      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我现在更明确地把自己放在前端工程师的位置：既关心页面气质、交互节奏，也关心它最后能不能真的跑起来。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我会先抓核心体验和视觉记忆点，再用前端工程把它做成可用的产品原型。</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">我在意的是一个作品最后能不能成立 —— 逻辑清楚、体验顺畅、细节可靠，能被用户持续使用。</p>`,
     },
     en: {
       title: "About Me",
-      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I position myself as a frontend designer: someone who cares about visual character, interaction rhythm, and whether the work actually runs.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I lock the core experience and visual memory first, then use frontend engineering to turn it into a usable prototype.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">What matters to me is whether a product truly holds up — clear logic, smooth experience, reliable details, and real usability over time.</p>`,
+      body: `<p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I position myself as a frontend engineer: someone who cares about visual character, interaction rhythm, and whether the work actually runs.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">I lock the core experience and visual memory first, then use frontend engineering to turn it into a usable prototype.</p><p style="font-family:'Caveat',cursive;font-size:1.15rem;line-height:1.8;">What matters to me is whether a product truly holds up — clear logic, smooth experience, reliable details, and real usability over time.</p>`,
     },
   },
   contact: {
@@ -2104,7 +2191,7 @@ const PAPER_MODAL_CONTENT = {
   location: {
     zh: {
       title: "家乡坐标",
-      body: `<p><strong>Liaocheng Shandong</strong></p><p>山东聊城莘县</p>`,
+      body: `<p><strong>Liaocheng Shandong</strong></p><p>山东聊城</p>`,
     },
     en: {
       title: "Hometown",

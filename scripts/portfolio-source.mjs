@@ -120,7 +120,7 @@ const extractPageOverview = async (rootDir) => {
     type: "overview",
     title: title || "EIDDIE Portfolio",
     aliases: ["EIDDIE", "作品集", "portfolio"],
-    keywords: splitTerms(englishRoles, chineseRoles, "frontend designer", "前端设计师"),
+    keywords: splitTerms(englishRoles, chineseRoles, "frontend engineer", "前端工程师"),
     priority: 90,
     content: {
       zh: normalizeText(

@@ -3818,6 +3818,81 @@ html[lang="en"] .folder-note--sticky p {
   outline-offset: 3px;
 }
 
+.folder-sticker--build-things {
+  bottom: auto;
+  top: 32%;
+  left: 37%;
+  width: min(27%, 5.4rem);
+  z-index: 5;
+  rotate: -8deg;
+  filter:
+    drop-shadow(0 0.42rem 0.55rem rgba(35, 18, 6, 0.22))
+    saturate(0.96);
+  opacity: 0.97;
+}
+
+.folder-sticker--build-things:hover,
+.folder-sticker--build-things:focus-visible {
+  z-index: 23;
+  translate: 0 -0.42rem;
+  scale: 1.045;
+  rotate: -5deg;
+  filter:
+    drop-shadow(0 0.72rem 0.82rem rgba(24, 14, 5, 0.32))
+    saturate(1.02)
+    brightness(1.04);
+  transition:
+    translate 180ms ease,
+    scale 180ms ease,
+    rotate 180ms ease,
+    filter 180ms ease,
+    z-index 0ms linear;
+}
+
+.folder-sticker--future-built {
+  top: -1.5%;
+  left: -3%;
+  width: min(36%, 8rem);
+  z-index: 5;
+  rotate: -5deg;
+  filter:
+    drop-shadow(0 0.42rem 0.55rem rgba(35, 18, 6, 0.22))
+    saturate(0.96);
+  opacity: 0.97;
+}
+
+.folder-sticker--crazy-ones {
+  top: auto;
+  bottom: 1%;
+  left: -3%;
+  width: min(34%, 7rem);
+  z-index: 12;
+  rotate: -6deg;
+  filter:
+    drop-shadow(0 0.42rem 0.55rem rgba(35, 18, 6, 0.22))
+    saturate(0.96);
+  opacity: 0.97;
+}
+
+.folder-sticker--future-built:hover,
+.folder-sticker--future-built:focus-visible,
+.folder-sticker--crazy-ones:hover,
+.folder-sticker--crazy-ones:focus-visible {
+  z-index: 23;
+  translate: 0 -0.42rem;
+  scale: 1.045;
+  filter:
+    drop-shadow(0 0.72rem 0.82rem rgba(24, 14, 5, 0.32))
+    saturate(1.02)
+    brightness(1.04);
+  transition:
+    translate 180ms ease,
+    scale 180ms ease,
+    rotate 180ms ease,
+    filter 180ms ease,
+    z-index 0ms linear;
+}
+
 .folder-build-sheet {
   position: absolute;
   z-index: 6;
@@ -7169,6 +7244,30 @@ html[lang="en"] .folder-note--sticky p {
 
 .project-card__button--football-ink .project-card__copy {
   max-width: 19ch;
+}
+
+.project-card__button--targeting-map .project-card__cover-panel {
+  inset: 0;
+  border: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(18, 14, 6, 0) 0%, rgba(12, 10, 6, 0.05) 55%, rgba(6, 6, 10, 0.55) 100%),
+    var(--cover-art-asset, none);
+  background-size: cover;
+  background-position: center 30%;
+  opacity: 0;
+  transform: translate3d(0, 0.28rem, 0) scale(1.04);
+  filter: saturate(0.92) brightness(0.94);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 20px 28px rgba(0, 0, 0, 0.18);
+}
+
+.project-card__button--targeting-map:hover .project-card__cover-panel,
+.project-card__button--targeting-map:focus-visible .project-card__cover-panel,
+.project-card__button--targeting-map.is-active-scene .project-card__cover-panel {
+  opacity: 1;
+  transform: none;
 }
 
 .project-card__button--football-ink .project-card__cover-panel {

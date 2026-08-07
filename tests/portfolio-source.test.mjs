@@ -16,7 +16,7 @@ test("loadPortfolioSourceData reads the project and dossier objects used by the 
   assert.ok(source.projects.yeverse);
   assert.ok(source.projects.lyricflow);
   assert.ok(Object.keys(source.projects).length >= 7);
-  assert.match(source.dossier.profile.zh.body, /前端设计师/);
+  assert.match(source.dossier.profile.zh.body, /前端工程师/);
   assert.match(source.dossier.experience.en.title, /Honors/);
   assert.match(source.resumeUrls.zh, /experience-design-frontend-zh\.pdf$/);
 });

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-06-17T11:04:25.643Z",
+  "generatedAt": "2026-08-07T15:18:03.768Z",
   "entries": [
     {
       "id": "site-overview",
@@ -24,19 +24,16 @@
         "体验设计",
         "系统落地",
         "持续迭代",
+        "frontend engineer",
+        "前端工程师",
         "frontend designer",
-        "前端设计师",
-        "Frontend Designer",
-        "product taste",
-        "interaction design",
-        "frontend engineering",
-        "AI workflows"
+        "前端设计师"
       ],
       "priority": 90,
-      "sourceHash": "ecbaea9715501709c0d9ba9d9bad84d09cd1a165c5e6fd92d8b9db480a908908",
+      "sourceHash": "c25ecd9495cfaa103bccbbd54856eafcd4c2fee5a4bb62013fdc594f6c8e4cec",
       "facts": {
-        "zh": "EIDDIE 是一名前端设计师，擅长工程实现、界面审美、前端开发、体验设计、系统落地和持续迭代。",
-        "en": "EIDDIE is a Frontend Designer who combines product taste, interaction design, frontend engineering, and AI workflows."
+        "zh": "EIDDIE 是前端设计师，专注于工程实现、界面审美、前端开发、体验设计、系统落地、持续迭代。",
+        "en": "EIDDIE is a frontend designer focusing on engineering implementation, interface aesthetics, frontend development, experience design, system implementation, and continuous iteration."
       },
       "hardFacts": {},
       "links": [],
@@ -48,14 +45,16 @@
       "title": "Personal Profile",
       "aliases": [
         "个人档案",
-        "Personal Profile"
+        "Personal Profile",
+        "贾永硕",
+        "Jia Yongshuo"
       ],
       "keywords": [
         "个人档案",
         "Personal Profile",
         "EIDDIE",
         "（贾永硕）",
-        "前端设计师，专注于体验设计",
+        "前端工程师，专注于体验设计",
         "交互表达和可落地的",
         "Web",
         "产品。",
@@ -65,13 +64,22 @@
         "工作流和产品判断串联起来，从想法推进到可展示",
         "可使用的版本。",
         "坐标：湖南",
-        "湖南工业大学"
+        "湖南工业大学",
+        "前端工程师",
+        "frontend engineer",
+        "体验设计",
+        "交互表达",
+        "Web 产品",
+        "界面审美",
+        "AI 工作流",
+        "产品判断",
+        "湖南"
       ],
       "priority": 100,
-      "sourceHash": "91a7cd9463334d600370eab30e0f6596f537971ce69dc42b4265aba02eb1cf9e",
+      "sourceHash": "4b6d48bbb7e144bbac2696c99b330253e751b3c753866d516c30d0cdf1a71a2a",
       "facts": {
-        "zh": "EIDDIE （贾永硕） 前端设计师，专注于体验设计、交互表达和可落地的 Web 产品。 擅长把界面审美、前端工程、AI 工作流和产品判断串联起来，从想法推进到可展示、可使用的版本。 坐标：湖南 · 湖南工业大学",
-        "en": "EIDDIE (Jia Yongshuo) Frontend Designer focused on experience design, interaction expression, and shippable web products. Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment into usable prototypes. Based in Hunan, China"
+        "zh": "EIDDIE（贾永硕）是前端工程师，专注于体验设计、交互表达和可落地的 Web 产品。擅长把界面审美、前端工程、AI 工作流和产品判断串联起来。坐标：湖南 · 湖南工业大学。",
+        "en": "EIDDIE (Jia Yongshuo) is a frontend engineer focused on experience design, interaction expression, and shippable web products. Specializes in connecting interface taste, frontend engineering, AI workflows, and product judgment. Based in Hunan, China."
       },
       "hardFacts": {},
       "links": [],
@@ -238,7 +246,7 @@
       "keywords": [
         "个人简介",
         "About Me",
-        "我现在更明确地把自己放在前端设计师的位置：既关心页面气质",
+        "我现在更明确地把自己放在前端工程师的位置：既关心页面气质",
         "交互节奏，也关心它最后能不能真的跑起来。",
         "我会先抓核心体验和视觉记忆点，再用前端工程把它做成可用的产品原型。",
         "我在意的是一个作品最后能不能成立",
@@ -246,22 +254,19 @@
         "逻辑清楚",
         "体验顺畅",
         "细节可靠，能被用户持续使用。",
-        "前端设计师",
-        "frontend designer",
+        "前端工程师",
+        "页面气质",
         "交互节奏",
-        "interaction rhythm",
-        "视觉记忆",
-        "visual memory",
+        "核心体验",
+        "视觉记忆点",
         "产品原型",
-        "prototype",
-        "用户体验",
-        "user experience"
+        "细节可靠"
       ],
       "priority": 80,
-      "sourceHash": "412f0f54edcb8852a3b9bb886944983bfc66dfeafdffcc32b74d7330f1581bec",
+      "sourceHash": "13bf9c65aed413df32e387c943811d1ebf41e35b975557aa2304fd9c9e4ea1fa",
       "facts": {
-        "zh": "定位为前端设计师，关心页面气质、交互节奏和产品能否跑起来。先抓核心体验和视觉记忆点，再用前端工程做成可用的产品原型。在意作品逻辑清楚、体验顺畅、细节可靠，能被用户持续使用。",
-        "en": "Positions as a frontend designer, cares about visual character, interaction rhythm, and whether the work actually runs. Locks core experience and visual memory first, then uses frontend engineering to turn it into a usable prototype. Values clear logic, smooth experience, reliable details, and real usability over time."
+        "zh": "EIDDIE 将自己定位为前端工程师，关心页面气质、交互节奏和实际运行。先抓核心体验和视觉记忆点，再用前端工程做成可用的产品原型。注重逻辑清楚、体验顺畅、细节可靠。",
+        "en": "EIDDIE positions himself as a frontend engineer, caring about visual character, interaction rhythm, and actual running. Locks core experience and visual memory first, then uses frontend engineering to create usable prototypes. Values clear logic, smooth experience, and reliable details."
       },
       "hardFacts": {},
       "links": [],
@@ -369,21 +374,27 @@
       "title": "Hometown",
       "aliases": [
         "家乡坐标",
-        "Hometown"
+        "Hometown",
+        "聊城",
+        "莘县",
+        "Liaocheng",
+        "Shenxian"
       ],
       "keywords": [
         "家乡坐标",
         "Hometown",
         "Liaocheng",
         "Shandong",
-        "山东聊城莘县",
-        "hometown"
+        "山东聊城",
+        "location",
+        "hometown",
+        "Shenxian"
       ],
       "priority": 45,
-      "sourceHash": "bf54eb2c92d32a71eb216a4d471a5a7018d7d8ef36969c1c8ebb5232127a5a4e",
+      "sourceHash": "045b0139d93dc1db3ee4ab2a854323ee01bf565ae166bfd167436a4cdec44b33",
       "facts": {
-        "zh": "家乡是山东省聊城市莘县。",
-        "en": "Hometown is Shenxian, Liaocheng, Shandong."
+        "zh": "位于中国山东省聊城市莘县。",
+        "en": "Located in Shenxian, Liaocheng, Shandong, China."
       },
       "hardFacts": {},
       "links": [],
@@ -397,7 +408,9 @@
         "项目",
         "作品",
         "projects",
-        "portfolio"
+        "portfolio",
+        "项目索引",
+        "Projects"
       ],
       "keywords": [
         "EDReading",
@@ -416,6 +429,10 @@
         "YeVerse",
         "yeverse",
         "ye.eiddie.me",
+        "Targeting 2026",
+        "targeting2026",
+        "fifa.eiddie.top",
+        "world-cup-game",
         "Consilium",
         "consilium",
         "asm-healthcare-agent.vercel.app",
@@ -425,10 +442,10 @@
         "projects"
       ],
       "priority": 55,
-      "sourceHash": "639d00b3aa4731e6747988326dd27f700d99cfcc94d5c026e988beb55975e59a",
+      "sourceHash": "28fe3e0162ad9648d8d3affe74194d71a2af12691ca551d37fef46a5d1dcfb39",
       "facts": {
-        "zh": "当前公开项目包括：EDReading、Fut.Map、ScriptMind、BugPet、YeVerse、Consilium、LyricFlow。",
-        "en": "Current public projects include: EDReading, Fut.Map, ScriptMind, BugPet, YeVerse, Consilium, LyricFlow."
+        "zh": "当前公开项目包括：EDReading、Fut.Map、ScriptMind、BugPet、YeVerse、Targeting 2026、Consilium、LyricFlow。",
+        "en": "Current public projects include: EDReading, Fut.Map, ScriptMind, BugPet, YeVerse, Targeting 2026, Consilium, and LyricFlow."
       },
       "hardFacts": {},
       "links": [
@@ -441,6 +458,8 @@
         "https://github.com/eiddiedev/BugPet",
         "https://ye.eiddie.me",
         "https://github.com/eiddiedev/YeVerse",
+        "https://fifa.eiddie.top",
+        "https://github.com/eiddiedev/world-cup-game",
         "https://asm-healthcare-agent.vercel.app",
         "https://github.com/eiddiedev/Consilium",
         "https://app-blursfj73bi9.appmedo.com"
@@ -750,6 +769,79 @@
       "links": [
         "https://ye.eiddie.me",
         "https://github.com/eiddiedev/YeVerse"
+      ],
+      "source": "website"
+    },
+    {
+      "id": "project-targeting2026",
+      "type": "project",
+      "title": "Targeting 2026",
+      "aliases": [
+        "targeting2026",
+        "Targeting 2026",
+        "fifa.eiddie.top",
+        "GitHub",
+        "world-cup-game",
+        "剑指美加墨"
+      ],
+      "keywords": [
+        "游戏策划",
+        "互动系统",
+        "像素体验",
+        "Game Design",
+        "Interactive System",
+        "Pixel Experience",
+        "数值系统",
+        "实时模拟",
+        "Web 前端",
+        "像素美术",
+        "Tuning Systems",
+        "Live Simulation",
+        "Web Frontend",
+        "Pixel Art",
+        "完整比赛循环",
+        "数值模拟验证",
+        "Full match loop",
+        "Simulation-tested tuning",
+        "Pixel art",
+        "game",
+        "football",
+        "World Cup 2026",
+        "pixel",
+        "management",
+        "simulation",
+        "design",
+        "development"
+      ],
+      "priority": 60,
+      "sourceHash": "959cf214989f233ea658406418dea4bd0b66aa486381fc49141f006b9eb03f79",
+      "facts": {
+        "zh": "Targeting 2026（剑指美加墨）是一款以2026年世界杯为主题的像素足球经营游戏。我负责大部分策划与开发，包括选队、征召、阵型、后勤、实时比赛、临场决策和赛后复盘的完整流程，并设计了国家队、候选池、战术姿态、天气和点球等系统。通过模拟脚本验证数值策略和决策收益，避免硬编码式胜负。项目重点是将复杂系统、内容叙事、玩法反馈和工程落地整合为一个完整可玩的整体。",
+        "en": "Targeting 2026 is a pixel football management game themed around the 2026 World Cup. I handled most of the design and development, including the complete loop of team selection, call-ups, formations, logistics, live matches, in-game decisions, and post-match review, and designed systems for national teams, player pools, tactical stances, weather, and penalties. Simulation scripts validate the numbers behind every decision instead of hard-coded outcomes. The focus is combining complex systems, content narrative, gameplay feedback, and solid engineering into one playable whole."
+      },
+      "hardFacts": {
+        "en": {
+          "highlights": [
+            "Full match loop",
+            "Simulation-tested tuning",
+            "Pixel art"
+          ],
+          "stack": "Game Design / Tuning Systems / Live Simulation / Web Frontend / Pixel Art",
+          "type": "Game Design / Interactive System / Pixel Experience"
+        },
+        "zh": {
+          "亮点": [
+            "完整比赛循环",
+            "数值模拟验证",
+            "像素美术"
+          ],
+          "技术栈": "游戏策划 / 数值系统 / 实时模拟 / Web 前端 / 像素美术",
+          "类型": "游戏策划 / 互动系统 / 像素体验"
+        }
+      },
+      "links": [
+        "https://fifa.eiddie.top",
+        "https://github.com/eiddiedev/world-cup-game"
       ],
       "source": "website"
     },
