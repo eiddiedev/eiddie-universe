@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-19T07:38:41.066Z",
+  "generatedAt": "2026-08-19T07:39:47.759Z",
   "entries": [
     {
       "id": "site-overview",
@@ -1001,9 +1001,9 @@
         "技能"
       ],
       "priority": 50,
-      "sourceHash": "07ae3ffda7444e5d40418d8dfce9a4de3958e95729028284eb7c4fc51aae612b",
+      "sourceHash": "51e0a5bed02f4b069e1759e2a39c8c6f33394b3c34593987f6d9a8a128812bd9",
       "facts": {
-        "zh": "贾永硕 173-6229-2247 ｜ eiddiedev@qq.com ｜ github.com/eiddiedev ｜ eiddie.me 个人网站 / 作品集： eiddie.me （项目合集 / 在线演示 / 视频介绍） 求职意向： 体验设计型前端实习 / Design Engineer 实习 / UX 方向实习 （暑期到岗） 偏体验设计与前端表达， 擅长围绕内容场景与用户感受搭建完整视觉语言、 交互节奏与可运行界面， 并用工程方式完成高完成度展示。 教育背景湖南工业大学 ｜ 人工智能专业（本科） 2024.09 - 2028.06 主修课程： 机器学习、 深度学习、 计算机视觉、 数据结构与算法、 数据库原理项目经历 YeVerse - 沉浸式音乐文化数字体验 ye.eiddie.me 独立开发 ｜ React / TypeScript / Three.js / Vite / Spotify Embed 围绕音乐与文化内容搭建沉浸式数字体验， 独立完成整体视觉系统、 模块拆解、 交互节奏与前端落地。 设计时间线、 3D 专辑架与电影感转场等多个模块， 把内容浏览转化为更具叙事感、 氛围感与探索欲的交互体验。 形成可在线访问的完整代表作， 并在社交媒体上获得较多乐迷关注与正向反馈。 Fut.Map - 全球足球数据地图可视化 fm.eiddie.top 独立开发 ｜ Next.js / Three.js / Mapbox GL / Framer Motion 面向足球内容场景独立完成视觉方案、 交互逻辑与前端实现， 解决传统数据展示不够沉浸、 记忆点不足的问题。 基于 Three.js + Mapbox GL 实现 3D 地球与 2D 地图联动， 并通过首屏动效优化强化信息层级与浏览完成度。 EDReading - AI 英语外刊阅读工具 eiddie.top 独立开发 ｜ Next.js / TypeScript / Supabase / AI API 围绕英语阅读学习流程设计清晰的信息层级与交互反馈， 独立完成产品界面、 核心功能与上线迭代。 结合 AI 精读分析、 词典增强与复习内容生成， 提升长文本阅读场景中的内容可用性与学习效率。 支持 PWA 安装与云端同步， 完成产品上线并获得近 200 注册用户的真实验证。 BugPet - macOS 原生桌宠与专注成长系统 bp.eiddie.top 独立开发 ｜ Swift / AppKit / SpriteKit 围绕桌面效率场景设计 “ 陪伴式反馈 + 游戏化成长 ” 机制， 探索工具产品的情绪价值与长期使用动机。 使用 SpriteKit 与原生桌面交互能力完成角色表现、 状态反馈与成长映射， 让功能反馈更具可视化与趣味性。 专业技能前端开发： React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / PWA / 多端体验优化设计与表达： UI 设计 / 交互设计 / 视觉方案 / 海报设计 / 视频剪辑 / 摄影 / 演示页面制作全栈实现： Node.js / Supabase / PostgreSQL / 基础 API 对接 / 数据存储 / Vercel 部署 AI 与产品： AI 功能接入 / 内容结构化 / 需求拆解 / 原型验证 / 多版本快速迭代荣誉与经历 Trae on Campus 校园大使 （字节跳动） TRAEFriends@ 武汉黑客松第一名抖音 AI 创变者黑客松 （长沙站） 二等奖抖音 AI 创变者黑客松 （株洲站） 一等奖挑战杯省赛入围 （进行中） 独立 / 协助开发 GitHub 项目 10+ 美团AI Hackathon 全国Top 30",
+        "zh": "贾永硕 173-6229-2247 | eiddiedev@qq.com | github.com/eiddiedev | eiddie.me 个⼈⽹站 / 作品集：eiddie.me（项⽬合集 / 在线演⽰ / 视频介绍） 求职意向：Design Engineer / AI 产品原型开发 / 体验型前端开发实习有审美判断的产品型开发者，擅⻓把 AI 能⼒、内容创意、视觉设计和前端⼯程结合起来，独⽴完成从概念、交互、视觉到上线验证的完整作品。 教育背景湖南⼯业⼤学｜ ⼈⼯智能专业（本科） 2024.09 - 2028.06 主修课程：机器学习、深度学习、计算机视觉、数据结构与算法、数据库原理⼯作经历 The Room｜创始⼈社区 / 中美创业⽣态远程｜2026.08 - ⾄今 Founding Member · Head of Design ｜ theroomcommunity.org 项⽬经历 YeVerse - 沉浸式⾳乐⽂化数字体验 ye.eiddie.me 独⽴开发｜React / TypeScript / Three.js / Vite / Spotify Embed 剑指美加墨 - 2026 世界杯像素⾜球经营游戏 fi fa.eiddie.top 核⼼开发 / 策划｜React / TypeScript / Vite / 11v11 Runtime / 游戏系统设计 EDReading - AI 英语外刊阅读⼯具 eiddie.top 独⽴开发｜Next.js / TypeScript / Supabase / AI API 专业技能前端与互动开发： React / Next.js / TypeScript / Three.js / Mapbox GL / Framer Motion / SpriteKit / PWA / 多端体验优化 AI 产品实现： AI API 接⼊ / 内容结构化 / 精读分析 / 复盘⽣成 / 原型验证 / 多版本快速迭代设计与产品表达： UI 设计 / 交互设计 / 视觉⽅案 / 动效节奏 / 内容叙事 / 海报与演⽰⻚制作⼯程与上线： Node.js / Supabase / PostgreSQL / REST API / 数据存储 / ⾃动化验证 / Vercel 部署荣誉与经历抖⾳ AI创变者⿊客松全国总决赛⼀等奖 · 公共价值奖抖⾳校园AI社⻓ Trae on Campus 校园⼤使 TRAEFriends@武汉⿊客松第⼀名美团AI Hackathon 全国Top 30 独⽴ / 协助开发 GitHub 项⽬ 20+ 作为 Founding Member 与 Head of Design，负责 The Room 的品牌视觉、产品体验和技术落地，完成官⽹前后端、接⼝与数据库设计开发。 · 与创始团队远程协作，建⽴品牌与内容系统，并设计 Speaker Series、Founder’s Dinner、合作伙伴活动所需的社媒素材与现场物料。 · 围绕⾳乐与⽂化内容搭建完整数字体验，独⽴完成视觉系统、模块拆解、互动节奏、前端实现和线上展⽰。 · 设计时间线、3D 专辑架、电影感转场与封⾯氛围动效，让内容浏览更具叙事感、探索欲和传播记忆点。 · 从内容选题到交互表达保持统⼀审美，形成能承接作品集、社交传播和 Demo 演⽰的代表性项⽬。 · 负责策划与开发，搭建选队、征召、阵型、后勤、赛前更⾐室、实时⽐赛、临场决策到赛后复盘的完整循环。 · 设计国家队、候选池、阵型、战术姿态、天⽓与点球等系统，并通过模拟脚本验证数值策略和决策收益。 · 围绕⻓⽂本阅读流程接⼊ AI 精读分析、词典增强与复习内容⽣成，把复杂外刊拆成清晰的信息层级和学习反馈。 · 独⽴完成产品界⾯、核⼼功能、PWA 安装与云端同步，上线后获得 200+ 注册⽤⼾真实验证。 · 围绕提问、复盘、收藏和学习路径做产品闭环，验证 AI 内容⼯具在低成本增⻓和留存场景中的可⾏性。 ·",
         "en": ""
       },
       "hardFacts": {},
